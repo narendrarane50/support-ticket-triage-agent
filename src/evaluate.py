@@ -195,7 +195,10 @@ def main():
     lines.append("| System | TP | FP | FN | TN |")
     lines.append("|---|---|---|---|---|")
     lines.append(f"| Baseline (no mechanism) | {baseline_prf['tp']} | {baseline_prf['fp']} | {baseline_prf['fn']} | {baseline_prf['tn']} |")
-    lines.append(f"| Removed experiment (merged classify+draft) | {merged_prf['tp']} | {merged_prf['fp']} | {merged_prf['fn']} | {merged_prf['tn']} |")
+    if merged_outputs:
+        lines.append(f"| Removed experiment (merged classify+draft) | {merged_prf['tp']} | {merged_prf['fp']} | {merged_prf['fn']} | {merged_prf['tn']} |")
+    else:
+        lines.append("| Removed experiment (merged classify+draft) | not run this pass -- see `python3 src/run_experiment_merged.py` | | | |")
     lines.append(f"| Final agent (dedicated classifier + verifier override) | {agent_prf['tp']} | {agent_prf['fp']} | {agent_prf['fn']} | {agent_prf['tn']} |")
 
     if iter1_scores:
@@ -225,7 +228,8 @@ def main():
     for r in per_ticket_rows:
         bc = "-" if not r["baseline_judge"] else f"{(r['baseline_judge']['grounding_accuracy'] + r['baseline_judge']['policy_compliance'] + r['baseline_judge']['tone_quality']) / 3:.1f}"
         ac = "-" if not r["agent_judge"] else f"{(r['agent_judge']['grounding_accuracy'] + r['agent_judge']['policy_compliance'] + r['agent_judge']['tone_quality']) / 3:.1f}"
-        lines.append(f"| {r['id']} | {r['must_escalate']} | {r['agent_flagged']} | {r['merged_flagged']} | {bc} | {ac} |")
+        merged_cell = "n/a" if not merged_outputs else r["merged_flagged"]
+        lines.append(f"| {r['id']} | {r['must_escalate']} | {r['agent_flagged']} | {merged_cell} | {bc} | {ac} |")
 
     RESULTS_PATH.write_text("\n".join(lines) + "\n")
     print(f"\nWrote {RESULTS_PATH}")

@@ -17,8 +17,8 @@
 ## Setup
 
 ```
-git clone <this repo>
-cd Micro1_Hackathon
+git clone https://github.com/narendrarane50/support-ticket-triage-agent.git
+cd support-ticket-triage-agent
 ```
 
 No dependency installation needed beyond the CLI above.
@@ -59,18 +59,19 @@ python3 src/run_reliability_check.py T04 10
 python3 src/run_reliability_check.py T07 6
 python3 src/run_reliability_check_majority.py T04 10
 ```
-Each prints a per-trial breakdown and a final tally; adjust the ticket ID/trial count to probe any other ticket.
+Each prints a per-trial breakdown and a final tally to the console. `outputs/reliability_check.md` is a hand-written summary of the specific trial runs documented in `CHANGELOG.md` — these scripts don't regenerate it automatically. Re-running them will print a fresh tally you can compare against that committed summary (expect a similar hit rate, not necessarily identical, since this is inherently sampling from a stochastic model). Adjust the ticket ID/trial count to probe any other ticket.
 
 ## Run the evaluation
 
 ```
 python3 src/evaluate.py
 ```
-Judges every baseline/agent/merged-experiment reply with the same rubric (`agents/judge_prompt.md`), computes escalation precision/recall against the gold labels in `data/tickets/eval_set.json`, and writes `outputs/eval_results.md`.
+Judges every baseline/agent/iteration-1/merged-experiment reply with the same rubric (`agents/judge_prompt.md`), computes escalation precision/recall against the gold labels in `data/tickets/eval_set.json`, and writes `outputs/eval_results.md`. The iteration-1 and merged-experiment sections (and the merged-experiment row in the confusion matrix) are only included if that experiment's output directory exists, so running just baseline + pipeline + evaluate still works and cleanly omits those parts rather than showing misleading placeholder data.
 
 ## Expected output
 
 - `outputs/eval_results.md` — the full baseline-vs-agent comparison table, escalation confusion matrices, the hard adversarial case (T09), and a per-ticket breakdown.
+- `outputs/reliability_check.md` — hand-written summary of the repeated-trial escalation-classifier check (see above); the raw supporting calls are in `outputs/trajectories/`.
 - `outputs/trajectories/*.json` — every single `claude -p` call made across all of the above, each with its full prompt, CLI args, stdout/stderr, duration, and cost. These are the agent trajectories for the hackathon's deliverable #4.
 
 ## Runtime & cost (actually measured on my run)
