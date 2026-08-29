@@ -12,7 +12,7 @@ Doing this by hand means re-reading the same FAQ and policy docs for every ticke
 - state a policy detail wrong or invent one (a customer says "your policy says refunds are available anytime" — is that true? the agent has to go check), or
 - miss that a ticket needs escalation. A refund request, a chargeback threat, or a discount ask can *sound* like a normal question but requires a human with actual authority to act on it. Getting this wrong either annoys customers with slow, inconsistent answers, or creates real liability (an agent promising a refund it can't authorize).
 
-## What we built
+## What I built
 
 A small pipeline of `claude -p` (Claude Code headless CLI) calls, each with a narrow, read-only tool allowlist:
 
@@ -25,7 +25,7 @@ A small pipeline of `claude -p` (Claude Code headless CLI) calls, each with a na
 
 **Evaluation**: the same 12 synthetic tickets, the same LLM-judge rubric (`agents/judge_prompt.md`, scoring grounding accuracy / policy compliance / tone, 0-5 each), for both baseline and agent. Escalation correctness is scored deterministically against hand-labeled gold tickets (`data/tickets/eval_set.json`), not by the judge. Full results in [`outputs/eval_results.md`](outputs/eval_results.md).
 
-See [`CHANGELOG.md`](CHANGELOG.md) for how this pipeline evolved, including one experiment we tried and removed.
+See [`CHANGELOG.md`](CHANGELOG.md) for how this pipeline evolved, including one experiment I tried and removed.
 
 ## Repo layout
 
@@ -65,10 +65,10 @@ See [`REPRODUCE.md`](REPRODUCE.md).
 
 Full table, confusion matrices, the hard adversarial case, and per-ticket detail: [`outputs/eval_results.md`](outputs/eval_results.md).
 
-**A note on that precision number**: our first full run measured escalation precision at a clean 1.00, but a second independent run measured 0.83 on the exact same code and prompts — one false positive on a feature-request ticket. Rather than report whichever number looked better, we repeat-sampled the classifier directly (10 trials on the disputed ticket, 6 on a true-positive control) and found the real behavior is closer to ~90% correct on that specific boundary case, 100% on clear-cut cases, with the error always erring toward *more* human review, never less. Full trial data: [`outputs/reliability_check.md`](outputs/reliability_check.md).
+**A note on that precision number**: my first full run measured escalation precision at a clean 1.00, but a second independent run measured 0.83 on the exact same code and prompts — one false positive on a feature-request ticket. Rather than report whichever number looked better, I repeat-sampled the classifier directly (10 trials on the disputed ticket, 6 on a true-positive control) and found the real behavior is closer to ~90% correct on that specific boundary case, 100% on clear-cut cases, with the error always erring toward *more* human review, never less. Full trial data: [`outputs/reliability_check.md`](outputs/reliability_check.md).
 
 ## Hot take
 
 A single agent asked to both classify *and* draft in one pass didn't get worse at writing replies (its quality score was statistically the same as the final pipeline) — it got worse at applying a **compound policy rule**. The escalation rule is "flag if X (refund/fraud/discount) **or** Y (KB doesn't cover it)," and under the merged prompt that silently collapsed to just "Y," misfiring on an ordinary feature-request ticket. A dedicated classifier, doing nothing else, kept the full rule intact far more often.
 
-But "far more often" is the honest phrase, not "always": that same dedicated classifier still misfires on the identical ticket about 1 time in 10, something we only found because a second independent run disagreed with the first and we bothered to repeat-sample instead of trusting either single run. Self-consistency majority voting, the obvious fix, barely helped (9/10 either way) at 3x the cost. The real lesson isn't "add a classifier" or "add more sampling" — it's that **a single eval run cannot distinguish a reliable design from a lucky draw**, and once you've found a residual error you can't cheaply eliminate, the better engineering move is making sure that error is safe (over-escalating to a human) rather than chasing the last few percent of determinism out of an inherently stochastic model. See `CHANGELOG.md` and `outputs/reliability_check.md` for the full before/after evidence on both points.
+But "far more often" is the honest phrase, not "always": that same dedicated classifier still misfires on the identical ticket about 1 time in 10, something I only found because a second independent run disagreed with the first and I bothered to repeat-sample instead of trusting either single run. Self-consistency majority voting, the obvious fix, barely helped (9/10 either way) at 3x the cost. The real lesson isn't "add a classifier" or "add more sampling" — it's that **a single eval run cannot distinguish a reliable design from a lucky draw**, and once you've found a residual error you can't cheaply eliminate, the better engineering move is making sure that error is safe (over-escalating to a human) rather than chasing the last few percent of determinism out of an inherently stochastic model. See `CHANGELOG.md` and `outputs/reliability_check.md` for the full before/after evidence on both points.

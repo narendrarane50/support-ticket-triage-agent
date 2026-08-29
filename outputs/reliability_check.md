@@ -43,7 +43,7 @@ Result: **9/10 correct — the same hit rate as a single call.** Across all 30 i
 
 ## Decision
 
-**Not adopted.** At this sample size the improvement from self-consistency sampling is small and not clearly worth tripling classifier cost, and — more importantly — the failure direction is safe: every observed failure sends an ordinary ticket to a human for a redundant review, never the reverse (a ticket that should be reviewed being auto-sent). We did not repeat-sample the removed merged-experiment prompt the same way, so its single-run 0.83 precision should be read as one anecdote consistent with the same failure class, not a precisely measured base rate — a fair head-to-head would need the same repeated-trial treatment on that variant too.
+**Not adopted.** At this sample size the improvement from self-consistency sampling is small and not clearly worth tripling classifier cost, and — more importantly — the failure direction is safe: every observed failure sends an ordinary ticket to a human for a redundant review, never the reverse (a ticket that should be reviewed being auto-sent). I did not repeat-sample the removed merged-experiment prompt the same way, so its single-run 0.83 precision should be read as one anecdote consistent with the same failure class, not a precisely measured base rate — a fair head-to-head would need the same repeated-trial treatment on that variant too.
 
 ## What this changes in the rest of the writeup
 

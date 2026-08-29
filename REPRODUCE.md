@@ -73,7 +73,7 @@ Judges every baseline/agent/merged-experiment reply with the same rubric (`agent
 - `outputs/eval_results.md` — the full baseline-vs-agent comparison table, escalation confusion matrices, the hard adversarial case (T09), and a per-ticket breakdown.
 - `outputs/trajectories/*.json` — every single `claude -p` call made across all of the above, each with its full prompt, CLI args, stdout/stderr, duration, and cost. These are the agent trajectories for the hackathon's deliverable #4.
 
-## Runtime & cost (actually measured on our run)
+## Runtime & cost (actually measured on my run)
 
 The full run — baseline + iteration-1 experiment + final pipeline + merged-experiment + evaluate, all 12 tickets — made **122 total `claude -p` calls** at **$5.59 total ($0.046/call average)**, in about 20-25 minutes wall clock. Cost varies with model/cache state; see `cli_metadata.total_cost_usd` in any file under `outputs/trajectories/` for the exact figure of that call, or `outputs/eval_results.md` for the per-ticket cost rollup of just baseline vs. the final pipeline (**$0.095/ticket baseline vs. $0.131/ticket agent**). Running only the baseline + final pipeline + evaluate (skipping the two experiment scripts) is enough to reproduce the headline comparison and costs well under half of the above.
 
