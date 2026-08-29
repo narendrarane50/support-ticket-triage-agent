@@ -59,7 +59,12 @@ python3 src/run_reliability_check.py T04 10
 python3 src/run_reliability_check.py T07 6
 python3 src/run_reliability_check_majority.py T04 10
 ```
-Each prints a per-trial breakdown and a final tally to the console. `outputs/reliability_check.md` is a hand-written summary of the specific trial runs documented in `CHANGELOG.md` — these scripts don't regenerate it automatically. Re-running them will print a fresh tally you can compare against that committed summary (expect a similar hit rate, not necessarily identical, since this is inherently sampling from a stochastic model). Adjust the ticket ID/trial count to probe any other ticket.
+To reproduce the full-pipeline-level check (classify→draft→verify together, not just the classifier in isolation — this is what caught the Iteration 6 finding that the verifier could independently override a correct classifier decision):
+```
+python3 src/run_reliability_check_pipeline.py T04 5
+```
+
+Each script prints a per-trial breakdown and a final tally to the console. `outputs/reliability_check.md` is a hand-written summary of the specific trial runs documented in `CHANGELOG.md` — these scripts don't regenerate it automatically. Re-running them will print a fresh tally you can compare against that committed summary (expect a similar hit rate, not necessarily identical, since this is inherently sampling from a stochastic model). Adjust the ticket ID/trial count to probe any other ticket.
 
 ## Run the evaluation
 

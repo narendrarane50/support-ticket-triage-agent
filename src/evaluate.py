@@ -76,12 +76,22 @@ def escalation_prf(predictions: dict, gold: dict):
 
 
 def cost_for_labels(prefix_matches):
-    total = 0.0
+    """Sums the cost of the *latest* trajectory for each exact label matching
+    prefix_matches, not every historical trajectory with that label. Labels
+    repeat verbatim (e.g. "T04_baseline") every time a script is re-run against
+    the same ticket, so summing all of them would double/triple-count every
+    re-run made during development instead of reflecting one clean run."""
+    latest_by_label = {}  # label -> (timestamp, cost)
     for f in TRAJECTORY_DIR.glob("*.json"):
         data = json.loads(f.read_text())
-        if any(m in data.get("label", "") for m in prefix_matches):
-            total += (data.get("cli_metadata") or {}).get("total_cost_usd") or 0.0
-    return total
+        label = data.get("label", "")
+        if not any(m in label for m in prefix_matches):
+            continue
+        timestamp = int(f.name.split("_", 1)[0])
+        cost = (data.get("cli_metadata") or {}).get("total_cost_usd") or 0.0
+        if label not in latest_by_label or timestamp > latest_by_label[label][0]:
+            latest_by_label[label] = (timestamp, cost)
+    return sum(cost for _, cost in latest_by_label.values())
 
 
 def main():

@@ -1,0 +1,43 @@
+{
+  "call_id": "1788034936526_T08_drafter_a1_85e149",
+  "label": "T08_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=billing_question, needs_human_approval=False (The customer is only asking for clarification on how the annual billing discount works (not requesting a refund or discretionary discount), and billing_faq.md clearly confirms annual billing includes a 20% discount versus monthly.).\n\n\nRespond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:\n{\n  \"reply\": \"<the reply text you would send to the customer>\",\n  \"citations\": [\"<kb_file.md#section-or-topic>\", ...]\n}\n\nTicket subject: Question about annual discount\nTicket body: I saw I was charged the full annual amount up front. I'm not asking for a refund, I just want to understand -- is that the plan with the 20% discount, or is the discount something else?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 8.74,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":8515,\"stop_reason\":\"tool_use\",\"session_id\":\"76beadd6-a872-482d-af43-903e230576f9\",\"total_cost_usd\":0.0461222,\"usage\":{\"input_tokens\":4,\"cache_creation_input_tokens\":8385,\"cache_read_input_tokens\":20486,\"output_tokens\":713,\"output_tokens_details\":{\"thinking_tokens\":116},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":8385,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":513,\"cache_read_input_tokens\":14075,\"cache_creation_input_tokens\":721,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":721},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1282,\"outputTokens\":13,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.0013469999999999999,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":4,\"outputTokens\":713,\"cacheReadInputTokens\":20486,\"cacheCreationInputTokens\":8385,\"webSearchRequests\":0,\"costUSD\":0.0447752,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":3,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"{\\\\\\\"reply\\\\\\\": \\\\\\\"Thanks for checking in! Yes, that full up-front charge is expected on annual billing -- when you're on an annual plan, Loopwise charges the full year's amount on your upgrade date (and then again on that same date each year), rather than billing you month by month. That annual plan is exactly the one that includes the 20% discount versus paying monthly (e.g., for the Team plan, that's $12/user/month billed annually vs. $15/user/month billed monthly). So the up-front charge you saw is the discounted annual rate, just collected as a single annual payment instead of spread out. Let me know if you'd like help finding the exact breakdown on your invoice under Settings > Billing > Invoices.\\\\\\\", \\\\\\\"citations\\\\\\\": [\\\\\\\"billing_faq.md#plans\\\\\\\", \\\\\\\"billing_faq.md#q-when-am-i-charged\\\\\\\", \\\\\\\"billing_faq.md#q-do-you-offer-discounts\\\\\\\"]}\\\",\\\"citations\\\":[\\\"billing_faq.md#plans\\\",\\\"billing_faq.md#q-when-am-i-charged\\\",\\\"billing_faq.md#q-do-you-offer-discounts\\\"]}\",\"structured_output\":{\"reply\":\"{\\\"reply\\\": \\\"Thanks for checking in! Yes, that full up-front charge is expected on annual billing -- when you're on an annual plan, Loopwise charges the full year's amount on your upgrade date (and then again on that same date each year), rather than billing you month by month. That annual plan is exactly the one that includes the 20% discount versus paying monthly (e.g., for the Team plan, that's $12/user/month billed annually vs. $15/user/month billed monthly). So the up-front charge you saw is the discounted annual rate, just collected as a single annual payment instead of spread out. Let me know if you'd like help finding the exact breakdown on your invoice under Settings > Billing > Invoices.\\\", \\\"citations\\\": [\\\"billing_faq.md#plans\\\", \\\"billing_faq.md#q-when-am-i-charged\\\", \\\"billing_faq.md#q-do-you-offer-discounts\\\"]}\",\"citations\":[\"billing_faq.md#plans\",\"billing_faq.md#q-when-am-i-charged\",\"billing_faq.md#q-do-you-offer-discounts\"]},\"ttft_ms\":1411,\"type\":\"result\",\"duration_ms\":7796,\"uuid\":\"6b1fc90f-58a5-45d9-be01-324d80ae884a\",\"ttft_stream_ms\":774,\"time_to_request_ms\":15,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 3,
+    "total_cost_usd": 0.0461222,
+    "duration_ms": 7796,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "{\"reply\": \"Thanks for checking in! Yes, that full up-front charge is expected on annual billing -- when you're on an annual plan, Loopwise charges the full year's amount on your upgrade date (and then again on that same date each year), rather than billing you month by month. That annual plan is exactly the one that includes the 20% discount versus paying monthly (e.g., for the Team plan, that's $12/user/month billed annually vs. $15/user/month billed monthly). So the up-front charge you saw is the discounted annual rate, just collected as a single annual payment instead of spread out. Let me know if you'd like help finding the exact breakdown on your invoice under Settings > Billing > Invoices.\", \"citations\": [\"billing_faq.md#plans\", \"billing_faq.md#q-when-am-i-charged\", \"billing_faq.md#q-do-you-offer-discounts\"]}",
+    "citations": [
+      "billing_faq.md#plans",
+      "billing_faq.md#q-when-am-i-charged",
+      "billing_faq.md#q-do-you-offer-discounts"
+    ]
+  }
+}

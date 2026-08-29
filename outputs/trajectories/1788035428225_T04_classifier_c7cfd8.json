@@ -1,0 +1,51 @@
+{
+  "call_id": "1788035428225_T04_classifier_c7cfd8",
+  "label": "T04_classifier",
+  "prompt": "You are a support-ticket classifier for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to the knowledge base at `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md). Use Read/Glob/Grep to check whether the ticket's topic is clearly covered by the KB before deciding.\n\nClassify the ticket below and decide whether it needs human approval before any reply is finalized. Flag `needs_human_approval: true` if ANY of these apply:\n- The ticket is a refund request of any kind (refunds are only ever executed by a human manager, never by an agent).\n- The ticket includes an accusation of fraud, an unauthorized charge, or a threat of chargeback/dispute/legal action.\n- The ticket asks for a discretionary discount, exception, or any action outside documented policy.\n- The ticket's core question is NOT clearly answered by any file in the knowledge base (do not guess or invent an answer to route around this \u2014 if you're not confident the KB covers it, flag it).\n\nDo NOT flag a ticket just because it mentions a word like \"refund,\" \"charge,\" or \"discount\" in passing if the customer is not actually requesting that action.\n\nAlso rate your own confidence in the `needs_human_approval` decision as \"high\", \"medium\", or \"low\". Use \"low\" whenever your reasoning rests mainly on \"the KB doesn't cover this\" as your only signal for a `false` decision, or the ticket is genuinely ambiguous between two categories -- being honest about low confidence here is more useful than forcing a confident-sounding answer, since a low-confidence `false` will be routed to a human anyway as a safety net. Reserve \"high\" for cases with an unambiguous category and a clear-cut match to the rules above (or a clear absence of any of them).\n\nRespond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:\n{\n  \"category\": \"<short category label, e.g. billing_question, how_to, bug_report, feature_request, refund_request, account_access>\",\n  \"needs_human_approval\": true or false,\n  \"confidence\": \"high\" or \"medium\" or \"low\",\n  \"reason\": \"<one sentence explaining the decision>\"\n}\n\nTicket subject: Dark mode?\nTicket body: Any plans to add a dark mode to Loopwise? My eyes would appreciate it.\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "category": {
+        "type": "string"
+      },
+      "needs_human_approval": {
+        "type": "boolean"
+      },
+      "confidence": {
+        "type": "string",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ]
+      },
+      "reason": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "category",
+      "needs_human_approval",
+      "confidence",
+      "reason"
+    ]
+  },
+  "duration_sec": 5.63,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":5338,\"stop_reason\":\"tool_use\",\"session_id\":\"1be72c5e-3b19-42c2-ac73-9a168a9c1ee6\",\"total_cost_usd\":0.041794200000000004,\"usage\":{\"input_tokens\":4,\"cache_creation_input_tokens\":8158,\"cache_read_input_tokens\":20856,\"output_tokens\":347,\"output_tokens_details\":{\"thinking_tokens\":77},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":8158,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":171,\"cache_read_input_tokens\":14395,\"cache_creation_input_tokens\":224,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":224},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1458,\"outputTokens\":11,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.001513,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":4,\"outputTokens\":347,\"cacheReadInputTokens\":20856,\"cacheCreationInputTokens\":8158,\"webSearchRequests\":0,\"costUSD\":0.0402812,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":3,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"category\\\":\\\"feature_request\\\",\\\"needs_human_approval\\\":false,\\\"confidence\\\":\\\"high\\\",\\\"reason\\\":\\\"This is a simple feature request with no refund, fraud, discount, or policy-exception element, and no discretionary decision is required to acknowledge it.\\\"}\",\"structured_output\":{\"category\":\"feature_request\",\"needs_human_approval\":false,\"confidence\":\"high\",\"reason\":\"This is a simple feature request with no refund, fraud, discount, or policy-exception element, and no discretionary decision is required to acknowledge it.\"},\"ttft_ms\":1990,\"type\":\"result\",\"duration_ms\":4655,\"uuid\":\"052450f9-a655-455a-b91d-e2c7cd0db632\",\"ttft_stream_ms\":863,\"time_to_request_ms\":15,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 3,
+    "total_cost_usd": 0.041794200000000004,
+    "duration_ms": 4655,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "category": "feature_request",
+    "needs_human_approval": false,
+    "confidence": "high",
+    "reason": "This is a simple feature request with no refund, fraud, discount, or policy-exception element, and no discretionary decision is required to acknowledge it."
+  }
+}

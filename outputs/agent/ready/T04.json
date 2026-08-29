@@ -1,0 +1,28 @@
+{
+  "ticket_id": "T04",
+  "classification": {
+    "category": "feature_request",
+    "needs_human_approval": false,
+    "confidence": "high",
+    "reason": "This is a simple feature request for dark mode with no refund, fraud, discount, or policy exception involved, so it can be answered with a standard 'we'll pass this to product' reply without KB coverage."
+  },
+  "classifier_effective_approval": false,
+  "draft": {
+    "reply": "{\"reply\": \"Thanks for the suggestion! Dark mode isn't available in Loopwise today, but I really appreciate you flagging it -- eye strain feedback like this is exactly what helps us prioritize. I've passed your request along to our product team for consideration in a future update. We don't have a timeline to share right now, but if dark mode does get added, it'll be announced through our product updates. Thanks again for taking the time to write in!\", \"citations\": []}",
+    "citations": [
+      "No KB citation applicable \u2014 feature request with no documented policy/fact to reference"
+    ]
+  },
+  "verification": {
+    "passed": true,
+    "final_needs_human_approval": false,
+    "problems": [],
+    "notes": "No dark mode content exists in the KB, the reply makes no fabricated citations or policy claims, and it commits to nothing beyond passing along feedback, so it is a clean, professional response appropriately requiring no citations."
+  },
+  "redraft_attempts": 0,
+  "final_needs_human_approval": false,
+  "reply": "{\"reply\": \"Thanks for the suggestion! Dark mode isn't available in Loopwise today, but I really appreciate you flagging it -- eye strain feedback like this is exactly what helps us prioritize. I've passed your request along to our product team for consideration in a future update. We don't have a timeline to share right now, but if dark mode does get added, it'll be announced through our product updates. Thanks again for taking the time to write in!\", \"citations\": []}",
+  "citations": [
+    "No KB citation applicable \u2014 feature request with no documented policy/fact to reference"
+  ]
+}

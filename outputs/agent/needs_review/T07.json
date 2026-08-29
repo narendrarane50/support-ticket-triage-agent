@@ -3,20 +3,22 @@
   "classification": {
     "category": "account_access",
     "needs_human_approval": true,
-    "reason": "The ticket concerns a login/password-reset email issue that is not addressed in any KB file, so it must be escalated rather than answered from documented policy."
+    "confidence": "low",
+    "reason": "The KB has no documented guidance on password-reset email delivery failures, so this account-access issue can't be confidently resolved from KB alone."
   },
+  "classifier_effective_approval": true,
   "draft": {
-    "reply": "{\"reply\": \"Hi, I'm sorry for the trouble, especially with a deadline today. Password-reset email delivery issues like this need to be handled directly by our support team, so I'm escalating your case right now to get a specialist looking into it as quickly as possible. They'll verify your account and help restore your access. Thank you for your patience, and we'll be in touch shortly.\", \"citations\": []}",
+    "reply": "{\"reply\": \"I'm sorry for the trouble, especially with a deadline today. I want to make sure this gets fixed for you as quickly as possible. I don't have documented guidance on this specific password-reset delivery issue, so I'm escalating your ticket to our support team right now so a human agent can look into your account directly and help restore your access. In the meantime, could you double-check your spam/junk folder and confirm the email address you're using matches the one on your workspace account? That will help speed up the investigation. You'll hear back from our team shortly.\", \"citations\": []}",
     "citations": []
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "KB has no content on password reset/login issues, so the reply correctly avoids fabricating policy and escalates instead; classifier's needs_human_approval=true is appropriate given the unresolved account-access issue and lack of KB coverage."
+    "notes": "No KB entries cover password-reset email delivery, the draft correctly cites nothing and avoids fabricating policy, makes no refund/discount/account promises, and appropriately escalates with a professional tone, so the classifier's needs_human_approval=True stands unchanged."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": true,
-  "reply": "{\"reply\": \"Hi, I'm sorry for the trouble, especially with a deadline today. Password-reset email delivery issues like this need to be handled directly by our support team, so I'm escalating your case right now to get a specialist looking into it as quickly as possible. They'll verify your account and help restore your access. Thank you for your patience, and we'll be in touch shortly.\", \"citations\": []}",
+  "reply": "{\"reply\": \"I'm sorry for the trouble, especially with a deadline today. I want to make sure this gets fixed for you as quickly as possible. I don't have documented guidance on this specific password-reset delivery issue, so I'm escalating your ticket to our support team right now so a human agent can look into your account directly and help restore your access. In the meantime, could you double-check your spam/junk folder and confirm the email address you're using matches the one on your workspace account? That will help speed up the investigation. You'll hear back from our team shortly.\", \"citations\": []}",
   "citations": []
 }

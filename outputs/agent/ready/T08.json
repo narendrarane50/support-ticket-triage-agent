@@ -3,24 +3,30 @@
   "classification": {
     "category": "billing_question",
     "needs_human_approval": false,
-    "reason": "The customer is not requesting a refund or discount, just asking to confirm how annual billing works, which is clearly explained in billing_faq.md."
+    "confidence": "high",
+    "reason": "The customer is only asking for clarification on how the annual discount and upfront charge work, which is explicitly documented in billing_faq.md, and they are not requesting a refund, discount, or exception."
   },
+  "classifier_effective_approval": false,
   "draft": {
-    "reply": "{\"reply\": \"Yes, that's the annual plan discount! On the Team plan, annual billing is $12/user/month (charged as one upfront annual payment) compared to $15/user/month if billed monthly \u2014 that works out to the 20% discount for paying annually. So the upfront charge you saw is expected and reflects that discounted annual rate. Let me know if you'd like help finding the itemized invoice under Settings > Billing > Invoices.\", \"citations\": [\"billing_faq.md#Plans\", \"billing_faq.md#Q: Do you offer discounts?\"]}",
+    "reply": "{\"reply\": \"Thanks for reaching out, and great question! Yes, what you're seeing is expected: annual billing on Loopwise works by charging the full year's amount upfront in a single charge, rather than spreading it out monthly. That upfront annual charge is exactly what gives you the 20% discount versus paying monthly -- for example, on the Team plan, monthly billing is $15/user/month, while annual billing works out to $12/user/month (billed as one lump sum for the year), which is that 20% savings. So the full annual charge you saw is the discounted annual plan, not a separate or additional charge. Let me know if you'd like me to pull up your specific invoice details or if you have any other questions!\", \"citations\": [\"billing_faq.md#Plans\", \"billing_faq.md#Q: When am I charged?\", \"billing_faq.md#Q: Do you offer discounts?\"]}",
     "citations": [
-      "data/kb/billing_faq.md"
+      "billing_faq.md#Plans",
+      "billing_faq.md#Q: When am I charged?",
+      "billing_faq.md#Q: Do you offer discounts?"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": false,
     "problems": [],
-    "notes": "Both citations (billing_faq.md#Plans and #Q: Do you offer discounts?) exist and accurately support the $15 vs $12/user/month (20% annual discount) claim; reply is professional, makes no refund/discount promise beyond documented policy, and correctly does not require human approval since this is a factual billing question already covered in the KB."
+    "notes": "All three citations exist in billing_faq.md and accurately support the claims (annual charged as single upfront amount, Team plan pricing $15 vs $12/user/month, and the 20% annual discount); the reply only explains documented policy without promising any refund, discount, or account action, and its tone is professional."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": false,
-  "reply": "{\"reply\": \"Yes, that's the annual plan discount! On the Team plan, annual billing is $12/user/month (charged as one upfront annual payment) compared to $15/user/month if billed monthly \u2014 that works out to the 20% discount for paying annually. So the upfront charge you saw is expected and reflects that discounted annual rate. Let me know if you'd like help finding the itemized invoice under Settings > Billing > Invoices.\", \"citations\": [\"billing_faq.md#Plans\", \"billing_faq.md#Q: Do you offer discounts?\"]}",
+  "reply": "{\"reply\": \"Thanks for reaching out, and great question! Yes, what you're seeing is expected: annual billing on Loopwise works by charging the full year's amount upfront in a single charge, rather than spreading it out monthly. That upfront annual charge is exactly what gives you the 20% discount versus paying monthly -- for example, on the Team plan, monthly billing is $15/user/month, while annual billing works out to $12/user/month (billed as one lump sum for the year), which is that 20% savings. So the full annual charge you saw is the discounted annual plan, not a separate or additional charge. Let me know if you'd like me to pull up your specific invoice details or if you have any other questions!\", \"citations\": [\"billing_faq.md#Plans\", \"billing_faq.md#Q: When am I charged?\", \"billing_faq.md#Q: Do you offer discounts?\"]}",
   "citations": [
-    "data/kb/billing_faq.md"
+    "billing_faq.md#Plans",
+    "billing_faq.md#Q: When am I charged?",
+    "billing_faq.md#Q: Do you offer discounts?"
   ]
 }

@@ -10,10 +10,13 @@ Classify the ticket below and decide whether it needs human approval before any 
 
 Do NOT flag a ticket just because it mentions a word like "refund," "charge," or "discount" in passing if the customer is not actually requesting that action.
 
+Also rate your own confidence in the `needs_human_approval` decision as "high", "medium", or "low". Use "low" whenever your reasoning rests mainly on "the KB doesn't cover this" as your only signal for a `false` decision, or the ticket is genuinely ambiguous between two categories -- being honest about low confidence here is more useful than forcing a confident-sounding answer, since a low-confidence `false` will be routed to a human anyway as a safety net. Reserve "high" for cases with an unambiguous category and a clear-cut match to the rules above (or a clear absence of any of them).
+
 Respond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:
 {
   "category": "<short category label, e.g. billing_question, how_to, bug_report, feature_request, refund_request, account_access>",
   "needs_human_approval": true or false,
+  "confidence": "high" or "medium" or "low",
   "reason": "<one sentence explaining the decision>"
 }
 

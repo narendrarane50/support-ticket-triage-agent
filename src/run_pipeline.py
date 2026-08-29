@@ -29,9 +29,10 @@ CLASSIFIER_SCHEMA = {
     "properties": {
         "category": {"type": "string"},
         "needs_human_approval": {"type": "boolean"},
+        "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
         "reason": {"type": "string"},
     },
-    "required": ["category", "needs_human_approval", "reason"],
+    "required": ["category", "needs_human_approval", "confidence", "reason"],
 }
 
 DRAFTER_SCHEMA = {
@@ -69,6 +70,10 @@ def run_ticket(ticket: dict, templates: dict) -> dict:
     classification = call_claude(
         classifier_prompt, tools=KB_TOOLS, json_schema=CLASSIFIER_SCHEMA, label=f"{tid}_classifier"
     )
+    # Confidence-aware override: a low-confidence "false" is treated as "true" downstream.
+    # The classifier's raw needs_human_approval/confidence are preserved in the output for
+    # auditability; classifier_effective_approval is what actually drives drafting/routing.
+    classifier_effective_approval = classification["needs_human_approval"] or classification["confidence"] == "low"
 
     feedback_block = ""
     draft = None
@@ -82,7 +87,7 @@ def run_ticket(ticket: dict, templates: dict) -> dict:
             subject=ticket["subject"],
             body=ticket["body"],
             category=classification["category"],
-            needs_human_approval=classification["needs_human_approval"],
+            needs_human_approval=classifier_effective_approval,
             reason=classification["reason"],
             feedback_block=feedback_block,
         )
@@ -94,7 +99,7 @@ def run_ticket(ticket: dict, templates: dict) -> dict:
             templates["verifier"],
             subject=ticket["subject"],
             body=ticket["body"],
-            needs_human_approval=classification["needs_human_approval"],
+            needs_human_approval=classifier_effective_approval,
             reply=draft["reply"],
             citations=json.dumps(draft["citations"]),
         )
@@ -110,13 +115,14 @@ def run_ticket(ticket: dict, templates: dict) -> dict:
             + ". Fix these specific issues in your new draft.\n"
         )
 
-    final_needs_approval = classification["needs_human_approval"] or verification["final_needs_human_approval"]
+    final_needs_approval = classifier_effective_approval or verification["final_needs_human_approval"]
     if not verification["passed"]:
         final_needs_approval = True  # unresolved grounding/policy problems -> force human review
 
     return {
         "ticket_id": tid,
         "classification": classification,
+        "classifier_effective_approval": classifier_effective_approval,
         "draft": draft,
         "verification": verification,
         "redraft_attempts": attempts - 1,
@@ -135,6 +141,12 @@ def main():
     }
     READY_DIR.mkdir(parents=True, exist_ok=True)
     REVIEW_DIR.mkdir(parents=True, exist_ok=True)
+    # A ticket's routing can flip between runs (e.g. the classifier's decision changes on
+    # a re-run); without this, the stale file in the *other* directory would linger and
+    # evaluate.py could silently read it instead of the fresh one. Clear both before a
+    # full run so each ticket ends up in exactly one place.
+    for f in list(READY_DIR.glob("*.json")) + list(REVIEW_DIR.glob("*.json")):
+        f.unlink()
 
     for ticket in tickets:
         print(f"[pipeline] {ticket['id']}: {ticket['subject']!r}")

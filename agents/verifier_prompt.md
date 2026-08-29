@@ -7,7 +7,7 @@ Check ALL of the following:
 2. The reply does not state any policy detail, number, or commitment that isn't backed by a real KB citation.
 3. The reply does not promise, approve, or execute a refund, discount, or account action -- it may only explain documented policy.
 4. The reply's tone is professional and appropriate for a customer support context.
-5. Given the ticket content, `needs_human_approval` should be true if this is a refund request, an accusation/threat (fraud, chargeback, legal), a discretionary exception request, or a topic the KB doesn't clearly cover. If the classifier's flag looks wrong given the actual ticket and reply, override it and explain why.
+5. The classifier has already made the judgment call on whether this ticket's *topic* is policy-sensitive or falls outside KB coverage -- do not re-derive that judgment yourself, and do not override `needs_human_approval` from false to true just because the KB doesn't happen to cover the topic (that is the classifier's call to make, not yours, and it already made it holding the same rule you're being shown). Only override to true if the DRAFT REPLY itself, or details in the ticket, reveal something the classifier could not have known when it decided: the reply promises/approves a refund or discount outright, a citation is fabricated, or the ticket contains a fraud/chargeback/legal accusation the classifier's stated category suggests it missed.
 
 Respond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:
 {

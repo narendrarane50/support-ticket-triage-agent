@@ -3,26 +3,26 @@
   "classification": {
     "category": "refund_request",
     "needs_human_approval": true,
-    "reason": "This is a refund request, which per policy must always be executed by a human manager and never by an agent."
+    "confidence": "high",
+    "reason": "The customer is explicitly requesting a full refund, which per policy must always be handled by a human manager."
   },
+  "classifier_effective_approval": true,
   "draft": {
-    "reply": "Hi there,\n\nThanks for reaching out, and sorry to hear the Team plan didn't work out for you.\n\nPer our refund policy, full refunds can be requested within 14 calendar days of the charge date. Since you upgraded 5 days ago, your request falls within that window, so this is a case a manager can review and confirm for processing.\n\nI've flagged your request for a manager to review and finalize \u2014 refunds are handled directly by them through our billing system, so I'm not able to process or confirm the amount myself. You should hear back shortly with the outcome.\n\nThanks for your patience!",
+    "reply": "{\"reply\": \"Hi, thanks for reaching out. Our refund policy allows full refunds for requests made within 14 calendar days of the charge date, and your Team plan upgrade was 5 days ago, so it falls within that window. I'm not able to approve or process refunds myself, though -- that has to be reviewed and completed by one of our support managers through our billing system. I've flagged your request for a manager to look into, and they'll follow up with you on the outcome.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#6\"]}",
     "citations": [
-      "refund_policy.md#1",
-      "refund_policy.md#6"
+      "data/kb/refund_policy.md"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "Both citations exist and support their claims (refund_policy.md#1 for the 14-day eligibility window, #6 for the agent-cannot-approve/manager-executes rule); the reply correctly states policy without promising or approving a refund, stays professional, and needs_human_approval=true is correct since this is a refund request per the escalation rules."
+    "notes": "Citations #1 and #6 in refund_policy.md accurately support the eligibility statement and the agent's refusal to approve/execute the refund itself; reply correctly defers final action to a manager, so it passes and retains the classifier's needs_human_approval=true."
   },
   "redraft_attempts": 1,
   "final_needs_human_approval": true,
-  "reply": "Hi there,\n\nThanks for reaching out, and sorry to hear the Team plan didn't work out for you.\n\nPer our refund policy, full refunds can be requested within 14 calendar days of the charge date. Since you upgraded 5 days ago, your request falls within that window, so this is a case a manager can review and confirm for processing.\n\nI've flagged your request for a manager to review and finalize \u2014 refunds are handled directly by them through our billing system, so I'm not able to process or confirm the amount myself. You should hear back shortly with the outcome.\n\nThanks for your patience!",
+  "reply": "{\"reply\": \"Hi, thanks for reaching out. Our refund policy allows full refunds for requests made within 14 calendar days of the charge date, and your Team plan upgrade was 5 days ago, so it falls within that window. I'm not able to approve or process refunds myself, though -- that has to be reviewed and completed by one of our support managers through our billing system. I've flagged your request for a manager to look into, and they'll follow up with you on the outcome.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#6\"]}",
   "citations": [
-    "refund_policy.md#1",
-    "refund_policy.md#6"
+    "data/kb/refund_policy.md"
   ]
 }

@@ -49,6 +49,8 @@ The second draft explains eligibility without approving it — exactly the disti
 ```
 This is the human-checkpoint retry loop end to end: a real policy violation caught, specific feedback given, a corrected redraft, and independent re-verification before the ticket is routed to `outputs/agent/needs_review/T05.json`.
 
+**A second, less flattering verifier trajectory, and the fix that followed**: `outputs/trajectories/1788034787348_T04_verifier_a2_7c3f74.json` shows the verifier overriding a *correct* classifier decision (`false`) to `true` on the same dark-mode ticket from section 2 above, reasoning that "topics the KB doesn't clearly cover should be routed for human approval, so the classifier's needs_human_approval=False should be **overridden to True**." That's the classifier's job re-derived independently and gotten wrong — see `CHANGELOG.md` Iteration 6 and `outputs/reliability_check.md` for the root cause (the same ambiguous rule was stated in both `agents/classifier_prompt.md` and `agents/verifier_prompt.md`) and the fix (narrowing the verifier's authority to only escalate on new evidence in the draft, not re-judging topic-sensitivity).
+
 An independent second run reproduced the same class of catch with different wording — see `CHANGELOG.md`'s Iteration 3 entry for that second file.
 
 ## 5. Judge agent (evaluation only, not part of the live pipeline)
