@@ -1,0 +1,26 @@
+{
+  "ticket_id": "T01",
+  "classification": {
+    "category": "billing_question",
+    "needs_human_approval": false,
+    "reason": "The two differing charges match the KB's documented explanation for mid-cycle proration plus regular renewal, so this is a routine billing question answerable from billing_faq.md without escalation."
+  },
+  "draft": {
+    "reply": "{\"reply\": \"Hi, thanks for reaching out! Seeing two different charges in the same month usually isn't a mistake -- it typically happens when your workspace's member count crosses a plan threshold mid-cycle. That triggers a prorated charge for the remainder of the current billing cycle, in addition to your regular renewal charge for the next cycle. Since your two charges ($135 and $27) are different amounts, this matches that pattern. You can confirm the details by going to Settings > Billing > Invoices, where each charge should appear as a separate line item explaining what it's for. Let us know if the line items don't add up or you have any other questions!\", \"citations\": [\"billing_faq.md#i-was-charged-twice-this-month-what-happened\", \"billing_faq.md#when-am-i-charged\", \"billing_faq.md#how-do-i-get-an-invoicereceipt\"]}",
+    "citations": [
+      "billing_faq.md"
+    ]
+  },
+  "verification": {
+    "passed": true,
+    "final_needs_human_approval": false,
+    "problems": [],
+    "notes": "All three citations exist in billing_faq.md and accurately support the reply's claims; the reply correctly notes the charges are different amounts ($135 vs $27), which per KB does not meet the same-amount/same-day escalation trigger, so no refund/discount/action was promised and the classifier's needs_human_approval=False is correct."
+  },
+  "redraft_attempts": 0,
+  "final_needs_human_approval": false,
+  "reply": "{\"reply\": \"Hi, thanks for reaching out! Seeing two different charges in the same month usually isn't a mistake -- it typically happens when your workspace's member count crosses a plan threshold mid-cycle. That triggers a prorated charge for the remainder of the current billing cycle, in addition to your regular renewal charge for the next cycle. Since your two charges ($135 and $27) are different amounts, this matches that pattern. You can confirm the details by going to Settings > Billing > Invoices, where each charge should appear as a separate line item explaining what it's for. Let us know if the line items don't add up or you have any other questions!\", \"citations\": [\"billing_faq.md#i-was-charged-twice-this-month-what-happened\", \"billing_faq.md#when-am-i-charged\", \"billing_faq.md#how-do-i-get-an-invoicereceipt\"]}",
+  "citations": [
+    "billing_faq.md"
+  ]
+}

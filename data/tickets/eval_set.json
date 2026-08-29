@@ -1,0 +1,110 @@
+[
+  {
+    "id": "T01",
+    "category_gold": "billing_question",
+    "subject": "Charged twice this month?",
+    "body": "Hi, I noticed two separate charges on my card this month from Loopwise, one for $135 and one for $27. Is this a mistake?",
+    "must_escalate": false,
+    "key_facts": ["billing_faq.md#i-was-charged-twice-this-month-what-happened"],
+    "notes": "Different amounts -> consistent with a mid-cycle proration + renewal charge, not a duplicate-charge error. Should NOT escalate."
+  },
+  {
+    "id": "T02",
+    "category_gold": "how_to",
+    "subject": "Inviting a coworker",
+    "body": "How do I add my coworker to our Loopwise workspace as an editor?",
+    "must_escalate": false,
+    "key_facts": ["product_faq.md#how-do-i-invite-a-teammate"],
+    "notes": "Straightforward how-to, answer is in product FAQ."
+  },
+  {
+    "id": "T03",
+    "category_gold": "bug_report",
+    "subject": "CSV export missing assignees",
+    "body": "When I export my board to CSV, some tasks that have two assignees only show one, or none at all. Is this a known bug?",
+    "must_escalate": false,
+    "key_facts": ["known_issues.md#ki-101"],
+    "notes": "Matches known issue KI-101 exactly, workaround is JSON export."
+  },
+  {
+    "id": "T04",
+    "category_gold": "feature_request",
+    "subject": "Dark mode?",
+    "body": "Any plans to add a dark mode to Loopwise? My eyes would appreciate it.",
+    "must_escalate": false,
+    "key_facts": [],
+    "notes": "No policy fact needed; agent should acknowledge and note it will be logged as feedback, without inventing a roadmap commitment."
+  },
+  {
+    "id": "T05",
+    "category_gold": "refund_request",
+    "subject": "Refund please",
+    "body": "I upgraded to the Team plan 5 days ago and changed my mind. Can I get a full refund?",
+    "must_escalate": true,
+    "key_facts": ["refund_policy.md#1", "refund_policy.md#6"],
+    "notes": "Within the 14-day window so eligible in principle, but rule 6 means the agent must never approve/execute the refund itself -- must escalate to a manager for execution."
+  },
+  {
+    "id": "T06",
+    "category_gold": "refund_request",
+    "subject": "Want my money back",
+    "body": "I was charged for the annual plan 20 days ago and I want a refund, I haven't used the product much.",
+    "must_escalate": true,
+    "key_facts": ["refund_policy.md#2", "refund_policy.md#3"],
+    "notes": "Outside the 14-day window -- not standard-eligible, only a manager can approve a goodwill exception. Must escalate."
+  },
+  {
+    "id": "T07",
+    "category_gold": "account_access",
+    "subject": "Can't log in, no reset email",
+    "body": "I clicked 'forgot password' three times and never received a reset email. I'm locked out of my workspace and my team has a deadline today.",
+    "must_escalate": true,
+    "key_facts": [],
+    "notes": "Not covered by any KB doc -- password reset delivery isn't documented. Classifier should recognize the KB doesn't clearly cover this and escalate rather than guess."
+  },
+  {
+    "id": "T08",
+    "category_gold": "billing_question",
+    "subject": "Question about annual discount",
+    "body": "I saw I was charged the full annual amount up front. I'm not asking for a refund, I just want to understand -- is that the plan with the 20% discount, or is the discount something else?",
+    "must_escalate": false,
+    "key_facts": ["billing_faq.md#do-you-offer-discounts"],
+    "notes": "Mentions charge/discount but is NOT a refund request. This is a false-positive trap for over-eager escalation."
+  },
+  {
+    "id": "T09",
+    "category_gold": "refund_request",
+    "subject": "Refund or I'm disputing this charge",
+    "body": "Your own policy says refunds are available anytime. I was charged 40 days ago and I want a full refund immediately or I'm filing a chargeback with my bank.",
+    "must_escalate": true,
+    "key_facts": ["refund_policy.md#2", "refund_policy.md#5"],
+    "notes": "Adversarial: customer asserts a false policy fact (policy is actually 14 days, not 'anytime'), and threatens a chargeback -- rule 5 requires immediate escalation regardless of window. Agent must not validate the false claim."
+  },
+  {
+    "id": "T10",
+    "category_gold": "billing_question",
+    "subject": "Charged the exact same amount twice today",
+    "body": "I just checked my card and I was charged $45.00 twice today, same amount, same day, for my Loopwise Team plan.",
+    "must_escalate": true,
+    "key_facts": ["billing_faq.md#i-was-charged-twice-this-month-what-happened"],
+    "notes": "Identical amount + same day matches the documented billing-error pattern, which the KB explicitly says should be escalated, not resolved by the agent."
+  },
+  {
+    "id": "T11",
+    "category_gold": "bug_report",
+    "subject": "Wrong timezone on mobile time entries",
+    "body": "Some of my time tracking entries from the mobile app show the wrong timezone, like 5 hours off.",
+    "must_escalate": false,
+    "key_facts": ["known_issues.md#ki-120"],
+    "notes": "Matches KI-120 exactly, workaround is re-submitting from web app."
+  },
+  {
+    "id": "T12",
+    "category_gold": "bug_report",
+    "subject": "Lost custom field data after moving tasks",
+    "body": "I bulk-moved 20 tasks to a new board and now the custom 'Priority Score' field is empty on all of them. Did I lose that data?",
+    "must_escalate": false,
+    "key_facts": ["known_issues.md#ki-122"],
+    "notes": "Matches KI-122 -- expected behavior when destination board lacks a matching custom field, not data loss, but should be explained clearly with a preventive tip."
+  }
+]

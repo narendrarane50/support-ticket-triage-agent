@@ -1,0 +1,26 @@
+{
+  "ticket_id": "T12",
+  "classification": {
+    "category": "bug_report",
+    "needs_human_approval": false,
+    "reason": "The issue is documented as known issue KI-122 (bulk move drops custom field values when destination board lacks a matching field), so it can be answered directly from the KB."
+  },
+  "draft": {
+    "reply": "{\"reply\": \"Thanks for reaching out, and sorry for the confusion this caused. What you're seeing is a known behavior (tracked internally as KI-122): when tasks are bulk-moved to a different board, any custom field values are dropped if the destination board doesn't have a matching custom field set up. Since your new board doesn't have a 'Priority Score' field configured, that value wasn't carried over during the move -- it isn't a bug, but it is a common source of confusion, so we understand the concern.\\n\\nUnfortunately, this means the 'Priority Score' values on those 20 tasks were not preserved and can't be recovered through the move itself. Going forward, the recommended workaround is to confirm the destination board has a matching custom field (same name/type) set up before doing a bulk move, so the values map over correctly.\\n\\nIf you'd like, you can recreate the 'Priority Score' custom field on the new board and re-enter the values manually. Let us know if you have any other questions!\", \"citations\": [\"known_issues.md#KI-122\"]}",
+    "citations": [
+      "known_issues.md#KI-122"
+    ]
+  },
+  "verification": {
+    "passed": true,
+    "final_needs_human_approval": false,
+    "problems": [],
+    "notes": "Citation KI-122 is accurate and fully supports the claims made; reply stays within documented policy, makes no refund/account commitments, is professional, and the classifier's needs_human_approval=False is correct since this is a clearly KB-covered known issue with no refund, threat, or exception request involved."
+  },
+  "redraft_attempts": 0,
+  "final_needs_human_approval": false,
+  "reply": "{\"reply\": \"Thanks for reaching out, and sorry for the confusion this caused. What you're seeing is a known behavior (tracked internally as KI-122): when tasks are bulk-moved to a different board, any custom field values are dropped if the destination board doesn't have a matching custom field set up. Since your new board doesn't have a 'Priority Score' field configured, that value wasn't carried over during the move -- it isn't a bug, but it is a common source of confusion, so we understand the concern.\\n\\nUnfortunately, this means the 'Priority Score' values on those 20 tasks were not preserved and can't be recovered through the move itself. Going forward, the recommended workaround is to confirm the destination board has a matching custom field (same name/type) set up before doing a bulk move, so the values map over correctly.\\n\\nIf you'd like, you can recreate the 'Priority Score' custom field on the new board and re-enter the values manually. Let us know if you have any other questions!\", \"citations\": [\"known_issues.md#KI-122\"]}",
+  "citations": [
+    "known_issues.md#KI-122"
+  ]
+}

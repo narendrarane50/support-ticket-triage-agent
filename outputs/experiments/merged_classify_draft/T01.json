@@ -1,0 +1,10 @@
+{
+  "ticket_id": "T01",
+  "category": "Billing - duplicate charge question",
+  "needs_human_approval": false,
+  "reason": "The two charges are for different amounts, matching the KB's documented scenario of a mid-cycle proration charge plus the regular renewal, so it can be explained without escalation.",
+  "reply": "Hi, thanks for flagging this! Since the two charges are for different amounts ($135 and $27), this is most likely not an error \u2014 it typically happens when your member count crosses a plan threshold mid-cycle, which triggers a prorated charge in addition to your regular renewal charge.\n\nYou can confirm this by going to Settings > Billing > Invoices, where each charge should correspond to its own line item explaining what it's for.\n\nIf, after checking, you find that both charges are actually for the exact same amount on the exact same day, that would indicate a billing error, and I'd escalate it right away for you \u2014 just let me know.",
+  "citations": [
+    "billing_faq.md#q-i-was-charged-twice-this-month-what-happened"
+  ]
+}

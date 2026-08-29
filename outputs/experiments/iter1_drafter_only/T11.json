@@ -1,0 +1,7 @@
+{
+  "ticket_id": "T11",
+  "reply": "Hi,\n\nThanks for flagging this \u2014 you're not the only one seeing it. This is a known issue (KI-120): time tracking entries submitted from the mobile app before app version 4.2 can show the wrong timezone.\n\nThe recommended workaround is to re-submit the affected entries from the web app, which records the correct timezone. Our engineering team is aware of the underlying issue.\n\nAlso, if you haven't already, please check that your mobile app is updated to the latest version, as this helps prevent new entries from being affected.\n\nLet us know if you run into any further issues after re-submitting the entries.",
+  "citations": [
+    "known_issues.md#KI-120"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticket_id": "T11",
+  "category": "Known issue - mobile timezone bug",
+  "needs_human_approval": false,
+  "reason": "This matches a documented known issue (KI-120) with a clear workaround, no discretionary action or refund needed.",
+  "reply": "Thanks for reporting this! This is a known issue (KI-120) \u2014 time tracking entries submitted from the mobile app before app version 4.2 can show the wrong timezone. As a workaround, re-submitting the affected entry from the web app should fix the timezone display. Also, if you haven't already, updating the mobile app to version 4.2 or later should prevent this from happening on new entries. Let me know if you keep seeing this after updating!",
+  "citations": [
+    "known_issues.md#KI-120"
+  ]
+}

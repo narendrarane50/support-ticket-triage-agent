@@ -1,0 +1,8 @@
+{
+  "ticket_id": "T01",
+  "reply": "Hi, thanks for flagging this! Two charges in the same month usually happen when your workspace's member count crosses a plan threshold mid-cycle \u2014 that triggers a prorated charge for the added members, in addition to your regular monthly renewal charge. Since your two charges ($135 and $27) are for different amounts, this looks like exactly that scenario rather than a duplicate charge.\n\nYou can confirm this by going to Settings > Billing > Invoices, where each charge should show as a separate line item explaining what it was for (e.g., renewal vs. proration). If, after checking, you still believe this is an error, please let us know and we'll take a closer look.",
+  "citations": [
+    "billing_faq.md#i-was-charged-twice-this-month-what-happened",
+    "billing_faq.md#when-am-i-charged"
+  ]
+}

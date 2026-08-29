@@ -1,0 +1,10 @@
+{
+  "ticket_id": "T08",
+  "category": "billing_question",
+  "needs_human_approval": false,
+  "reason": "This is a factual billing question clearly answered by the KB, with no refund, discount exception, or dispute involved.",
+  "reply": "Great question! Yes, that upfront annual charge is exactly the discounted plan. Loopwise gives a 20% discount when you choose annual billing compared to paying monthly -- you're charged the full year's amount upfront in exchange for that lower effective rate. There's no separate \"discount\" charge to look for; the annual price itself already reflects the 20% savings versus 12 months of the monthly rate. Let us know if you'd like us to double-check the exact amount on your invoice!",
+  "citations": [
+    "billing_faq.md#do-you-offer-discounts"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ticket_id": "T09",
+  "classification": {
+    "category": "refund_request",
+    "needs_human_approval": true,
+    "reason": "This is a refund request combined with a chargeback threat and a charge made 40 days ago (outside the 14-day window per refund_policy.md), both of which require mandatory human escalation."
+  },
+  "draft": {
+    "reply": "{\"reply\": \"Thanks for reaching out, and sorry for the frustration around this charge. I want to make sure I give you accurate information rather than guess.\\n\\nOur refund policy provides full refunds for requests made within 14 calendar days of the charge date. Since this charge was made 40 days ago, it falls outside that standard 14-day window, so it isn't automatically eligible for a refund through our normal process. Requests made after the 14-day window can only be approved as a goodwill exception, and that decision can only be made by a support manager -- it's not something I'm able to approve or process myself.\\n\\nBecause you've also mentioned disputing the charge with your bank, I'm escalating this ticket immediately to a human member of our support/billing team so they can review the details of your account and charge history and follow up with you directly. You should hear from them shortly.\\n\\nI'm not able to confirm or process any refund amount here myself, but rest assured this has been flagged for priority human review given the chargeback mention.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#2\", \"refund_policy.md#5\", \"refund_policy.md#6\"]}",
+    "citations": [
+      "data/kb/refund_policy.md"
+    ]
+  },
+  "verification": {
+    "final_needs_human_approval": true,
+    "notes": "All four citations (refund_policy.md #1, #2, #5, #6) exist and accurately support the claims made; the reply correctly states the 14-day window, correctly avoids promising/approving any refund, and correctly escalates due to the chargeback threat, consistent with KB rule #5 and the classifier's flag.",
+    "passed": true,
+    "problems": []
+  },
+  "redraft_attempts": 0,
+  "final_needs_human_approval": true,
+  "reply": "{\"reply\": \"Thanks for reaching out, and sorry for the frustration around this charge. I want to make sure I give you accurate information rather than guess.\\n\\nOur refund policy provides full refunds for requests made within 14 calendar days of the charge date. Since this charge was made 40 days ago, it falls outside that standard 14-day window, so it isn't automatically eligible for a refund through our normal process. Requests made after the 14-day window can only be approved as a goodwill exception, and that decision can only be made by a support manager -- it's not something I'm able to approve or process myself.\\n\\nBecause you've also mentioned disputing the charge with your bank, I'm escalating this ticket immediately to a human member of our support/billing team so they can review the details of your account and charge history and follow up with you directly. You should hear from them shortly.\\n\\nI'm not able to confirm or process any refund amount here myself, but rest assured this has been flagged for priority human review given the chargeback mention.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#2\", \"refund_policy.md#5\", \"refund_policy.md#6\"]}",
+  "citations": [
+    "data/kb/refund_policy.md"
+  ]
+}

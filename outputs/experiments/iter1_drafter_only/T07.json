@@ -1,0 +1,7 @@
+{
+  "ticket_id": "T07",
+  "reply": "Hi there,\n\nSorry for the trouble, especially with a deadline on the line today. I don't see anything in our current known-issues log related to password reset emails not being delivered, so this doesn't appear to be a widespread outage on our end.\n\nA couple of quick things to check first:\n- Look in your spam/junk/promotions folder for an email from Loopwise.\n- Double-check that you're entering the exact email address associated with your Loopwise workspace account (not a personal alias or a different address your team might use).\n\nIf you've confirmed both of those and still see nothing after a few minutes, I don't have a self-service fix I can confidently point you to for this specific case, so I'm flagging it for a team member to look into your account directly and help restore access as quickly as possible. Could you reply with the email address you're trying to log in with so we can look into it?\n\nThanks for your patience \u2014 I know today's deadline makes this urgent.",
+  "citations": [
+    "known_issues.md"
+  ]
+}

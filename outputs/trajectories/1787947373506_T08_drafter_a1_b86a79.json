@@ -1,0 +1,42 @@
+{
+  "call_id": "1787947373506_T08_drafter_a1_b86a79",
+  "label": "T08_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=billing_question, needs_human_approval=False (The customer is only asking to confirm that the annual plan includes the 20% discount, which is directly and clearly answered in billing_faq.md, and they explicitly state they are not requesting a refund or exception.).\n\n\nRespond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:\n{\n  \"reply\": \"<the reply text you would send to the customer>\",\n  \"citations\": [\"<kb_file.md#section-or-topic>\", ...]\n}\n\nTicket subject: Question about annual discount\nTicket body: I saw I was charged the full annual amount up front. I'm not asking for a refund, I just want to understand -- is that the plan with the 20% discount, or is the discount something else?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 6.88,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":6802,\"stop_reason\":\"tool_use\",\"session_id\":\"2d3760db-1758-4f63-be3a-6b33bb096414\",\"total_cost_usd\":0.0379912,\"usage\":{\"input_tokens\":4,\"cache_creation_input_tokens\":7065,\"cache_read_input_tokens\":19206,\"output_tokens\":454,\"output_tokens_details\":{\"thinking_tokens\":32},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":7065,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":370,\"cache_read_input_tokens\":12795,\"cache_creation_input_tokens\":681,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":681},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1282,\"outputTokens\":12,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.0013419999999999999,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":4,\"outputTokens\":454,\"cacheReadInputTokens\":19206,\"cacheCreationInputTokens\":7065,\"webSearchRequests\":0,\"costUSD\":0.0366492,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":3,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"{\\\\\\\"reply\\\\\\\": \\\\\\\"Hi, thanks for reaching out! Yes, that's correct. Loopwise's annual billing plan includes a 20% discount compared to the monthly rate. For example, the Team plan is $15/user/month billed monthly, or $12/user/month when billed annually -- that works out to the 20% discount, charged as a single upfront payment for the year. So the full annual amount you were charged is the discounted annual rate, not a separate charge on top of it. You can view the breakdown anytime under Settings > Billing > Invoices. Let me know if you have any other questions!\\\\\\\", \\\\\\\"citations\\\\\\\": [\\\\\\\"billing_faq.md#plans\\\\\\\", \\\\\\\"billing_faq.md#q-do-you-offer-discounts\\\\\\\"]}\\\",\\\"citations\\\":[\\\"billing_faq.md#plans\\\",\\\"billing_faq.md#q-do-you-offer-discounts\\\"]}\",\"structured_output\":{\"reply\":\"{\\\"reply\\\": \\\"Hi, thanks for reaching out! Yes, that's correct. Loopwise's annual billing plan includes a 20% discount compared to the monthly rate. For example, the Team plan is $15/user/month billed monthly, or $12/user/month when billed annually -- that works out to the 20% discount, charged as a single upfront payment for the year. So the full annual amount you were charged is the discounted annual rate, not a separate charge on top of it. You can view the breakdown anytime under Settings > Billing > Invoices. Let me know if you have any other questions!\\\", \\\"citations\\\": [\\\"billing_faq.md#plans\\\", \\\"billing_faq.md#q-do-you-offer-discounts\\\"]}\",\"citations\":[\"billing_faq.md#plans\",\"billing_faq.md#q-do-you-offer-discounts\"]},\"ttft_ms\":1942,\"type\":\"result\",\"duration_ms\":6010,\"uuid\":\"d626e46a-ae0b-456b-8557-637b80674b9b\",\"ttft_stream_ms\":1034,\"time_to_request_ms\":19,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 3,
+    "total_cost_usd": 0.0379912,
+    "duration_ms": 6010,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "{\"reply\": \"Hi, thanks for reaching out! Yes, that's correct. Loopwise's annual billing plan includes a 20% discount compared to the monthly rate. For example, the Team plan is $15/user/month billed monthly, or $12/user/month when billed annually -- that works out to the 20% discount, charged as a single upfront payment for the year. So the full annual amount you were charged is the discounted annual rate, not a separate charge on top of it. You can view the breakdown anytime under Settings > Billing > Invoices. Let me know if you have any other questions!\", \"citations\": [\"billing_faq.md#plans\", \"billing_faq.md#q-do-you-offer-discounts\"]}",
+    "citations": [
+      "billing_faq.md#plans",
+      "billing_faq.md#q-do-you-offer-discounts"
+    ]
+  }
+}

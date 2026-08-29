@@ -1,0 +1,41 @@
+{
+  "call_id": "1788023423571_T12_drafter_a1_21aebc",
+  "label": "T12_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=bug_report, needs_human_approval=False (The issue is documented as known issue KI-122 (bulk move drops custom field values when destination board lacks a matching field), so it can be answered directly from the KB.).\n\n\nRespond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:\n{\n  \"reply\": \"<the reply text you would send to the customer>\",\n  \"citations\": [\"<kb_file.md#section-or-topic>\", ...]\n}\n\nTicket subject: Lost custom field data after moving tasks\nTicket body: I bulk-moved 20 tasks to a new board and now the custom 'Priority Score' field is empty on all of them. Did I lose that data?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 14.76,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":14823,\"stop_reason\":\"tool_use\",\"session_id\":\"a4c0d803-803f-4a20-a847-2da3f135f8de\",\"total_cost_usd\":0.0367176,\"usage\":{\"input_tokens\":10,\"cache_creation_input_tokens\":2375,\"cache_read_input_tokens\":64133,\"output_tokens\":1303,\"output_tokens_details\":{\"thinking_tokens\":144},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":2375,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":451,\"cache_read_input_tokens\":13582,\"cache_creation_input_tokens\":482,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":482},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1266,\"outputTokens\":15,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.001341,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":10,\"outputTokens\":1303,\"cacheReadInputTokens\":64133,\"cacheCreationInputTokens\":2375,\"webSearchRequests\":0,\"costUSD\":0.035376599999999994,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":6,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"{\\\\\\\"reply\\\\\\\": \\\\\\\"Thanks for reaching out, and sorry for the confusion this caused. What you're seeing is a known behavior (tracked internally as KI-122): when tasks are bulk-moved to a different board, any custom field values are dropped if the destination board doesn't have a matching custom field set up. Since your new board doesn't have a 'Priority Score' field configured, that value wasn't carried over during the move -- it isn't a bug, but it is a common source of confusion, so we understand the concern.\\\\\\\\n\\\\\\\\nUnfortunately, this means the 'Priority Score' values on those 20 tasks were not preserved and can't be recovered through the move itself. Going forward, the recommended workaround is to confirm the destination board has a matching custom field (same name/type) set up before doing a bulk move, so the values map over correctly.\\\\\\\\n\\\\\\\\nIf you'd like, you can recreate the 'Priority Score' custom field on the new board and re-enter the values manually. Let us know if you have any other questions!\\\\\\\", \\\\\\\"citations\\\\\\\": [\\\\\\\"known_issues.md#KI-122\\\\\\\"]}\\\",\\\"citations\\\":[\\\"known_issues.md#KI-122\\\"]}\",\"structured_output\":{\"reply\":\"{\\\"reply\\\": \\\"Thanks for reaching out, and sorry for the confusion this caused. What you're seeing is a known behavior (tracked internally as KI-122): when tasks are bulk-moved to a different board, any custom field values are dropped if the destination board doesn't have a matching custom field set up. Since your new board doesn't have a 'Priority Score' field configured, that value wasn't carried over during the move -- it isn't a bug, but it is a common source of confusion, so we understand the concern.\\\\n\\\\nUnfortunately, this means the 'Priority Score' values on those 20 tasks were not preserved and can't be recovered through the move itself. Going forward, the recommended workaround is to confirm the destination board has a matching custom field (same name/type) set up before doing a bulk move, so the values map over correctly.\\\\n\\\\nIf you'd like, you can recreate the 'Priority Score' custom field on the new board and re-enter the values manually. Let us know if you have any other questions!\\\", \\\"citations\\\": [\\\"known_issues.md#KI-122\\\"]}\",\"citations\":[\"known_issues.md#KI-122\"]},\"ttft_ms\":1222,\"type\":\"result\",\"duration_ms\":13932,\"uuid\":\"89dd7170-e5e6-4f67-8d4d-1212d99f137c\",\"ttft_stream_ms\":664,\"time_to_request_ms\":23,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 6,
+    "total_cost_usd": 0.0367176,
+    "duration_ms": 13932,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "{\"reply\": \"Thanks for reaching out, and sorry for the confusion this caused. What you're seeing is a known behavior (tracked internally as KI-122): when tasks are bulk-moved to a different board, any custom field values are dropped if the destination board doesn't have a matching custom field set up. Since your new board doesn't have a 'Priority Score' field configured, that value wasn't carried over during the move -- it isn't a bug, but it is a common source of confusion, so we understand the concern.\\n\\nUnfortunately, this means the 'Priority Score' values on those 20 tasks were not preserved and can't be recovered through the move itself. Going forward, the recommended workaround is to confirm the destination board has a matching custom field (same name/type) set up before doing a bulk move, so the values map over correctly.\\n\\nIf you'd like, you can recreate the 'Priority Score' custom field on the new board and re-enter the values manually. Let us know if you have any other questions!\", \"citations\": [\"known_issues.md#KI-122\"]}",
+    "citations": [
+      "known_issues.md#KI-122"
+    ]
+  }
+}

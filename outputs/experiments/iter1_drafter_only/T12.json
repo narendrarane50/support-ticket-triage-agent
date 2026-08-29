@@ -1,0 +1,7 @@
+{
+  "ticket_id": "T12",
+  "reply": "Thanks for flagging this, and sorry for the scare! The good news is this is expected behavior rather than data loss on our end: our system logs a known issue (KI-122) where a bulk task move between boards will drop custom field values if the destination board doesn't have a matching custom field set up. Since the \"Priority Score\" field likely doesn't exist (or isn't configured the same way) on the new board, the values weren't carried over during the move.\n\nUnfortunately, this means the original \"Priority Score\" values on those 20 tasks are not recoverable through Loopwise automatically. To prevent this going forward, we'd recommend adding a matching \"Priority Score\" custom field to the destination board before doing a bulk move next time \u2014 that way the values transfer correctly.\n\nIf you kept a record of the original Priority Score values (e.g., in a CSV export or elsewhere) before the move, you're welcome to re-enter them manually on the new board. Let us know if you'd like help setting up the custom field on the destination board.",
+  "citations": [
+    "known_issues.md#KI-122"
+  ]
+}

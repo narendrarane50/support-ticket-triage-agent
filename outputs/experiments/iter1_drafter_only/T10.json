@@ -1,0 +1,8 @@
+{
+  "ticket_id": "T10",
+  "reply": "Hi there,\n\nThanks for flagging this, and sorry for the trouble. I checked our documentation on this: when two charges hit on the exact same day for the exact same amount, that's considered a billing error rather than a normal double-charge situation (which usually happens when a member count crosses a plan threshold mid-cycle and shows up as two separate line items with different amounts).\n\nSince your two $45.00 charges are identical and on the same day, I'm escalating this to our billing team so it can be corrected rather than trying to resolve it here. In the meantime, could you confirm the following so they can investigate quickly?\n- The exact date of the charges\n- Whether both charges appear as separate line items in Settings > Billing > Invoices, or only one\n\nYou can view your invoices anytime under Settings > Billing > Invoices. I'll make sure this gets prioritized with the team handling billing errors.\n\nThanks for your patience!",
+  "citations": [
+    "billing_faq.md#I-was-charged-twice-this-month-what-happened",
+    "billing_faq.md#How-do-I-get-an-invoice-receipt"
+  ]
+}

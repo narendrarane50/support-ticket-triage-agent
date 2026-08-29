@@ -1,0 +1,10 @@
+{
+  "ticket_id": "T06",
+  "reply": "Hi, thanks for reaching out, and I'm sorry to hear the annual plan hasn't been getting much use yet.\n\nI checked our refund policy: full refunds are available if requested within 14 calendar days of the charge date. Since your annual charge was 20 days ago, it falls outside that window, so I'm not able to process a standard refund myself, and there's no prorated refund available for unused months on an annual plan once the 14-day window has passed.\n\nThat said, requests made after 14 days can still be reviewed as a goodwill exception, but that has to be approved by a support manager rather than a first-line agent like me. I'm flagging your request for that review now, and someone from our team will follow up on whether an exception can be made.\n\nIn the meantime, let me know if there's anything I can help you get more value out of the product, or any specific hurdle that's kept you from using it \u2014 happy to help however I can.",
+  "citations": [
+    "refund_policy.md#1-full-refunds-within-14-days",
+    "refund_policy.md#2-after-14-days-goodwill-exception-by-manager-only",
+    "refund_policy.md#3-annual-plans-no-proration-outside-window",
+    "refund_policy.md#6-agent-may-not-promise-or-approve-refunds"
+  ]
+}

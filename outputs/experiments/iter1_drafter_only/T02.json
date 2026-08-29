@@ -1,0 +1,7 @@
+{
+  "ticket_id": "T02",
+  "reply": "Hi there,\n\nTo add your coworker as an Editor, go to Settings > Members > Invite, enter their email address, and select the \"Editor\" role from the dropdown. They'll receive an email invitation to join the workspace \u2014 just note that the invite link expires after 7 days, so ask them to accept it promptly.\n\nLet us know if you run into any issues!",
+  "citations": [
+    "product_faq.md#how-do-i-invite-a-teammate"
+  ]
+}

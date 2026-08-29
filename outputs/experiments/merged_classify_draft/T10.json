@@ -1,0 +1,11 @@
+{
+  "ticket_id": "T10",
+  "category": "Billing - Duplicate Charge",
+  "needs_human_approval": true,
+  "reason": "Two identical charges on the same day is explicitly flagged in the billing FAQ as a billing error that must be escalated rather than resolved by the agent, and any related refund cannot be promised by a first-line agent.",
+  "reply": "Thanks for flagging this, and sorry for the trouble. A duplicate charge for the exact same amount on the same day isn't expected behavior \u2014 normally, two charges in one day would only happen if a prorated charge (e.g., from crossing a member-count threshold) hit alongside a renewal, and those would show as separate line items with different amounts on your invoice.\n\nCould you confirm what you see under Settings > Billing > Invoices for today \u2014 specifically whether both charges show as identical line items? In the meantime, I'm escalating this to our billing team so a human can review your account and correct the duplicate charge if confirmed. We'll follow up as soon as we have an update \u2014 we won't be able to process any refund or reversal ourselves, but our team will take care of it directly.",
+  "citations": [
+    "billing_faq.md#i-was-charged-twice-this-month-what-happened",
+    "refund_policy.md#6"
+  ]
+}

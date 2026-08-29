@@ -1,0 +1,26 @@
+{
+  "ticket_id": "T08",
+  "classification": {
+    "category": "billing_question",
+    "needs_human_approval": false,
+    "reason": "The customer is not requesting a refund or discount, just asking to confirm how annual billing works, which is clearly explained in billing_faq.md."
+  },
+  "draft": {
+    "reply": "{\"reply\": \"Yes, that's the annual plan discount! On the Team plan, annual billing is $12/user/month (charged as one upfront annual payment) compared to $15/user/month if billed monthly \u2014 that works out to the 20% discount for paying annually. So the upfront charge you saw is expected and reflects that discounted annual rate. Let me know if you'd like help finding the itemized invoice under Settings > Billing > Invoices.\", \"citations\": [\"billing_faq.md#Plans\", \"billing_faq.md#Q: Do you offer discounts?\"]}",
+    "citations": [
+      "data/kb/billing_faq.md"
+    ]
+  },
+  "verification": {
+    "passed": true,
+    "final_needs_human_approval": false,
+    "problems": [],
+    "notes": "Both citations (billing_faq.md#Plans and #Q: Do you offer discounts?) exist and accurately support the $15 vs $12/user/month (20% annual discount) claim; reply is professional, makes no refund/discount promise beyond documented policy, and correctly does not require human approval since this is a factual billing question already covered in the KB."
+  },
+  "redraft_attempts": 0,
+  "final_needs_human_approval": false,
+  "reply": "{\"reply\": \"Yes, that's the annual plan discount! On the Team plan, annual billing is $12/user/month (charged as one upfront annual payment) compared to $15/user/month if billed monthly \u2014 that works out to the 20% discount for paying annually. So the upfront charge you saw is expected and reflects that discounted annual rate. Let me know if you'd like help finding the itemized invoice under Settings > Billing > Invoices.\", \"citations\": [\"billing_faq.md#Plans\", \"billing_faq.md#Q: Do you offer discounts?\"]}",
+  "citations": [
+    "data/kb/billing_faq.md"
+  ]
+}

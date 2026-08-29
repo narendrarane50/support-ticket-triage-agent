@@ -1,0 +1,41 @@
+{
+  "call_id": "1788023141203_T03_drafter_a1_7bd144",
+  "label": "T03_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=bug_report, needs_human_approval=False (This is a documented known issue (KI-101) in known_issues.md about CSV export omitting assignees for multi-assignee tasks, with a documented workaround, so it can be answered without human review.).\n\n\nRespond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:\n{\n  \"reply\": \"<the reply text you would send to the customer>\",\n  \"citations\": [\"<kb_file.md#section-or-topic>\", ...]\n}\n\nTicket subject: CSV export missing assignees\nTicket body: When I export my board to CSV, some tasks that have two assignees only show one, or none at all. Is this a known bug?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 5.76,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":5867,\"stop_reason\":\"tool_use\",\"session_id\":\"1e98e7bd-1a36-4494-9d73-19dad4f6362a\",\"total_cost_usd\":0.0156666,\"usage\":{\"input_tokens\":4,\"cache_creation_input_tokens\":1292,\"cache_read_input_tokens\":24178,\"output_tokens\":432,\"output_tokens_details\":{\"thinking_tokens\":23},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":1292,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":254,\"cache_read_input_tokens\":12489,\"cache_creation_input_tokens\":492,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":492},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1270,\"outputTokens\":13,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.001335,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":4,\"outputTokens\":432,\"cacheReadInputTokens\":24178,\"cacheCreationInputTokens\":1292,\"webSearchRequests\":0,\"costUSD\":0.0143316,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":3,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"Hi there,\\\\n\\\\nThanks for reporting this, and yes \u2014 this is a known issue. When a task has more than one assignee, the CSV export can occasionally omit the \\\\\\\"Assignee\\\\\\\" column for that task (showing only one assignee or none at all). A fix is expected in an upcoming release.\\\\n\\\\nIn the meantime, the recommended workaround is to use the JSON export instead of CSV, as it correctly includes all assignees for multi-assignee tasks.\\\\n\\\\nSorry for the inconvenience, and thanks for your patience while we work on a fix!\\\",\\\"citations\\\":[\\\"known_issues.md#KI-101\\\"]}\",\"structured_output\":{\"reply\":\"Hi there,\\n\\nThanks for reporting this, and yes \u2014 this is a known issue. When a task has more than one assignee, the CSV export can occasionally omit the \\\"Assignee\\\" column for that task (showing only one assignee or none at all). A fix is expected in an upcoming release.\\n\\nIn the meantime, the recommended workaround is to use the JSON export instead of CSV, as it correctly includes all assignees for multi-assignee tasks.\\n\\nSorry for the inconvenience, and thanks for your patience while we work on a fix!\",\"citations\":[\"known_issues.md#KI-101\"]},\"ttft_ms\":1460,\"type\":\"result\",\"duration_ms\":5071,\"uuid\":\"75dd3c90-4183-4132-b961-c20e0897e1ec\",\"ttft_stream_ms\":805,\"time_to_request_ms\":22,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 3,
+    "total_cost_usd": 0.0156666,
+    "duration_ms": 5071,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "Hi there,\n\nThanks for reporting this, and yes \u2014 this is a known issue. When a task has more than one assignee, the CSV export can occasionally omit the \"Assignee\" column for that task (showing only one assignee or none at all). A fix is expected in an upcoming release.\n\nIn the meantime, the recommended workaround is to use the JSON export instead of CSV, as it correctly includes all assignees for multi-assignee tasks.\n\nSorry for the inconvenience, and thanks for your patience while we work on a fix!",
+    "citations": [
+      "known_issues.md#KI-101"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "ticket_id": "T05",
+  "classification": {
+    "category": "refund_request",
+    "needs_human_approval": true,
+    "reason": "This is a refund request, which per policy must always be executed by a human manager and never by an agent."
+  },
+  "draft": {
+    "reply": "Hi there,\n\nThanks for reaching out, and sorry to hear the Team plan didn't work out for you.\n\nPer our refund policy, full refunds can be requested within 14 calendar days of the charge date. Since you upgraded 5 days ago, your request falls within that window, so this is a case a manager can review and confirm for processing.\n\nI've flagged your request for a manager to review and finalize \u2014 refunds are handled directly by them through our billing system, so I'm not able to process or confirm the amount myself. You should hear back shortly with the outcome.\n\nThanks for your patience!",
+    "citations": [
+      "refund_policy.md#1",
+      "refund_policy.md#6"
+    ]
+  },
+  "verification": {
+    "passed": true,
+    "final_needs_human_approval": true,
+    "problems": [],
+    "notes": "Both citations exist and support their claims (refund_policy.md#1 for the 14-day eligibility window, #6 for the agent-cannot-approve/manager-executes rule); the reply correctly states policy without promising or approving a refund, stays professional, and needs_human_approval=true is correct since this is a refund request per the escalation rules."
+  },
+  "redraft_attempts": 1,
+  "final_needs_human_approval": true,
+  "reply": "Hi there,\n\nThanks for reaching out, and sorry to hear the Team plan didn't work out for you.\n\nPer our refund policy, full refunds can be requested within 14 calendar days of the charge date. Since you upgraded 5 days ago, your request falls within that window, so this is a case a manager can review and confirm for processing.\n\nI've flagged your request for a manager to review and finalize \u2014 refunds are handled directly by them through our billing system, so I'm not able to process or confirm the amount myself. You should hear back shortly with the outcome.\n\nThanks for your patience!",
+  "citations": [
+    "refund_policy.md#1",
+    "refund_policy.md#6"
+  ]
+}

@@ -1,0 +1,55 @@
+"""Runs the classifier N times on a single ticket to measure run-to-run
+variance in the needs_human_approval decision. Used to investigate whether a
+single eval run's escalation precision/recall is a reliable signal or a
+lucky/unlucky draw.
+
+Usage: python3 src/run_reliability_check.py <ticket_id> <n_trials> [prompt_file]
+"""
+import json
+import sys
+from collections import Counter
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from claude_cli import call_claude, ClaudeCallError  # noqa: E402
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+TICKETS_PATH = REPO_ROOT / "data" / "tickets" / "eval_set.json"
+KB_TOOLS = "Read,Grep,Glob"
+
+CLASSIFIER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "category": {"type": "string"},
+        "needs_human_approval": {"type": "boolean"},
+        "reason": {"type": "string"},
+    },
+    "required": ["category", "needs_human_approval", "reason"],
+}
+
+
+def main():
+    ticket_id = sys.argv[1]
+    n_trials = int(sys.argv[2])
+    prompt_file = sys.argv[3] if len(sys.argv) > 3 else "classifier_prompt.md"
+
+    tickets = {t["id"]: t for t in json.loads(TICKETS_PATH.read_text())}
+    ticket = tickets[ticket_id]
+    template = (REPO_ROOT / "agents" / prompt_file).read_text()
+    prompt = template.replace("{{subject}}", ticket["subject"]).replace("{{body}}", ticket["body"])
+
+    results = []
+    for i in range(n_trials):
+        try:
+            r = call_claude(prompt, tools=KB_TOOLS, json_schema=CLASSIFIER_SCHEMA, label=f"{ticket_id}_reliability_{i}")
+            results.append(r["needs_human_approval"])
+            print(f"  trial {i+1}: needs_human_approval={r['needs_human_approval']} ({r['reason'][:80]})")
+        except ClaudeCallError as e:
+            print(f"  trial {i+1}: ERROR {e}")
+
+    counts = Counter(results)
+    print(f"\n{ticket_id} ({prompt_file}), gold must_escalate={ticket['must_escalate']}: {dict(counts)} over {len(results)} trials")
+
+
+if __name__ == "__main__":
+    main()

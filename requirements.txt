@@ -1,0 +1,3 @@
+# No third-party Python packages required -- everything here uses only the
+# standard library (json, subprocess, pathlib, etc.). The only external
+# dependency is the `claude` CLI itself; see REPRODUCE.md.

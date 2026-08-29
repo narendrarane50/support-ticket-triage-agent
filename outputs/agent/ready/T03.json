@@ -1,0 +1,26 @@
+{
+  "ticket_id": "T03",
+  "classification": {
+    "category": "bug_report",
+    "needs_human_approval": false,
+    "reason": "This is a documented known issue (KI-101) in known_issues.md about CSV export omitting assignees for multi-assignee tasks, with a documented workaround, so it can be answered without human review."
+  },
+  "draft": {
+    "reply": "Hi there,\n\nThanks for reporting this, and yes \u2014 this is a known issue. When a task has more than one assignee, the CSV export can occasionally omit the \"Assignee\" column for that task (showing only one assignee or none at all). A fix is expected in an upcoming release.\n\nIn the meantime, the recommended workaround is to use the JSON export instead of CSV, as it correctly includes all assignees for multi-assignee tasks.\n\nSorry for the inconvenience, and thanks for your patience while we work on a fix!",
+    "citations": [
+      "known_issues.md#KI-101"
+    ]
+  },
+  "verification": {
+    "passed": true,
+    "final_needs_human_approval": false,
+    "problems": [],
+    "notes": "Citation KI-101 accurately supports all claims in the reply, no unauthorized commitments are made, tone is professional, and the classifier's needs_human_approval=False is correct since this is a clearly documented known issue with no refund/threat/exception involved."
+  },
+  "redraft_attempts": 0,
+  "final_needs_human_approval": false,
+  "reply": "Hi there,\n\nThanks for reporting this, and yes \u2014 this is a known issue. When a task has more than one assignee, the CSV export can occasionally omit the \"Assignee\" column for that task (showing only one assignee or none at all). A fix is expected in an upcoming release.\n\nIn the meantime, the recommended workaround is to use the JSON export instead of CSV, as it correctly includes all assignees for multi-assignee tasks.\n\nSorry for the inconvenience, and thanks for your patience while we work on a fix!",
+  "citations": [
+    "known_issues.md#KI-101"
+  ]
+}

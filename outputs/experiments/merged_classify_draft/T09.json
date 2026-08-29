@@ -1,0 +1,12 @@
+{
+  "ticket_id": "T09",
+  "category": "Billing - Refund Request / Chargeback Threat",
+  "needs_human_approval": true,
+  "reason": "The request involves a refund past the 14-day window plus an explicit chargeback threat, both of which require escalation to a human per policy.",
+  "reply": "Thanks for reaching out, and I'm sorry for the frustration around this charge.\n\nI want to clarify our refund policy, since it's a bit different from what you described: full refunds are available for requests made within 14 calendar days of the charge date. Requests made after that 14-day window aren't eligible for a standard refund \u2014 those can only be approved as a goodwill exception by a support manager. Since you mentioned the charge occurred 40 days ago, this falls outside the standard refund window.\n\nThat said, because you've raised the possibility of a chargeback, I'm escalating this to our team for review right away rather than handling it as a routine request. A member of our team will follow up with you directly to look into the charge and discuss next steps. I'm not able to approve or process a refund myself, so please hold off on any further action until you hear back from them.\n\nThanks for your patience while this gets reviewed.",
+  "citations": [
+    "refund_policy.md#1",
+    "refund_policy.md#2",
+    "refund_policy.md#5"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticket_id": "T02",
+  "category": "Product How-To \u2014 Team Management",
+  "needs_human_approval": false,
+  "reason": "This is a standard, clearly documented product usage question with no account, billing, or refund implications.",
+  "reply": "Happy to help! To add your coworker as an Editor:\n\n1. Go to Settings > Members > Invite\n2. Enter their email address\n3. Choose the \"Editor\" role from the dropdown\n4. Send the invite\n\nThey'll get an email invitation \u2014 just note it expires after 7 days, so if they don't accept in time you'll need to resend it. Let me know if you run into any issues!",
+  "citations": [
+    "product_faq.md#how-do-i-invite-a-teammate"
+  ]
+}

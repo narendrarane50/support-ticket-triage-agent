@@ -1,0 +1,41 @@
+{
+  "call_id": "1787947336028_T12_iter1_6b447d",
+  "label": "T12_iter1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product. This is an early version of the system with no classification and no escalation logic -- just KB-grounded drafting.\n\nYou have read-only access to `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) and `data/macros/resolved_ticket_examples.md` (style reference only, not a source of facts). Use Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB.\n\nRespond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:\n{\n  \"reply\": \"<the reply text you would send to the customer>\",\n  \"citations\": [\"<kb_file.md#section-or-topic>\", ...]\n}\n\nTicket subject: Lost custom field data after moving tasks\nTicket body: I bulk-moved 20 tasks to a new board and now the custom 'Priority Score' field is empty on all of them. Did I lose that data?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 12.37,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":12208,\"stop_reason\":\"tool_use\",\"session_id\":\"ca335d68-4a87-4bab-a422-306effdf876f\",\"total_cost_usd\":0.0506904,\"usage\":{\"input_tokens\":8,\"cache_creation_input_tokens\":7545,\"cache_read_input_tokens\":45867,\"output_tokens\":1007,\"output_tokens_details\":{\"thinking_tokens\":88},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":7545,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":432,\"cache_read_input_tokens\":13537,\"cache_creation_input_tokens\":419,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":419},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1181,\"outputTokens\":14,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.001251,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":8,\"outputTokens\":1007,\"cacheReadInputTokens\":45867,\"cacheCreationInputTokens\":7545,\"webSearchRequests\":0,\"costUSD\":0.049439399999999994,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":6,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"Thanks for flagging this, and sorry for the scare! The good news is this is expected behavior rather than data loss on our end: our system logs a known issue (KI-122) where a bulk task move between boards will drop custom field values if the destination board doesn't have a matching custom field set up. Since the \\\\\\\"Priority Score\\\\\\\" field likely doesn't exist (or isn't configured the same way) on the new board, the values weren't carried over during the move.\\\\n\\\\nUnfortunately, this means the original \\\\\\\"Priority Score\\\\\\\" values on those 20 tasks are not recoverable through Loopwise automatically. To prevent this going forward, we'd recommend adding a matching \\\\\\\"Priority Score\\\\\\\" custom field to the destination board before doing a bulk move next time \u2014 that way the values transfer correctly.\\\\n\\\\nIf you kept a record of the original Priority Score values (e.g., in a CSV export or elsewhere) before the move, you're welcome to re-enter them manually on the new board. Let us know if you'd like help setting up the custom field on the destination board.\\\",\\\"citations\\\":[\\\"known_issues.md#KI-122\\\"]}\",\"structured_output\":{\"reply\":\"Thanks for flagging this, and sorry for the scare! The good news is this is expected behavior rather than data loss on our end: our system logs a known issue (KI-122) where a bulk task move between boards will drop custom field values if the destination board doesn't have a matching custom field set up. Since the \\\"Priority Score\\\" field likely doesn't exist (or isn't configured the same way) on the new board, the values weren't carried over during the move.\\n\\nUnfortunately, this means the original \\\"Priority Score\\\" values on those 20 tasks are not recoverable through Loopwise automatically. To prevent this going forward, we'd recommend adding a matching \\\"Priority Score\\\" custom field to the destination board before doing a bulk move next time \u2014 that way the values transfer correctly.\\n\\nIf you kept a record of the original Priority Score values (e.g., in a CSV export or elsewhere) before the move, you're welcome to re-enter them manually on the new board. Let us know if you'd like help setting up the custom field on the destination board.\",\"citations\":[\"known_issues.md#KI-122\"]},\"ttft_ms\":1682,\"type\":\"result\",\"duration_ms\":11349,\"uuid\":\"43730731-b178-4dea-82fc-e78c4fa80155\",\"ttft_stream_ms\":1004,\"time_to_request_ms\":15,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 6,
+    "total_cost_usd": 0.0506904,
+    "duration_ms": 11349,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "Thanks for flagging this, and sorry for the scare! The good news is this is expected behavior rather than data loss on our end: our system logs a known issue (KI-122) where a bulk task move between boards will drop custom field values if the destination board doesn't have a matching custom field set up. Since the \"Priority Score\" field likely doesn't exist (or isn't configured the same way) on the new board, the values weren't carried over during the move.\n\nUnfortunately, this means the original \"Priority Score\" values on those 20 tasks are not recoverable through Loopwise automatically. To prevent this going forward, we'd recommend adding a matching \"Priority Score\" custom field to the destination board before doing a bulk move next time \u2014 that way the values transfer correctly.\n\nIf you kept a record of the original Priority Score values (e.g., in a CSV export or elsewhere) before the move, you're welcome to re-enter them manually on the new board. Let us know if you'd like help setting up the custom field on the destination board.",
+    "citations": [
+      "known_issues.md#KI-122"
+    ]
+  }
+}

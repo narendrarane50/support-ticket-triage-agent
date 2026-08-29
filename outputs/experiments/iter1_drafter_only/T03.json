@@ -1,0 +1,8 @@
+{
+  "ticket_id": "T03",
+  "reply": "Thanks for flagging this \u2014 yes, this is a known issue. Our team has confirmed that CSV export occasionally omits the \"Assignee\" column entirely, or shows only one assignee, when a task has more than one assignee (tracked internally as KI-101). A fix is expected in an upcoming release.\n\nIn the meantime, the workaround is to use JSON export instead of CSV \u2014 it correctly includes all assignees for multi-assignee tasks. You can find both export options under Settings > Export, where you can choose the format and date range; the file will be emailed to you as a download link within about 10 minutes.\n\nSorry for the inconvenience, and thanks for your patience while we get this fixed!",
+  "citations": [
+    "known_issues.md#KI-101",
+    "product_faq.md#Q: Can I export my data?"
+  ]
+}

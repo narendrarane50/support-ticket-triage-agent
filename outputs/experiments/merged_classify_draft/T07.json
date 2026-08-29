@@ -1,0 +1,8 @@
+{
+  "ticket_id": "T07",
+  "category": "Account Access / Login Issue",
+  "needs_human_approval": true,
+  "reason": "Password-reset email delivery/login lockout isn't covered in the KB (no relevant known issue or FAQ entry), so it needs escalation to the support/eng team rather than a self-service KB answer.",
+  "reply": "Hi, I'm sorry for the trouble, especially with a deadline today \u2014 let's get this sorted quickly.\\n\\nA couple of quick things to check first:\\n1. Please check your spam/junk folder and any email filtering rules for messages from Loopwise.\\n2. Double-check that you're entering the exact email address your workspace account was set up with.\\n\\nI don't see a documented cause for reset emails not arriving, so I'm escalating this to our team right now to investigate your account directly and get you back in as soon as possible given the time sensitivity. I'll follow up as soon as I have an update \u2014 thank you for your patience.",
+  "citations": []
+}

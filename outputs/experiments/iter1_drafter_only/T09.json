@@ -1,0 +1,11 @@
+{
+  "ticket_id": "T09",
+  "reply": "Thanks for reaching out, and I'm sorry for the frustration around this charge.\n\nI want to clarify our refund policy, since it differs from what you described: full refunds are available if requested within 14 calendar days of the charge date, for any reason. Requests made after that 14-day window aren't eligible for a standard refund \u2014 those can only be approved as a goodwill exception by a support manager, not by a first-line agent.\n\nSince the charge you're referring to was about 40 days ago, it falls outside the standard refund window. I'm not able to approve or promise a refund myself, but because you've raised a possible dispute/chargeback, I'm escalating this to our team for manager review so someone can look into your specific case.\n\nIn the meantime, you can find the itemized charge details under Settings > Billing > Invoices if you'd like to double check the date and amount. We'll follow up as soon as we have an update.",
+  "citations": [
+    "refund_policy.md#full-refund-14-day-window",
+    "refund_policy.md#after-14-days-manager-goodwill-exception",
+    "refund_policy.md#chargeback-threat-escalation",
+    "refund_policy.md#agent-may-not-promise-or-approve-refund",
+    "billing_faq.md#invoices"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ticket_id": "T11",
+  "classification": {
+    "category": "bug_report",
+    "needs_human_approval": false,
+    "reason": "This matches known issue KI-120 in known_issues.md, which documents the mobile timezone bug and its workaround, so it can be answered from the KB without human approval."
+  },
+  "draft": {
+    "reply": "{\"reply\": \"Thanks for flagging this! This is a known issue (KI-120): time tracking entries submitted from the mobile app before app version 4.2 can show the wrong timezone. Our engineering team is aware and working on a fix. In the meantime, the workaround is to re-submit the affected entry from the web app, which will record the correct timezone. Also, please check that your mobile app is updated to version 4.2 or later, as that resolves the issue going forward. Let us know if you run into any further trouble!\", \"citations\": [\"known_issues.md#KI-120\"]}",
+    "citations": [
+      "known_issues.md#KI-120"
+    ]
+  },
+  "verification": {
+    "passed": true,
+    "final_needs_human_approval": false,
+    "problems": [],
+    "notes": "Citation KI-120 is accurate and fully supports the claims about the timezone bug and workaround; no policy overreach, no refund/discount promised, tone is professional, and this is a clearly KB-covered known issue not requiring human approval."
+  },
+  "redraft_attempts": 0,
+  "final_needs_human_approval": false,
+  "reply": "{\"reply\": \"Thanks for flagging this! This is a known issue (KI-120): time tracking entries submitted from the mobile app before app version 4.2 can show the wrong timezone. Our engineering team is aware and working on a fix. In the meantime, the workaround is to re-submit the affected entry from the web app, which will record the correct timezone. Also, please check that your mobile app is updated to version 4.2 or later, as that resolves the issue going forward. Let us know if you run into any further trouble!\", \"citations\": [\"known_issues.md#KI-120\"]}",
+  "citations": [
+    "known_issues.md#KI-120"
+  ]
+}

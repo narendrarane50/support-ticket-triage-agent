@@ -1,0 +1,28 @@
+{
+  "ticket_id": "T10",
+  "classification": {
+    "category": "billing_question",
+    "needs_human_approval": true,
+    "reason": "The KB explicitly identifies same-amount, same-day duplicate charges as a billing error that must be escalated to a human rather than resolved by an agent."
+  },
+  "draft": {
+    "reply": "Hi there,\n\nThanks for flagging this, and sorry for the trouble. Two charges of the exact same amount ($45.00) on the exact same day for your Team plan is not expected behavior \u2014 our billing FAQ identifies this specific pattern (same amount, same day) as a billing error rather than normal proration, so I've escalated your case to our billing team for manual review rather than resolving it myself.\n\nIn the meantime, you can confirm the two charges by going to Settings > Billing > Invoices, where each charge should appear as its own line item \u2014 it'd help our team if you can note whether both show up there.\n\nA member of our team will follow up directly to review the charges and, if a duplicate charge is confirmed, handle the correction \u2014 I'm not able to issue or promise a refund from here, as that has to go through our billing team.\n\nThanks for your patience while we sort this out.",
+    "citations": [
+      "billing_faq.md#i-was-charged-twice-this-month-what-happened",
+      "refund_policy.md#6"
+    ]
+  },
+  "verification": {
+    "final_needs_human_approval": true,
+    "passed": true,
+    "problems": [],
+    "notes": "Both citations are accurate and support the claims made (billing_faq confirms same-amount/same-day duplicate charges are a billing error requiring escalation; refund_policy #6 supports the agent's disclaimer that it cannot promise/approve a refund), the reply makes no unbacked policy claims or refund promises, tone is professional, and needs_human_approval=True is correctly upheld since the KB explicitly says this charge pattern must be escalated rather than resolved by the agent.\""
+  },
+  "redraft_attempts": 0,
+  "final_needs_human_approval": true,
+  "reply": "Hi there,\n\nThanks for flagging this, and sorry for the trouble. Two charges of the exact same amount ($45.00) on the exact same day for your Team plan is not expected behavior \u2014 our billing FAQ identifies this specific pattern (same amount, same day) as a billing error rather than normal proration, so I've escalated your case to our billing team for manual review rather than resolving it myself.\n\nIn the meantime, you can confirm the two charges by going to Settings > Billing > Invoices, where each charge should appear as its own line item \u2014 it'd help our team if you can note whether both show up there.\n\nA member of our team will follow up directly to review the charges and, if a duplicate charge is confirmed, handle the correction \u2014 I'm not able to issue or promise a refund from here, as that has to go through our billing team.\n\nThanks for your patience while we sort this out.",
+  "citations": [
+    "billing_faq.md#i-was-charged-twice-this-month-what-happened",
+    "refund_policy.md#6"
+  ]
+}

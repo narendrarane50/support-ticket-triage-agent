@@ -1,0 +1,11 @@
+{
+  "ticket_id": "T05",
+  "category": "Refund request",
+  "needs_human_approval": true,
+  "reason": "Refund requests are eligible under policy within 14 days but must always be executed by a human manager, never promised or processed by an agent.",
+  "reply": "Thanks for reaching out! Good news \u2014 since you upgraded to the Team plan 5 days ago, you're within our 14-day refund window, which makes you eligible for a full refund of that charge (Loopwise Refund Policy, item 1).\n\nI'm not able to process the refund directly myself, so I've escalated your request to our billing team/manager, who will review and complete it. You should hear back shortly with confirmation once it's processed.\n\nLet us know if you have any other questions in the meantime!",
+  "citations": [
+    "refund_policy.md#1-full-refunds-within-14-days",
+    "refund_policy.md#6-agent-may-not-approve-refunds"
+  ]
+}

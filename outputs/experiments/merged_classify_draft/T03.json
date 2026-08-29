@@ -1,0 +1,11 @@
+{
+  "ticket_id": "T03",
+  "category": "Known Bug Report - CSV Export",
+  "needs_human_approval": false,
+  "reason": "This is a documented known issue with a clear workaround, not requiring a refund, discretionary exception, or escalation.",
+  "reply": "Thanks for flagging this! Yes, this is a known issue (KI-101): CSV export can occasionally omit the \"Assignee\" column when a task has more than one assignee. Our engineering team is aware and a fix is expected in an upcoming release.\n\nIn the meantime, as a workaround, you can export to JSON instead (Settings > Export > choose JSON), which correctly includes all assignees for multi-assignee tasks.\n\nLet us know if you run into anything else!",
+  "citations": [
+    "known_issues.md#KI-101",
+    "product_faq.md#Q:-Can-I-export-my-data?"
+  ]
+}

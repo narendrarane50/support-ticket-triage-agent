@@ -1,0 +1,42 @@
+{
+  "call_id": "1788025749757_T13_drafter_a1_800fd3",
+  "label": "T13_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=billing_question, needs_human_approval=False (The customer is simply asking whether a cheaper annual plan exists, which is clearly answered by billing_faq.md (annual billing gives a 20% discount vs. monthly) with no refund, fraud, or discretionary-exception request involved.).\n\n\nRespond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:\n{\n  \"reply\": \"<the reply text you would send to the customer>\",\n  \"citations\": [\"<kb_file.md#section-or-topic>\", ...]\n}\n\nTicket subject: Regarding yearly subscription for loopwise\nTicket body: I feel like the monthly subscription is quite expensive. Is there a yearly subscription available on loopwise which will cost cheaper on monthly basis?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 5.95,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":5664,\"stop_reason\":\"tool_use\",\"session_id\":\"03921843-ec4c-43a9-8e2f-842bcf079a77\",\"total_cost_usd\":0.0170656,\"usage\":{\"input_tokens\":4,\"cache_creation_input_tokens\":1559,\"cache_read_input_tokens\":24213,\"output_tokens\":464,\"output_tokens_details\":{\"thinking_tokens\":21},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":1559,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":241,\"cache_read_input_tokens\":12524,\"cache_creation_input_tokens\":724,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":724},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1274,\"outputTokens\":13,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.001339,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":4,\"outputTokens\":464,\"cacheReadInputTokens\":24213,\"cacheCreationInputTokens\":1559,\"webSearchRequests\":0,\"costUSD\":0.0157266,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":3,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"Hi there,\\\\n\\\\nYes \u2014 Loopwise does offer an annual billing option that's cheaper than paying monthly. For example, the Team plan is $15/user/month on monthly billing, but drops to $12/user/month when billed annually (a 20% discount overall).\\\\n\\\\nIf you'd like to switch to annual billing, you can do so from Settings > Billing. Let me know if you have any other questions!\\\\n\\\\nBest,\\\\nLoopwise Support\\\",\\\"citations\\\":[\\\"billing_faq.md#plans\\\",\\\"billing_faq.md#do-you-offer-discounts\\\"]}\",\"structured_output\":{\"reply\":\"Hi there,\\n\\nYes \u2014 Loopwise does offer an annual billing option that's cheaper than paying monthly. For example, the Team plan is $15/user/month on monthly billing, but drops to $12/user/month when billed annually (a 20% discount overall).\\n\\nIf you'd like to switch to annual billing, you can do so from Settings > Billing. Let me know if you have any other questions!\\n\\nBest,\\nLoopwise Support\",\"citations\":[\"billing_faq.md#plans\",\"billing_faq.md#do-you-offer-discounts\"]},\"ttft_ms\":1692,\"type\":\"result\",\"duration_ms\":5004,\"uuid\":\"1f5b128f-676c-4b91-b681-b6d233e58a57\",\"ttft_stream_ms\":1001,\"time_to_request_ms\":93,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 3,
+    "total_cost_usd": 0.0170656,
+    "duration_ms": 5004,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "Hi there,\n\nYes \u2014 Loopwise does offer an annual billing option that's cheaper than paying monthly. For example, the Team plan is $15/user/month on monthly billing, but drops to $12/user/month when billed annually (a 20% discount overall).\n\nIf you'd like to switch to annual billing, you can do so from Settings > Billing. Let me know if you have any other questions!\n\nBest,\nLoopwise Support",
+    "citations": [
+      "billing_faq.md#plans",
+      "billing_faq.md#do-you-offer-discounts"
+    ]
+  }
+}
