@@ -63,6 +63,8 @@ See [`REPRODUCE.md`](REPRODUCE.md).
 
 `outputs/agent/ready/` and `outputs/agent/needs_review/` are the real human-approval checkpoint, but raw JSON files aren't what the intended user (a support lead) would actually want to look at. `python3 src/build_dashboard.py` generates `outputs/dashboard.html` — a self-contained, static reviewer queue (no server, no dependencies) built from the actual current pipeline output: a "needs your review" queue surfaced first, a "ready to send" queue below, and per-ticket detail showing the customer's message, the classify→draft→verify trail with the verifier's actual reasoning, and a plain-language "why this needs you" line for anything escalated. Open it directly: `open outputs/dashboard.html` (macOS) or just double-click it.
 
+**Live preview (no cloning required)**: https://claude.ai/code/artifact/0d8d2c9a-d92d-4039-9062-12d3bd10afee — a snapshot of the dashboard as of the current commit. The committed `outputs/dashboard.html` file is the authoritative version; this link is a convenience.
+
 Building this is also what caught the biggest bug in this project — see the Hot take below.
 
 ## Agent trajectories
