@@ -4,25 +4,27 @@
     "category": "billing_question",
     "needs_human_approval": false,
     "confidence": "high",
-    "reason": "The KB directly explains that two different-amount charges in one month typically reflect a prorated mid-cycle charge plus the regular renewal charge, and the customer is only asking for clarification, not requesting a refund or alleging fraud."
+    "reason": "The two charges are different amounts, matching the KB's documented explanation for mid-cycle proration plus renewal, and the customer is only asking for clarification, not alleging fraud or requesting a refund."
   },
   "classifier_effective_approval": false,
   "draft": {
-    "reply": "Hi! Two different-amount charges in the same month usually happen when your member count crosses a plan threshold mid-cycle \u2014 that triggers a prorated charge for the added member(s) on top of your regular renewal charge, so the two amounts differ.\n\nYou can confirm this by going to Settings > Billing > Invoices \u2014 each charge should show up as its own line item there, so you can see exactly what each one covers.\n\nIf you take a look and the two charges turn out to be for the exact same amount on the exact same day, that would be a billing error rather than proration, so let me know and I'll get that escalated for you.",
+    "reply": "Hi,\n\nThanks for reaching out about this. Two separate charges in the same month usually happen when your workspace's member count crosses a plan threshold partway through your billing cycle. In that case, you'd see a prorated charge for the added member(s) covering the rest of the current cycle, in addition to your regular renewal charge \u2014 so the two amounts ($135 and $27) would reflect different line items rather than a duplicate charge.\n\nTo confirm this is what happened, you can check Settings > Billing > Invoices, where each charge should appear as a separate line item with its own description. If you review it there and the two charges turn out to be for the exact same amount on the exact same day, that would indicate a billing error, and we'd want to look into it further \u2014 just let us know and we'll escalate it.\n\nLet us know what you find, or if you have any other questions!\n\nBest,\nLoopwise Support",
     "citations": [
-      "data/kb/billing_faq.md:18 \u2014 \"I was charged twice this month\" Q&A: explains two charges as a prorated mid-cycle charge (from crossing a member threshold) plus the regular renewal charge, directs to Settings > Billing > Invoices for line items, and notes same-amount/same-day charges should be escalated as a billing error."
+      "data/kb/billing_faq.md \u2014 'Q: I was charged twice this month, what happened?' (explains proration + renewal as the typical cause of two differing charges, where to verify via Invoices, and that identical same-day/same-amount charges indicate a billing error requiring escalation)",
+      "data/kb/billing_faq.md \u2014 'Q: How do I get an invoice/receipt?' (Settings > Billing > Invoices location for checking charge line items)"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": false,
     "problems": [],
-    "notes": "Citation to billing_faq.md:17-18 accurately supports the proration explanation and escalation guidance; reply stays within documented policy, makes no refund/discount promise, and is professionally toned."
+    "notes": "Both citations are accurate and directly support the reply's claims; the reply only explains documented policy (proration/renewal explanation, where to check invoices, escalation path for genuine duplicates) without promising any refund or account action, and the tone is professional."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": false,
-  "reply": "Hi! Two different-amount charges in the same month usually happen when your member count crosses a plan threshold mid-cycle \u2014 that triggers a prorated charge for the added member(s) on top of your regular renewal charge, so the two amounts differ.\n\nYou can confirm this by going to Settings > Billing > Invoices \u2014 each charge should show up as its own line item there, so you can see exactly what each one covers.\n\nIf you take a look and the two charges turn out to be for the exact same amount on the exact same day, that would be a billing error rather than proration, so let me know and I'll get that escalated for you.",
+  "reply": "Hi,\n\nThanks for reaching out about this. Two separate charges in the same month usually happen when your workspace's member count crosses a plan threshold partway through your billing cycle. In that case, you'd see a prorated charge for the added member(s) covering the rest of the current cycle, in addition to your regular renewal charge \u2014 so the two amounts ($135 and $27) would reflect different line items rather than a duplicate charge.\n\nTo confirm this is what happened, you can check Settings > Billing > Invoices, where each charge should appear as a separate line item with its own description. If you review it there and the two charges turn out to be for the exact same amount on the exact same day, that would indicate a billing error, and we'd want to look into it further \u2014 just let us know and we'll escalate it.\n\nLet us know what you find, or if you have any other questions!\n\nBest,\nLoopwise Support",
   "citations": [
-    "data/kb/billing_faq.md:18 \u2014 \"I was charged twice this month\" Q&A: explains two charges as a prorated mid-cycle charge (from crossing a member threshold) plus the regular renewal charge, directs to Settings > Billing > Invoices for line items, and notes same-amount/same-day charges should be escalated as a billing error."
+    "data/kb/billing_faq.md \u2014 'Q: I was charged twice this month, what happened?' (explains proration + renewal as the typical cause of two differing charges, where to verify via Invoices, and that identical same-day/same-amount charges indicate a billing error requiring escalation)",
+    "data/kb/billing_faq.md \u2014 'Q: How do I get an invoice/receipt?' (Settings > Billing > Invoices location for checking charge line items)"
   ]
 }

@@ -1,0 +1,41 @@
+{
+  "call_id": "1788065041772_T03_drafter_a1_2d6238",
+  "label": "T03_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=bug_report, needs_human_approval=False (This is a documented known issue (KI-101: CSV export omits Assignee column for multi-assignee tasks, workaround is JSON export) with no refund, fraud, or discretionary-exception element.).\n\n\nThe reply and the citations are two separate outputs, not two sections of one document. The reply must be a complete, professional support email exactly as the customer would receive it: open with a brief greeting (e.g. \"Hi,\" or \"Hi [if a name is available],\"), write the body, and close with a short sign-off and \"Loopwise Support\". Do not add anything ABOUT the reply itself -- no preamble before it, no label like \"Draft reply:\", no markdown headers or quote blocks around it, and absolutely no citations, footnotes, file names, or \"Citations:\" section of any kind at the end of it. The citations belong only in the separate citations output: list which KB file/section each factual claim in the reply is backed by there, never inside the reply text.\n\nTicket subject: CSV export missing assignees\nTicket body: When I export my board to CSV, some tasks that have two assignees only show one, or none at all. Is this a known bug?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 6.88,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":7193,\"stop_reason\":\"tool_use\",\"session_id\":\"59543669-a170-492e-8ae0-7dc9537bde8c\",\"total_cost_usd\":0.0417028,\"usage\":{\"input_tokens\":4,\"cache_creation_input_tokens\":7790,\"cache_read_input_tokens\":20119,\"output_tokens\":507,\"output_tokens_details\":{\"thinking_tokens\":24},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":7790,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":328,\"cache_read_input_tokens\":13708,\"cache_creation_input_tokens\":493,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":493},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1376,\"outputTokens\":13,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.001441,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":4,\"outputTokens\":507,\"cacheReadInputTokens\":20119,\"cacheCreationInputTokens\":7790,\"webSearchRequests\":0,\"costUSD\":0.0402618,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":3,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"Hi,\\\\n\\\\nThanks for reaching out, and yes \u2014 this is a known issue. When a task has more than one assignee, the CSV export can omit the \\\\\\\"Assignee\\\\\\\" column for that task entirely. Our team is aware of it and a fix is expected in an upcoming release.\\\\n\\\\nIn the meantime, the recommended workaround is to use the JSON export instead, which correctly includes all assignees for multi-assignee tasks.\\\\n\\\\nSorry for the inconvenience this has caused, and thank you for flagging it. Let us know if you run into anything else.\\\\n\\\\nBest,\\\\nLoopwise Support\\\",\\\"citations\\\":[\\\"data/kb/known_issues.md \u2014 KI-101: \\\\\\\"CSV export occasionally omits the 'Assignee' column when a task has more than one assignee. Fix expected in the next release. Workaround: use JSON export instead.\\\\\\\"\\\"]}\",\"structured_output\":{\"reply\":\"Hi,\\n\\nThanks for reaching out, and yes \u2014 this is a known issue. When a task has more than one assignee, the CSV export can omit the \\\"Assignee\\\" column for that task entirely. Our team is aware of it and a fix is expected in an upcoming release.\\n\\nIn the meantime, the recommended workaround is to use the JSON export instead, which correctly includes all assignees for multi-assignee tasks.\\n\\nSorry for the inconvenience this has caused, and thank you for flagging it. Let us know if you run into anything else.\\n\\nBest,\\nLoopwise Support\",\"citations\":[\"data/kb/known_issues.md \u2014 KI-101: \\\"CSV export occasionally omits the 'Assignee' column when a task has more than one assignee. Fix expected in the next release. Workaround: use JSON export instead.\\\"\"]},\"ttft_ms\":1748,\"type\":\"result\",\"duration_ms\":6194,\"uuid\":\"b4312d49-90ef-4411-9c53-838128721018\",\"ttft_stream_ms\":1071,\"time_to_request_ms\":13,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 3,
+    "total_cost_usd": 0.0417028,
+    "duration_ms": 6194,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "Hi,\n\nThanks for reaching out, and yes \u2014 this is a known issue. When a task has more than one assignee, the CSV export can omit the \"Assignee\" column for that task entirely. Our team is aware of it and a fix is expected in an upcoming release.\n\nIn the meantime, the recommended workaround is to use the JSON export instead, which correctly includes all assignees for multi-assignee tasks.\n\nSorry for the inconvenience this has caused, and thank you for flagging it. Let us know if you run into anything else.\n\nBest,\nLoopwise Support",
+    "citations": [
+      "data/kb/known_issues.md \u2014 KI-101: \"CSV export occasionally omits the 'Assignee' column when a task has more than one assignee. Fix expected in the next release. Workaround: use JSON export instead.\""
+    ]
+  }
+}

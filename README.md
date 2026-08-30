@@ -73,12 +73,12 @@ Every `claude -p` call (317 total across all experiments) is saved in full to `o
 
 | Metric | Simple Baseline | Agent Solution | Change |
 |---|---|---|---|
-| Composite quality (0-5) | 3.06 | 5.00 | **+1.94** |
-| Grounding accuracy (0-5) | 2.00 | 5.00 | +3.00 |
-| Policy compliance (0-5) | 2.33 | 5.00 | +2.67 |
+| Composite quality (0-5) | 3.14 | 5.00 | **+1.86** |
+| Grounding accuracy (0-5) | 2.25 | 5.00 | +2.75 |
+| Policy compliance (0-5) | 2.42 | 5.00 | +2.58 |
 | Escalation recall (5 tickets that truly need a human) | 0.00 | 1.00 | +1.00 |
 | Escalation precision | N/A (never flags) | 1.00 in this run (~90-100% across repeated trials, see below) | — |
-| Cost per ticket | $0.081 | $0.163 | +$0.082 |
+| Cost per ticket | $0.102 | $0.168 | +$0.066 |
 
 Full table, confusion matrices, the hard adversarial case, and per-ticket detail: [`outputs/eval_results.md`](outputs/eval_results.md).
 
@@ -87,6 +87,8 @@ Full table, confusion matrices, the hard adversarial case, and per-ticket detail
 ## Hot take
 
 **The sharpest finding in this project came from building a dashboard, not from running an evaluation.** For most of this project's development, up to 76% of the drafter's replies and 14% of the baseline's were literally malformed — `d['reply']` contained a JSON string like `'{"reply": "Hi, thanks...", "citations": [...]}'` instead of plain text, because every prompt both told the model in English to "respond with ONLY a JSON object" *and* used `--json-schema` for the same shape, two redundant structuring mechanisms that caused the model to nest its own self-formatted JSON inside the schema's field. The composite quality scores never flagged it — after fixing both prompts and re-running the full evaluation, the numbers came back numerically identical, because the LLM judge was only ever asked to rate grounding, policy, and tone, never "is this actually sendable text." Proved this precisely: scored the exact same bugged reply with the old judge prompt (`tone_quality: 5`, didn't notice) and a fixed one with an explicit `clean_format` check (`clean_format: false, tone_quality: 0`, caught it immediately, plus an invented KB claim the old judge had also missed). Same input, same model, two different verdicts, because only one of them was asked the right question. **An LLM-as-judge and a human-facing view of the same output validate genuinely different things, and a defect can live entirely in the gap between them for as long as nobody looks at the second one** — this was only found because "the End to End Quality feedback was raw JSON" led to building `outputs/dashboard.html`, and finally *looking* at a reply the way a human would. Full evidence: `CHANGELOG.md` Iteration 7 and `TRAJECTORIES.md` section 6.
+
+The humbling part is Iteration 8: after that fix, I republished the dashboard and moved on — and a human reviewer looking at the same screenshots caught two things I hadn't, a citations block leaking into customer-facing text and inconsistent greeting/sign-off formatting. Building the human-facing surface didn't fix my blind spot, it relocated it — I still needed someone else's scrutiny to find the next defect underneath the one I'd already found. See `CHANGELOG.md` Iteration 8 for the full fix and the fifth lesson it produced.
 
 A single agent asked to both classify *and* draft in one pass didn't get worse at writing replies (its quality score was statistically the same as the final pipeline) — it got worse at applying a **compound policy rule**. The escalation rule is "flag if X (refund/fraud/discount) **or** Y (KB doesn't cover it)," and under the merged prompt that silently collapsed to just "Y," misfiring on an ordinary feature-request ticket. A dedicated classifier, doing nothing else, kept the full rule intact far more often.
 

@@ -4,25 +4,25 @@
     "category": "how_to",
     "needs_human_approval": false,
     "confidence": "high",
-    "reason": "The product FAQ directly explains how to invite a teammate as an Editor via Settings > Members > Invite, with no refund, fraud, or discretionary-exception concerns present."
+    "reason": "The product FAQ directly explains how to invite a teammate as an Editor via Settings > Members > Invite, with no refund, fraud, or policy-exception concerns present."
   },
   "classifier_effective_approval": false,
   "draft": {
-    "reply": "Hi there,\n\nYou can invite your coworker as an Editor right from your workspace settings:\n\n1. Go to Settings > Members > Invite\n2. Enter their email address\n3. Choose the \"Editor\" role\n4. Send the invite\n\nThey'll receive an email invitation to join \u2014 just note that the invite link expires after 7 days, so if they don't accept it in time you'll need to resend it.\n\nLet us know if you run into any issues!\n\nBest,\nThe Loopwise Team",
+    "reply": "Hi,\n\nThanks for reaching out! Adding a coworker as an Editor is quick to set up.\n\n1. Go to Settings > Members > Invite.\n2. Enter your coworker's email address.\n3. Choose \"Editor\" as their role.\n\nThey'll receive an email invitation, so just let them know to check their inbox. Note that the invite link expires after 7 days, so if they don't accept it in that window, you'll need to send a new one.\n\nLet us know if you run into any issues or have other questions!\n\nBest,\nLoopwise Support",
     "citations": [
-      "data/kb/product_faq.md \u2014 \"Q: How do I invite a teammate?\" (Settings > Members > Invite, role selection including Editor, invite expires after 7 days)"
+      "data/kb/product_faq.md \u2014 'Q: How do I invite a teammate?' (Settings > Members > Invite, role selection including Editor, 7-day invite expiration)"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": false,
     "problems": [],
-    "notes": "Citation to product_faq.md accurately supports every claim in the reply (invite steps, Editor role, 7-day expiry); no unauthorized commitments made, tone is appropriate."
+    "notes": "Citation to product_faq.md accurately supports all claims (invite steps, Editor role, 7-day expiration); no unsupported commitments; tone is professional."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": false,
-  "reply": "Hi there,\n\nYou can invite your coworker as an Editor right from your workspace settings:\n\n1. Go to Settings > Members > Invite\n2. Enter their email address\n3. Choose the \"Editor\" role\n4. Send the invite\n\nThey'll receive an email invitation to join \u2014 just note that the invite link expires after 7 days, so if they don't accept it in time you'll need to resend it.\n\nLet us know if you run into any issues!\n\nBest,\nThe Loopwise Team",
+  "reply": "Hi,\n\nThanks for reaching out! Adding a coworker as an Editor is quick to set up.\n\n1. Go to Settings > Members > Invite.\n2. Enter your coworker's email address.\n3. Choose \"Editor\" as their role.\n\nThey'll receive an email invitation, so just let them know to check their inbox. Note that the invite link expires after 7 days, so if they don't accept it in that window, you'll need to send a new one.\n\nLet us know if you run into any issues or have other questions!\n\nBest,\nLoopwise Support",
   "citations": [
-    "data/kb/product_faq.md \u2014 \"Q: How do I invite a teammate?\" (Settings > Members > Invite, role selection including Editor, invite expires after 7 days)"
+    "data/kb/product_faq.md \u2014 'Q: How do I invite a teammate?' (Settings > Members > Invite, role selection including Editor, 7-day invite expiration)"
   ]
 }

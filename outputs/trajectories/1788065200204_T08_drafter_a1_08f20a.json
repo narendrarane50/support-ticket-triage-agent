@@ -1,0 +1,44 @@
+{
+  "call_id": "1788065200204_T08_drafter_a1_08f20a",
+  "label": "T08_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=billing_question, needs_human_approval=False (The customer is only asking to confirm how the annual discount works (not requesting a refund or discretionary discount), and billing_faq.md clearly states annual billing gives a 20% discount versus monthly.).\n\n\nThe reply and the citations are two separate outputs, not two sections of one document. The reply must be a complete, professional support email exactly as the customer would receive it: open with a brief greeting (e.g. \"Hi,\" or \"Hi [if a name is available],\"), write the body, and close with a short sign-off and \"Loopwise Support\". Do not add anything ABOUT the reply itself -- no preamble before it, no label like \"Draft reply:\", no markdown headers or quote blocks around it, and absolutely no citations, footnotes, file names, or \"Citations:\" section of any kind at the end of it. The citations belong only in the separate citations output: list which KB file/section each factual claim in the reply is backed by there, never inside the reply text.\n\nTicket subject: Question about annual discount\nTicket body: I saw I was charged the full annual amount up front. I'm not asking for a refund, I just want to understand -- is that the plan with the 20% discount, or is the discount something else?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 10.3,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":10134,\"stop_reason\":\"tool_use\",\"session_id\":\"c2120ef1-383a-4887-9313-ffdcd3c5a80a\",\"total_cost_usd\":0.046772,\"usage\":{\"input_tokens\":4,\"cache_creation_input_tokens\":8612,\"cache_read_input_tokens\":20730,\"output_tokens\":673,\"output_tokens_details\":{\"thinking_tokens\":83},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":8612,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":566,\"cache_read_input_tokens\":14319,\"cache_creation_input_tokens\":704,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":704},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1385,\"outputTokens\":11,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.0014399999999999999,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":4,\"outputTokens\":673,\"cacheReadInputTokens\":20730,\"cacheCreationInputTokens\":8612,\"webSearchRequests\":0,\"costUSD\":0.045332000000000004,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":3,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"Hi,\\\\n\\\\nThanks for reaching out, and glad to clarify this for you.\\\\n\\\\nYes, that's the same discount. For the Team plan, annual billing is $12/user/month (billed as one upfront annual charge), compared to $15/user/month when billed monthly -- that works out to the 20% discount for choosing annual billing. Being charged the full annual amount up front is expected behavior for that billing cycle: charges occur on the day you upgrade, then annually on that same calendar day going forward.\\\\n\\\\nYou can always double-check the breakdown for your workspace under Settings > Billing > Invoices, where each charge is itemized.\\\\n\\\\nLet me know if you have any other questions.\\\\n\\\\nBest,\\\\nLoopwise Support\\\",\\\"citations\\\":[\\\"data/kb/billing_faq.md - \\\\\\\"Plans\\\\\\\" section: Team plan pricing ($15/user/month monthly vs $12/user/month annually)\\\",\\\"data/kb/billing_faq.md - \\\\\\\"Q: Do you offer discounts?\\\\\\\": confirms annual billing gives a 20% discount versus monthly\\\",\\\"data/kb/billing_faq.md - \\\\\\\"Q: When am I charged?\\\\\\\": confirms charges occur on upgrade day, then annually on that same calendar day\\\",\\\"data/kb/billing_faq.md - \\\\\\\"Q: How do I get an invoice/receipt?\\\\\\\": Settings > Billing > Invoices for itemized charges\\\"]}\",\"structured_output\":{\"reply\":\"Hi,\\n\\nThanks for reaching out, and glad to clarify this for you.\\n\\nYes, that's the same discount. For the Team plan, annual billing is $12/user/month (billed as one upfront annual charge), compared to $15/user/month when billed monthly -- that works out to the 20% discount for choosing annual billing. Being charged the full annual amount up front is expected behavior for that billing cycle: charges occur on the day you upgrade, then annually on that same calendar day going forward.\\n\\nYou can always double-check the breakdown for your workspace under Settings > Billing > Invoices, where each charge is itemized.\\n\\nLet me know if you have any other questions.\\n\\nBest,\\nLoopwise Support\",\"citations\":[\"data/kb/billing_faq.md - \\\"Plans\\\" section: Team plan pricing ($15/user/month monthly vs $12/user/month annually)\",\"data/kb/billing_faq.md - \\\"Q: Do you offer discounts?\\\": confirms annual billing gives a 20% discount versus monthly\",\"data/kb/billing_faq.md - \\\"Q: When am I charged?\\\": confirms charges occur on upgrade day, then annually on that same calendar day\",\"data/kb/billing_faq.md - \\\"Q: How do I get an invoice/receipt?\\\": Settings > Billing > Invoices for itemized charges\"]},\"ttft_ms\":2447,\"type\":\"result\",\"duration_ms\":9401,\"uuid\":\"fb32ae4b-cdf6-4f88-b848-2ca450196388\",\"ttft_stream_ms\":2123,\"time_to_request_ms\":16,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 3,
+    "total_cost_usd": 0.046772,
+    "duration_ms": 9401,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "Hi,\n\nThanks for reaching out, and glad to clarify this for you.\n\nYes, that's the same discount. For the Team plan, annual billing is $12/user/month (billed as one upfront annual charge), compared to $15/user/month when billed monthly -- that works out to the 20% discount for choosing annual billing. Being charged the full annual amount up front is expected behavior for that billing cycle: charges occur on the day you upgrade, then annually on that same calendar day going forward.\n\nYou can always double-check the breakdown for your workspace under Settings > Billing > Invoices, where each charge is itemized.\n\nLet me know if you have any other questions.\n\nBest,\nLoopwise Support",
+    "citations": [
+      "data/kb/billing_faq.md - \"Plans\" section: Team plan pricing ($15/user/month monthly vs $12/user/month annually)",
+      "data/kb/billing_faq.md - \"Q: Do you offer discounts?\": confirms annual billing gives a 20% discount versus monthly",
+      "data/kb/billing_faq.md - \"Q: When am I charged?\": confirms charges occur on upgrade day, then annually on that same calendar day",
+      "data/kb/billing_faq.md - \"Q: How do I get an invoice/receipt?\": Settings > Billing > Invoices for itemized charges"
+    ]
+  }
+}

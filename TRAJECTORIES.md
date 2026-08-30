@@ -79,3 +79,18 @@ Building `outputs/dashboard.html` (a human-facing view of the queue, added to ad
 Same input, same model, two different verdicts, because only one of them was ever asked the right question.
 
 **The lesson**: an LLM-as-judge evaluation and a human-facing view of the same output can validate completely different things, and a bug can live entirely in the gap between them for as long as nobody looks at the second one. This one specific to us: *any time a prompt tells the model to self-format as JSON while also using `--json-schema`, check for double-encoding before trusting the schema-conformant output is actually clean* — schema validity is not the same as content correctness. `agents/judge_prompt.md` now includes exactly that check (`clean_format`, proven above to catch it), so this specific evaluation blind spot is closed — but the broader lesson stands regardless: build the human-facing view early, not as polish at the end, because it will find things the automated evaluation was never told to look for.
+
+## 7. A seventh finding: fixing the dashboard didn't fix my blind spot, it relocated it
+
+After the fix above, I republished the dashboard and moved on. A human reviewer looking at the exact same screenshots caught two things I hadn't:
+
+**Citations leaking into customer-facing text** — `outputs/trajectories/1788053646992_T05_drafter_a2_0312f2.json`'s reply ended with a literal `**Citations:**` block quoting internal KB policy text and file names, appended after the actual message, even though the schema's separate `citations` array was also correctly populated (`['data/kb/refund_policy.md']`). My Iteration 7 fix had said "separately list which KB file/section each claim is backed by" — not explicit enough that "separately" meant a different schema field, not a different section of the same text block.
+
+**Missing greeting/sign-off** — `outputs/trajectories/1788064993133_T01_drafter_a1_83a0cf.json` and `outputs/trajectories/1788065041772_T03_drafter_a1_2d6238.json` produced replies with no greeting (T03) or no sign-off (T01), while the baseline's replies consistently had both — my "no preamble, no label" instruction from Iteration 7 got over-applied by the model to also strip legitimate email structure.
+
+**Fix**: made `agents/drafter_prompt.md` explicit that "the reply and citations are two separate outputs, not two sections of one document," and explicitly required a greeting and sign-off. Validated with targeted reproductions before re-running everything — 5/5 clean on the ticket that had leaked citations, consistent greeting+sign-off on both tickets missing them. Fresh, clean reproduction of the same T05 refund ticket after the fix: `outputs/trajectories/1788065123856_T05_drafter_a2_2fa10d.json` —
+> "Hi, Thanks for reaching out, and sorry to hear the Team plan wasn't the right fit. [...] I'm not able to process refunds directly — that has to be reviewed and completed by one of our support managers through the billing system. [...] Best, Loopwise Support"
+
+with citations correctly isolated in the separate field only. The judge's own independent verdict on this exact reply: `{"clean_format": true, ...}`.
+
+**The meta-lesson**: I had the right artifact (the dashboard) and it still took someone else's eyes on it to find this. Fixing an under-specified instruction by making it vaguer ("write only the reply, separately list citations") traded one big failure mode for two smaller, more specific ones — the fix for an over-constrained prompt is a *more precisely* specified one, not a looser one. A human-facing review surface is only as good as the scrutiny actually applied to it.

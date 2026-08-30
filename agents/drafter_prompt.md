@@ -9,7 +9,7 @@ Use Read/Glob/Grep to find the relevant KB content before writing. Every factual
 This ticket was classified as: category={{category}}, needs_human_approval={{needs_human_approval}} ({{reason}}).
 {{feedback_block}}
 
-Write only the reply text itself, exactly as the customer would receive it -- no preamble, no label like "Draft reply:", no markdown headers or quote blocks around it. Separately list which KB file/section each factual claim is backed by.
+The reply and the citations are two separate outputs, not two sections of one document. The reply must be a complete, professional support email exactly as the customer would receive it: open with a brief greeting (e.g. "Hi," or "Hi [if a name is available],"), write the body, and close with a short sign-off and "Loopwise Support". Do not add anything ABOUT the reply itself -- no preamble before it, no label like "Draft reply:", no markdown headers or quote blocks around it, and absolutely no citations, footnotes, file names, or "Citations:" section of any kind at the end of it. The citations belong only in the separate citations output: list which KB file/section each factual claim in the reply is backed by there, never inside the reply text.
 
 Ticket subject: {{subject}}
 Ticket body: {{body}}

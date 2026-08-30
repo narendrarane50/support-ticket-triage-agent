@@ -4,25 +4,31 @@
     "category": "refund_request",
     "needs_human_approval": true,
     "confidence": "high",
-    "reason": "Customer is explicitly requesting a refund for the annual plan, which per policy must always be handled by a human manager."
+    "reason": "The customer is explicitly requesting a refund, which per policy must always be escalated to a human manager."
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "Hi,\n\nThanks for reaching out, and sorry to hear the annual plan hasn't been getting much use.\n\nOur standard refund policy allows full refunds for requests made within 14 calendar days of the charge date. Since your annual plan was charged 20 days ago, this falls outside that standard window, so it isn't eligible for an automatic refund. Refund requests made after the 14-day window can still be approved as a goodwill exception, but that has to be reviewed and approved by a support manager \u2014 it's not something I'm able to approve directly.\n\nI'm escalating your request to a manager on our team now, and they'll follow up with you directly to review it. Thanks for your patience in the meantime.\n\n---\nSources for factual/policy claims:\n- \"Full refunds are available if requested within 14 calendar days of the charge date\" \u2014 data/kb/refund_policy.md, item 1\n- \"Requests made after 14 calendar days are not eligible for a standard refund; may only be approved as a goodwill exception by a support manager, never by a first-line agent or automated system\" \u2014 data/kb/refund_policy.md, item 2\n- \"For annual plans, the 14-day window applies to the annual charge date, not the original signup date\" \u2014 data/kb/refund_policy.md, item 3\n- \"A support agent (human or automated) may confirm the policy... but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager.\" \u2014 data/kb/refund_policy.md, item 6",
+    "reply": "Hi,\n\nThank you for reaching out, and I'm sorry to hear the annual plan hasn't worked out for you so far.\n\nI checked our refund policy: standard refunds are available for charges made within 14 calendar days. Since your annual plan charge was made 20 days ago, it falls outside that window, so it isn't eligible for a standard refund under our normal policy. I also want to note that for annual plans, this 14-day window is based on the charge date itself, and we're not able to offer partial or prorated refunds for unused time outside that window.\n\nThat said, requests like yours can be reviewed as a goodwill exception, and that decision has to be made by a support manager rather than by me. I'm escalating your request to a manager now so they can take a closer look at your account and get back to you with a decision.\n\nThanks for your patience while this is being reviewed.\n\nBest,\nLoopwise Support",
     "citations": [
-      "data/kb/refund_policy.md"
+      "data/kb/refund_policy.md #1 - Full refunds available within 14 calendar days of the charge date",
+      "data/kb/refund_policy.md #2 - Requests made after 14 days are not eligible for standard refund; may only be approved as a goodwill exception by a manager, never a first-line agent or automated system",
+      "data/kb/refund_policy.md #3 - For annual plans, the 14-day window applies to the annual charge date, and there are no partial/prorated refunds for unused months outside that window",
+      "data/kb/refund_policy.md #6 - Agent may confirm policy and check charge date but must never promise or approve a refund; only a manager executes refunds"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "All citations are accurate and support their claims, the reply correctly declines to approve/promise a refund and escalates per policy, tone is professional, and the classifier's needs_human_approval=True is retained since nothing in the draft warrants overriding it."
+    "notes": "All citations are accurate and support the reply's claims; the reply correctly explains policy without promising/approving a refund and appropriately escalates to a manager, consistent with the classifier's needs_human_approval=True."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": true,
-  "reply": "Hi,\n\nThanks for reaching out, and sorry to hear the annual plan hasn't been getting much use.\n\nOur standard refund policy allows full refunds for requests made within 14 calendar days of the charge date. Since your annual plan was charged 20 days ago, this falls outside that standard window, so it isn't eligible for an automatic refund. Refund requests made after the 14-day window can still be approved as a goodwill exception, but that has to be reviewed and approved by a support manager \u2014 it's not something I'm able to approve directly.\n\nI'm escalating your request to a manager on our team now, and they'll follow up with you directly to review it. Thanks for your patience in the meantime.\n\n---\nSources for factual/policy claims:\n- \"Full refunds are available if requested within 14 calendar days of the charge date\" \u2014 data/kb/refund_policy.md, item 1\n- \"Requests made after 14 calendar days are not eligible for a standard refund; may only be approved as a goodwill exception by a support manager, never by a first-line agent or automated system\" \u2014 data/kb/refund_policy.md, item 2\n- \"For annual plans, the 14-day window applies to the annual charge date, not the original signup date\" \u2014 data/kb/refund_policy.md, item 3\n- \"A support agent (human or automated) may confirm the policy... but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager.\" \u2014 data/kb/refund_policy.md, item 6",
+  "reply": "Hi,\n\nThank you for reaching out, and I'm sorry to hear the annual plan hasn't worked out for you so far.\n\nI checked our refund policy: standard refunds are available for charges made within 14 calendar days. Since your annual plan charge was made 20 days ago, it falls outside that window, so it isn't eligible for a standard refund under our normal policy. I also want to note that for annual plans, this 14-day window is based on the charge date itself, and we're not able to offer partial or prorated refunds for unused time outside that window.\n\nThat said, requests like yours can be reviewed as a goodwill exception, and that decision has to be made by a support manager rather than by me. I'm escalating your request to a manager now so they can take a closer look at your account and get back to you with a decision.\n\nThanks for your patience while this is being reviewed.\n\nBest,\nLoopwise Support",
   "citations": [
-    "data/kb/refund_policy.md"
+    "data/kb/refund_policy.md #1 - Full refunds available within 14 calendar days of the charge date",
+    "data/kb/refund_policy.md #2 - Requests made after 14 days are not eligible for standard refund; may only be approved as a goodwill exception by a manager, never a first-line agent or automated system",
+    "data/kb/refund_policy.md #3 - For annual plans, the 14-day window applies to the annual charge date, and there are no partial/prorated refunds for unused months outside that window",
+    "data/kb/refund_policy.md #6 - Agent may confirm policy and check charge date but must never promise or approve a refund; only a manager executes refunds"
   ]
 }

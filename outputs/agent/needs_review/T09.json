@@ -4,31 +4,31 @@
     "category": "refund_request",
     "needs_human_approval": true,
     "confidence": "high",
-    "reason": "The customer is explicitly requesting a full refund and threatening a chargeback, both of which require human handling regardless of KB content."
+    "reason": "Customer is requesting a refund (charged 40 days ago, outside the 14-day window) and explicitly threatens a chargeback, both of which require mandatory human/manager escalation per refund_policy.md."
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "Hi there,\n\nThanks for reaching out, and I'm sorry for the frustration around this charge.\n\nI want to make sure you have the accurate policy: refunds are available if requested within 14 calendar days of the charge date, not \"anytime\" \u2014 I don't want to leave you with the wrong impression there. Since your charge was 40 days ago, it falls outside that standard refund window, so a refund can't be processed automatically as a routine request.\n\nThat said, because you've raised a chargeback concern, I'm escalating this ticket to a member of our team for direct human review \u2014 this isn't something I can resolve or approve myself, but someone will follow up with you shortly to look into it further.\n\nThanks for your patience.",
+    "reply": "Hi,\n\nThanks for reaching out, and I'm sorry for the frustration around this charge.\n\nI want to clarify our refund policy, since it works a bit differently than described: full refunds are available for requests made within 14 calendar days of the charge date. Requests made after that 14-day window aren't eligible for a standard refund \u2014 those can only be approved as a goodwill exception, and that decision has to be made by a support manager rather than a first-line agent.\n\nSince your charge was 40 days ago, it falls outside the standard refund window. However, because you've also raised the possibility of a chargeback, I'm escalating this ticket directly to a manager for review right away \u2014 this is handled as a priority regardless of the 14-day window. I'm not able to approve or process a refund myself, but a manager will follow up with you directly on next steps.\n\nThanks for your patience while this gets reviewed.\n\nBest,\nLoopwise Support",
     "citations": [
-      "data/kb/refund_policy.md \u2014 item 1: full refunds available within 14 calendar days of the charge date, for any reason.",
-      "data/kb/refund_policy.md \u2014 item 2: requests made after 14 calendar days are not eligible for a standard refund; only a manager can approve a goodwill exception.",
-      "data/kb/refund_policy.md \u2014 item 5: any refund request including a chargeback/legal threat must be escalated to a human immediately, regardless of the 14-day window.",
-      "data/kb/refund_policy.md \u2014 item 6: a support agent (human or automated) may confirm policy and check charge date, but must never promise or approve a refund; only a manager executes refunds."
+      "data/kb/refund_policy.md (point 1) \u2014 full refunds available only within 14 calendar days of charge date",
+      "data/kb/refund_policy.md (point 2) \u2014 requests after 14 days are not eligible for standard refund; only approvable as a manager goodwill exception, never by first-line agent",
+      "data/kb/refund_policy.md (point 5) \u2014 chargeback threats must be escalated to a human immediately regardless of the 14-day window",
+      "data/kb/refund_policy.md (point 6) \u2014 agent may confirm policy/check charge date but must never promise or execute a refund"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "All citations are accurate and support their claims, the reply correctly states the 14-day policy without promising or approving a refund, and appropriately escalates due to the chargeback threat per item 5."
+    "notes": "All four citations accurately reflect refund_policy.md points 1, 2, 5, and 6; the reply correctly states the 14-day window, declines to promise/execute a refund, and escalates the chargeback threat to a manager, consistent with the classifier's needs_human_approval=True."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": true,
-  "reply": "Hi there,\n\nThanks for reaching out, and I'm sorry for the frustration around this charge.\n\nI want to make sure you have the accurate policy: refunds are available if requested within 14 calendar days of the charge date, not \"anytime\" \u2014 I don't want to leave you with the wrong impression there. Since your charge was 40 days ago, it falls outside that standard refund window, so a refund can't be processed automatically as a routine request.\n\nThat said, because you've raised a chargeback concern, I'm escalating this ticket to a member of our team for direct human review \u2014 this isn't something I can resolve or approve myself, but someone will follow up with you shortly to look into it further.\n\nThanks for your patience.",
+  "reply": "Hi,\n\nThanks for reaching out, and I'm sorry for the frustration around this charge.\n\nI want to clarify our refund policy, since it works a bit differently than described: full refunds are available for requests made within 14 calendar days of the charge date. Requests made after that 14-day window aren't eligible for a standard refund \u2014 those can only be approved as a goodwill exception, and that decision has to be made by a support manager rather than a first-line agent.\n\nSince your charge was 40 days ago, it falls outside the standard refund window. However, because you've also raised the possibility of a chargeback, I'm escalating this ticket directly to a manager for review right away \u2014 this is handled as a priority regardless of the 14-day window. I'm not able to approve or process a refund myself, but a manager will follow up with you directly on next steps.\n\nThanks for your patience while this gets reviewed.\n\nBest,\nLoopwise Support",
   "citations": [
-    "data/kb/refund_policy.md \u2014 item 1: full refunds available within 14 calendar days of the charge date, for any reason.",
-    "data/kb/refund_policy.md \u2014 item 2: requests made after 14 calendar days are not eligible for a standard refund; only a manager can approve a goodwill exception.",
-    "data/kb/refund_policy.md \u2014 item 5: any refund request including a chargeback/legal threat must be escalated to a human immediately, regardless of the 14-day window.",
-    "data/kb/refund_policy.md \u2014 item 6: a support agent (human or automated) may confirm policy and check charge date, but must never promise or approve a refund; only a manager executes refunds."
+    "data/kb/refund_policy.md (point 1) \u2014 full refunds available only within 14 calendar days of charge date",
+    "data/kb/refund_policy.md (point 2) \u2014 requests after 14 days are not eligible for standard refund; only approvable as a manager goodwill exception, never by first-line agent",
+    "data/kb/refund_policy.md (point 5) \u2014 chargeback threats must be escalated to a human immediately regardless of the 14-day window",
+    "data/kb/refund_policy.md (point 6) \u2014 agent may confirm policy/check charge date but must never promise or execute a refund"
   ]
 }

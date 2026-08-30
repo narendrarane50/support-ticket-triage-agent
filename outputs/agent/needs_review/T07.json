@@ -4,25 +4,25 @@
     "category": "account_access",
     "needs_human_approval": true,
     "confidence": "low",
-    "reason": "The KB has no coverage of password reset or login/lockout issues, so there's no documented fix to confidently route the customer to."
+    "reason": "The KB has no documented guidance on missing password-reset emails or login lockouts, so this core issue isn't clearly covered and should be routed to a human."
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "Hi there,\n\nThanks for reaching out, and sorry for the trouble this is causing with your team's deadline today.\n\nI wasn't able to find a documented fix for missing password reset emails or account lockouts in our current help resources, so I don't want to guess and risk giving you the wrong steps. I'm escalating your case to a member of our support team who can look into your account directly and help get you back in as quickly as possible.\n\nThank you for your patience \u2014 someone will follow up with you shortly.\n\nBest,\nLoopwise Support",
+    "reply": "Hi,\n\nThanks for reaching out, and sorry for the trouble \u2014 I know being locked out with a deadline today is stressful.\n\nI've flagged your account for a member of our support team to look into directly, since getting your password reset email delivered and your workspace access restored requires a manual check on our end. You'll hear from someone shortly.\n\nIn the meantime, if you have a teammate with admin access to the workspace, they may be able to help unblock you or reassign anything time-sensitive while we sort out your login.\n\nWe'll be in touch as soon as possible.\n\nBest,\nLoopwise Support",
     "citations": [
-      "No KB claim made \u2014 data/kb/ (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) contains no content on password reset, login, or account lockout issues; confirmed via grep with no matches. Reply therefore contains no factual/policy claims requiring citation and instead escalates to a human, consistent with needs_human_approval=True."
+      "No KB citation applicable \u2014 data/kb/product_faq.md, data/kb/billing_faq.md, data/kb/refund_policy.md, and data/kb/known_issues.md contain no guidance on password-reset email delivery or account lockouts, consistent with the ticket's needs_human_approval classification. The reply contains no factual or policy claims and only acknowledges the issue and sets expectations for human follow-up."
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "Reply makes no unsupported claims, cites no fabricated KB content (verified no login/password/lockout coverage exists), makes no refund/account promises, and appropriately escalates to a human, consistent with the classifier's needs_human_approval=True."
+    "notes": "No KB coverage exists for password-reset/lockout issues, confirming the citation note is accurate; the reply makes no unsupported policy claims, promises no refund/discount/account action, and is professionally toned, so the classifier's needs_human_approval=True stands unchanged."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": true,
-  "reply": "Hi there,\n\nThanks for reaching out, and sorry for the trouble this is causing with your team's deadline today.\n\nI wasn't able to find a documented fix for missing password reset emails or account lockouts in our current help resources, so I don't want to guess and risk giving you the wrong steps. I'm escalating your case to a member of our support team who can look into your account directly and help get you back in as quickly as possible.\n\nThank you for your patience \u2014 someone will follow up with you shortly.\n\nBest,\nLoopwise Support",
+  "reply": "Hi,\n\nThanks for reaching out, and sorry for the trouble \u2014 I know being locked out with a deadline today is stressful.\n\nI've flagged your account for a member of our support team to look into directly, since getting your password reset email delivered and your workspace access restored requires a manual check on our end. You'll hear from someone shortly.\n\nIn the meantime, if you have a teammate with admin access to the workspace, they may be able to help unblock you or reassign anything time-sensitive while we sort out your login.\n\nWe'll be in touch as soon as possible.\n\nBest,\nLoopwise Support",
   "citations": [
-    "No KB claim made \u2014 data/kb/ (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) contains no content on password reset, login, or account lockout issues; confirmed via grep with no matches. Reply therefore contains no factual/policy claims requiring citation and instead escalates to a human, consistent with needs_human_approval=True."
+    "No KB citation applicable \u2014 data/kb/product_faq.md, data/kb/billing_faq.md, data/kb/refund_policy.md, and data/kb/known_issues.md contain no guidance on password-reset email delivery or account lockouts, consistent with the ticket's needs_human_approval classification. The reply contains no factual or policy claims and only acknowledges the issue and sets expectations for human follow-up."
   ]
 }

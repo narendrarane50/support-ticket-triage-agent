@@ -4,25 +4,27 @@
     "category": "refund_request",
     "needs_human_approval": true,
     "confidence": "high",
-    "reason": "This is an explicit refund request, which per policy must always be executed by a human manager rather than an agent."
+    "reason": "This is a direct refund request, which per policy is only ever executed by a human manager, never an agent."
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "Hi, thanks for reaching out, and sorry to hear the Team plan wasn't the right fit.\n\nOur refund policy allows full refunds when requested within 14 calendar days of the charge date. Since I'm not able to approve or process refunds myself, I've escalated your request to a member of our support management team. They'll check your charge date against the policy and take care of processing the refund if it qualifies.\n\nYou should hear back from them shortly. Thanks for your patience in the meantime!\n\n**Citations:**\n- \"Our refund policy allows full refunds when requested within 14 calendar days of the charge date\" \u2014 data/kb/refund_policy.md, item 1\n- \"I'm not able to approve or process refunds myself... escalated to a member of our support management team... they'll check your charge date... and take care of processing the refund\" \u2014 data/kb/refund_policy.md, item 6 (\"A support agent... may confirm the policy and check the charge date, but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager through the billing system.\")",
+    "reply": "Hi,\n\nThanks for reaching out, and sorry to hear the Team plan wasn't the right fit.\n\nUnder our refund policy, requests made within 14 calendar days of the charge date are eligible for a full refund. Since you upgraded 5 days ago, your request falls within that window.\n\nI'm not able to process refunds directly \u2014 that has to be reviewed and completed by one of our support managers through the billing system. I've flagged your request for their review, and they'll follow up with you on the outcome.\n\nThanks for your patience in the meantime.\n\nBest,\nLoopwise Support",
     "citations": [
-      "data/kb/refund_policy.md"
+      "refund_policy.md item 1: 'Full refunds are available if requested within 14 calendar days of the charge date, for any reason.' \u2014 supports eligibility statement based on the 5-day-old charge.",
+      "refund_policy.md item 6: 'A support agent (human or automated) may confirm the policy and check the charge date, but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager through the billing system.' \u2014 supports framing the refund as pending manager review/execution rather than approved or guaranteed."
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "Both citations are accurate (item 1 and item 6 of refund_policy.md) and the reply correctly explains policy without approving or promising the refund itself, deferring to a manager for eligibility and processing; classifier's needs_human_approval=True is retained as this is a refund request within the policy-sensitive category."
+    "notes": "Both citations are accurate and directly support the reply's claims; the reply correctly states 14-day eligibility without approving or promising the refund, deferring execution to a manager as policy requires, and maintains a professional tone."
   },
   "redraft_attempts": 1,
   "final_needs_human_approval": true,
-  "reply": "Hi, thanks for reaching out, and sorry to hear the Team plan wasn't the right fit.\n\nOur refund policy allows full refunds when requested within 14 calendar days of the charge date. Since I'm not able to approve or process refunds myself, I've escalated your request to a member of our support management team. They'll check your charge date against the policy and take care of processing the refund if it qualifies.\n\nYou should hear back from them shortly. Thanks for your patience in the meantime!\n\n**Citations:**\n- \"Our refund policy allows full refunds when requested within 14 calendar days of the charge date\" \u2014 data/kb/refund_policy.md, item 1\n- \"I'm not able to approve or process refunds myself... escalated to a member of our support management team... they'll check your charge date... and take care of processing the refund\" \u2014 data/kb/refund_policy.md, item 6 (\"A support agent... may confirm the policy and check the charge date, but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager through the billing system.\")",
+  "reply": "Hi,\n\nThanks for reaching out, and sorry to hear the Team plan wasn't the right fit.\n\nUnder our refund policy, requests made within 14 calendar days of the charge date are eligible for a full refund. Since you upgraded 5 days ago, your request falls within that window.\n\nI'm not able to process refunds directly \u2014 that has to be reviewed and completed by one of our support managers through the billing system. I've flagged your request for their review, and they'll follow up with you on the outcome.\n\nThanks for your patience in the meantime.\n\nBest,\nLoopwise Support",
   "citations": [
-    "data/kb/refund_policy.md"
+    "refund_policy.md item 1: 'Full refunds are available if requested within 14 calendar days of the charge date, for any reason.' \u2014 supports eligibility statement based on the 5-day-old charge.",
+    "refund_policy.md item 6: 'A support agent (human or automated) may confirm the policy and check the charge date, but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager through the billing system.' \u2014 supports framing the refund as pending manager review/execution rather than approved or guaranteed."
   ]
 }

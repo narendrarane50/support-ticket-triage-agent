@@ -4,27 +4,27 @@
     "category": "billing_question",
     "needs_human_approval": true,
     "confidence": "high",
-    "reason": "The KB explicitly states that two identical charges on the same day is a billing error that must be escalated to a human rather than resolved by the agent."
+    "reason": "The KB explicitly states that two identical charges on the same day is a billing error that must be escalated rather than resolved by the agent."
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "Hi,\n\nThanks for flagging this, and I'm sorry for the trouble. Two charges of the exact same amount on the exact same day is treated as a billing error on our end, not a normal double-charge scenario like a proration \u2014 so I've escalated this to our billing team to investigate and correct rather than handling it automatically.\n\nIn the meantime, it may help to check Settings > Billing > Invoices to confirm both charges appear there and see if they show as separate line items \u2014 but based on what you've described, this looks like the same-day/same-amount case that requires a human to review and resolve. Someone from our team will follow up with you directly on the next steps for correcting the charge.\n\nThanks for your patience.",
+    "reply": "Hi,\n\nThanks for flagging this, and I'm sorry for the trouble. Two charges of the exact same amount on the exact same day is not expected behavior for your Team plan billing, and it's not something I'm able to resolve directly from here \u2014 I've escalated your case to our billing team so they can investigate the duplicate charge and take the appropriate action on your account.\n\nIn the meantime, you can view both charges under Settings > Billing > Invoices to confirm the details (dates, amounts, and line items) \u2014 that record will help our billing team look into this faster.\n\nYou'll hear from us as soon as we have an update. Thanks for your patience.\n\nBest,\nLoopwise Support",
     "citations": [
-      "data/kb/billing_faq.md:18",
-      "data/kb/refund_policy.md:8"
+      "data/kb/billing_faq.md: \"If the two charges are for the exact same amount on the exact same day, that is a billing error and should be escalated, not resolved by the agent.\" (Q: I was charged twice this month, what happened?)",
+      "data/kb/billing_faq.md: \"Settings > Billing > Invoices \u2014 each charge should correspond to a separate line item\" (Q: I was charged twice this month, what happened? / Q: How do I get an invoice/receipt?)"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "Both citations (billing_faq.md:18 on same-day/same-amount charges as escalation-worthy, refund_policy.md:8 on never promising/approving refunds) are accurate and support the claims; the reply only explains policy and escalates without promising a refund amount, and tone is professional, so it passes with the classifier's needs_human_approval=True left unchanged."
+    "notes": "Both citations are accurate and directly support the claims; reply correctly escalates without promising any refund/discount, and professional tone is maintained."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": true,
-  "reply": "Hi,\n\nThanks for flagging this, and I'm sorry for the trouble. Two charges of the exact same amount on the exact same day is treated as a billing error on our end, not a normal double-charge scenario like a proration \u2014 so I've escalated this to our billing team to investigate and correct rather than handling it automatically.\n\nIn the meantime, it may help to check Settings > Billing > Invoices to confirm both charges appear there and see if they show as separate line items \u2014 but based on what you've described, this looks like the same-day/same-amount case that requires a human to review and resolve. Someone from our team will follow up with you directly on the next steps for correcting the charge.\n\nThanks for your patience.",
+  "reply": "Hi,\n\nThanks for flagging this, and I'm sorry for the trouble. Two charges of the exact same amount on the exact same day is not expected behavior for your Team plan billing, and it's not something I'm able to resolve directly from here \u2014 I've escalated your case to our billing team so they can investigate the duplicate charge and take the appropriate action on your account.\n\nIn the meantime, you can view both charges under Settings > Billing > Invoices to confirm the details (dates, amounts, and line items) \u2014 that record will help our billing team look into this faster.\n\nYou'll hear from us as soon as we have an update. Thanks for your patience.\n\nBest,\nLoopwise Support",
   "citations": [
-    "data/kb/billing_faq.md:18",
-    "data/kb/refund_policy.md:8"
+    "data/kb/billing_faq.md: \"If the two charges are for the exact same amount on the exact same day, that is a billing error and should be escalated, not resolved by the agent.\" (Q: I was charged twice this month, what happened?)",
+    "data/kb/billing_faq.md: \"Settings > Billing > Invoices \u2014 each charge should correspond to a separate line item\" (Q: I was charged twice this month, what happened? / Q: How do I get an invoice/receipt?)"
   ]
 }
