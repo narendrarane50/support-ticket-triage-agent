@@ -83,6 +83,13 @@ python3 src/build_dashboard.py
 ```
 Writes `outputs/dashboard.html` from whatever is currently in `outputs/agent/` and `outputs/baseline/` — a static, self-contained ticket review queue for a human support lead. Open it directly in a browser (`open outputs/dashboard.html` on macOS); no server or dependency needed. Free to (re)run any time after the pipeline/baseline have produced output — it only reads existing files, it makes no `claude -p` calls itself.
 
+## Run one ad-hoc ticket live (for demos)
+
+```
+python3 src/demo_ticket.py --subject "Your subject" --body "Your ticket text"
+```
+Or run it with no arguments and it prompts for the subject/body interactively. Runs the exact same `run_pipeline.run_ticket()` logic as the real evaluation, on a ticket you type in rather than one from `data/tickets/eval_set.json`, with clean labeled terminal output per stage (classifier → drafter → verifier → final) instead of raw JSON. Nothing is written to `outputs/agent/` or the eval set -- this is a demo tool, not part of the measured evaluation, useful for showing the pipeline handle a ticket it has never seen before.
+
 ## Run the evaluation
 
 ```
