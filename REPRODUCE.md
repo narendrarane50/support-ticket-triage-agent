@@ -1,18 +1,28 @@
 # Reproduction Guide
 
+## Before you start: what this actually requires
+
+Running any of this live requires **some Anthropic account** — either a Claude subscription (for `claude login`) or API console credits (for `ANTHROPIC_API_KEY`). There's no way around that; this project is testing Claude's own behavior. A minimal reproduction (baseline + pipeline + evaluate, skipping the two experiment scripts and reliability checks) costs on the order of **$1-2** and takes a few minutes. Total spend across all 561 `claude -p` calls made during this project's entire development (every experiment, retry, and reliability check, not just one clean run) was **$24.98** (`sum(cli_metadata.total_cost_usd across outputs/trajectories/*.json)`); you don't need to reproduce anywhere near that to verify the headline result.
+
+**If you don't have an Anthropic account, or don't want to spend the money**: every output in this repo is already real and committed — `outputs/eval_results.md`, `outputs/reliability_check.md`, and all 561 raw trajectory files in `outputs/trajectories/` (full prompts, tool calls, and responses for every `claude -p` call made). You can verify every claim in `README.md` and `CHANGELOG.md` by reading the cited trajectory files directly, without running anything. `TRAJECTORIES.md` is a curated starting point for this.
+
 ## Prerequisites
 
-- Python 3.9+ (stdlib only, no pip packages required).
-- The **Claude Code CLI** (`claude`), authenticated:
+- Python 3.9+ (stdlib only, no pip packages required). Windows: use WSL or adjust `export`/`set` syntax below accordingly.
+- The **Claude Code CLI** (`claude`), authenticated one of two ways:
   ```
   npm install -g @anthropic-ai/claude-code
-  claude login
+  claude login          # OAuth via a Claude subscription, opens a browser
   ```
-  The scripts look for `claude` on `PATH` first. If you're running inside an environment where the CLI isn't on `PATH` but a working binary exists elsewhere (e.g. bundled with a Claude Code editor extension), set:
+  or, if you have API console credits instead of a subscription:
+  ```
+  export ANTHROPIC_API_KEY=sk-ant-...
+  ```
+  Either is sufficient — the scripts don't care which. The scripts look for `claude` on `PATH` first. If you're running inside an environment where the CLI isn't on `PATH` but a working binary exists elsewhere (e.g. bundled with a Claude Code editor extension), set:
   ```
   export CLAUDE_CODE_EXECPATH=/path/to/claude
   ```
-- No `ANTHROPIC_API_KEY` is required — auth is whatever your local `claude` CLI is already logged in with (subscription or API key, your choice).
+- **Version/model drift**: `npm install -g` installs whatever is current when you run it, which may differ from Claude Code CLI `2.1.251` (used to produce the numbers in this repo) and may default to a different model. Directionally similar results are expected; exact numbers are not guaranteed to match — this is itself the subject of `outputs/reliability_check.md`. Pin a specific model with `--model` inside `src/claude_cli.py` if you need tighter reproducibility.
 
 ## Setup
 
@@ -79,8 +89,6 @@ Judges every baseline/agent/iteration-1/merged-experiment reply with the same ru
 - `outputs/reliability_check.md` — hand-written summary of the repeated-trial escalation-classifier check (see above); the raw supporting calls are in `outputs/trajectories/`.
 - `outputs/trajectories/*.json` — every single `claude -p` call made across all of the above, each with its full prompt, CLI args, stdout/stderr, duration, and cost. These are the agent trajectories for the hackathon's deliverable #4.
 
-## Runtime & cost (actually measured on my run)
+## Runtime & cost (actually measured)
 
-The full run — baseline + iteration-1 experiment + final pipeline + merged-experiment + evaluate, all 12 tickets — made **122 total `claude -p` calls** at **$5.59 total ($0.046/call average)**, in about 20-25 minutes wall clock. Cost varies with model/cache state; see `cli_metadata.total_cost_usd` in any file under `outputs/trajectories/` for the exact figure of that call, or `outputs/eval_results.md` for the per-ticket cost rollup of just baseline vs. the final pipeline (**$0.095/ticket baseline vs. $0.131/ticket agent**). Running only the baseline + final pipeline + evaluate (skipping the two experiment scripts) is enough to reproduce the headline comparison and costs well under half of the above.
-
-Model/version used: whatever `claude -p` resolves to by default on the machine it's run on (this run used Claude Code CLI `2.1.251`). Pin a specific model with `--model` inside `src/claude_cli.py` if you need exact reproducibility across machines/time.
+A clean run of just baseline + pipeline + evaluate (the minimal path to the headline comparison) is roughly 40-50 `claude -p` calls, a few minutes, and about **$0.08/ticket baseline vs. $0.16/ticket agent** (current measured figures, see `outputs/eval_results.md` for the exact per-run numbers — these move slightly run to run, see the reliability note above). Adding the two experiment scripts and the reliability checks roughly doubles the call count and cost. Cost varies with model/cache state; see `cli_metadata.total_cost_usd` in any file under `outputs/trajectories/` for the exact figure of any individual call.
