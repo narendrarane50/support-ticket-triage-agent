@@ -66,11 +66,15 @@ def main():
     print()
     line()
     print(f"STEP 2 — DRAFTER" + (f"  (redrafted {result['redraft_attempts']}x after verifier feedback)" if result["redraft_attempts"] else ""))
+    print("(the customer would receive exactly the text below, and nothing else)")
     line()
     print(result["reply"])
+    line()
     if result["citations"]:
-        print()
-        print("Citations:", ", ".join(result["citations"]))
+        print("^ that block above is the entire customer-facing message. Everything below is")
+        print("  internal-only, shown here for verification, and is NOT part of the reply:")
+        for c in result["citations"]:
+            print(f"  - {c}")
 
     ver = result["verification"]
     print()
