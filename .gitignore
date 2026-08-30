@@ -1,3 +1,9 @@
 __pycache__/
 *.pyc
 .claude/
+
+# This project doesn't use .env files (see REPRODUCE.md -- auth is via `claude
+# login` or a plain exported ANTHROPIC_API_KEY, never a file), but this stays
+# here as a safety net in case one gets created locally out of habit.
+.env
+.env.*
