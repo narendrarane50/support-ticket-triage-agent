@@ -4,21 +4,25 @@
     "category": "account_access",
     "needs_human_approval": true,
     "confidence": "low",
-    "reason": "The KB has no documented guidance on password-reset email delivery failures, so this account-access issue can't be confidently resolved from KB alone."
+    "reason": "The KB has no coverage of password reset or login/lockout issues, so there's no documented fix to confidently route the customer to."
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "{\"reply\": \"I'm sorry for the trouble, especially with a deadline today. I want to make sure this gets fixed for you as quickly as possible. I don't have documented guidance on this specific password-reset delivery issue, so I'm escalating your ticket to our support team right now so a human agent can look into your account directly and help restore your access. In the meantime, could you double-check your spam/junk folder and confirm the email address you're using matches the one on your workspace account? That will help speed up the investigation. You'll hear back from our team shortly.\", \"citations\": []}",
-    "citations": []
+    "reply": "Hi there,\n\nThanks for reaching out, and sorry for the trouble this is causing with your team's deadline today.\n\nI wasn't able to find a documented fix for missing password reset emails or account lockouts in our current help resources, so I don't want to guess and risk giving you the wrong steps. I'm escalating your case to a member of our support team who can look into your account directly and help get you back in as quickly as possible.\n\nThank you for your patience \u2014 someone will follow up with you shortly.\n\nBest,\nLoopwise Support",
+    "citations": [
+      "No KB claim made \u2014 data/kb/ (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) contains no content on password reset, login, or account lockout issues; confirmed via grep with no matches. Reply therefore contains no factual/policy claims requiring citation and instead escalates to a human, consistent with needs_human_approval=True."
+    ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "No KB entries cover password-reset email delivery, the draft correctly cites nothing and avoids fabricating policy, makes no refund/discount/account promises, and appropriately escalates with a professional tone, so the classifier's needs_human_approval=True stands unchanged."
+    "notes": "Reply makes no unsupported claims, cites no fabricated KB content (verified no login/password/lockout coverage exists), makes no refund/account promises, and appropriately escalates to a human, consistent with the classifier's needs_human_approval=True."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": true,
-  "reply": "{\"reply\": \"I'm sorry for the trouble, especially with a deadline today. I want to make sure this gets fixed for you as quickly as possible. I don't have documented guidance on this specific password-reset delivery issue, so I'm escalating your ticket to our support team right now so a human agent can look into your account directly and help restore your access. In the meantime, could you double-check your spam/junk folder and confirm the email address you're using matches the one on your workspace account? That will help speed up the investigation. You'll hear back from our team shortly.\", \"citations\": []}",
-  "citations": []
+  "reply": "Hi there,\n\nThanks for reaching out, and sorry for the trouble this is causing with your team's deadline today.\n\nI wasn't able to find a documented fix for missing password reset emails or account lockouts in our current help resources, so I don't want to guess and risk giving you the wrong steps. I'm escalating your case to a member of our support team who can look into your account directly and help get you back in as quickly as possible.\n\nThank you for your patience \u2014 someone will follow up with you shortly.\n\nBest,\nLoopwise Support",
+  "citations": [
+    "No KB claim made \u2014 data/kb/ (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) contains no content on password reset, login, or account lockout issues; confirmed via grep with no matches. Reply therefore contains no factual/policy claims requiring citation and instead escalates to a human, consistent with needs_human_approval=True."
+  ]
 }

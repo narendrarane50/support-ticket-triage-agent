@@ -4,25 +4,27 @@
     "category": "bug_report",
     "needs_human_approval": false,
     "confidence": "high",
-    "reason": "KI-122 in known_issues.md documents this exact scenario (bulk task move drops custom field values when the destination board lacks a matching field) as expected, non-bug behavior, so the KB clearly answers the customer's question."
+    "reason": "KI-122 in known_issues.md documents that bulk-moving tasks to a board without a matching custom field silently drops that field's values, which directly explains this ticket."
   },
   "classifier_effective_approval": false,
   "draft": {
-    "reply": "{\"reply\": \"Thanks for reaching out, and sorry for the confusing experience. What you're seeing is expected behavior tied to a known issue (KI-122): when tasks are bulk-moved to a different board, custom field values are dropped if the destination board doesn't already have a matching custom field. In this case, since the destination board didn't have a 'Priority Score' field set up, that data was not carried over during the move. To avoid this on future bulk moves, we'd recommend confirming that the destination board has a matching custom field (same name/type) configured before moving tasks over. If you'd like, you can recreate the 'Priority Score' field on the new board and re-enter the values manually. Let us know if you have any other questions!\", \"citations\": [\"known_issues.md#KI-122\"]}",
+    "reply": "Hi,\n\nThanks for reaching out, and sorry for the confusion this caused.\n\nWhat you're seeing is expected behavior tied to how bulk moves handle custom fields: when tasks are bulk-moved to a board that doesn't have a matching custom field, the values for that field are dropped for the moved tasks. In your case, the destination board doesn't have a matching \"Priority Score\" custom field, which is why it appears empty on all 20 tasks.\n\nGoing forward, we'd recommend confirming that a destination board has the matching custom field set up before doing a bulk move, to avoid losing those values again.\n\nLet us know if you have any other questions.",
     "citations": [
-      "known_issues.md#KI-122"
+      "data/kb/known_issues.md - KI-122: Bulk task move between boards can silently drop custom field values if the destination board doesn't have a matching custom field. Not a bug \u2014 expected behavior \u2014 but a common source of confusion. Recommend confirming the destination board has matching custom fields before a bulk move."
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": false,
-    "problems": [],
-    "notes": "Citation KI-122 is accurate and fully supports the claim; reply stays within documented policy, makes no refund/account commitments, and is professionally toned."
+    "problems": [
+      "Minor: the reply states as settled fact that 'the destination board doesn't have a matching Priority Score custom field,' but the agent has no way to verify the customer's specific board configuration \u2014 this should be phrased as the likely cause per KI-122 rather than a confirmed diagnosis."
+    ],
+    "notes": "Citation KI-122 exists verbatim in known_issues.md and genuinely supports the claim; reply makes no refund/discount/account promises and stays within documented policy, with professional tone, so it passes with no override to human approval."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": false,
-  "reply": "{\"reply\": \"Thanks for reaching out, and sorry for the confusing experience. What you're seeing is expected behavior tied to a known issue (KI-122): when tasks are bulk-moved to a different board, custom field values are dropped if the destination board doesn't already have a matching custom field. In this case, since the destination board didn't have a 'Priority Score' field set up, that data was not carried over during the move. To avoid this on future bulk moves, we'd recommend confirming that the destination board has a matching custom field (same name/type) configured before moving tasks over. If you'd like, you can recreate the 'Priority Score' field on the new board and re-enter the values manually. Let us know if you have any other questions!\", \"citations\": [\"known_issues.md#KI-122\"]}",
+  "reply": "Hi,\n\nThanks for reaching out, and sorry for the confusion this caused.\n\nWhat you're seeing is expected behavior tied to how bulk moves handle custom fields: when tasks are bulk-moved to a board that doesn't have a matching custom field, the values for that field are dropped for the moved tasks. In your case, the destination board doesn't have a matching \"Priority Score\" custom field, which is why it appears empty on all 20 tasks.\n\nGoing forward, we'd recommend confirming that a destination board has the matching custom field set up before doing a bulk move, to avoid losing those values again.\n\nLet us know if you have any other questions.",
   "citations": [
-    "known_issues.md#KI-122"
+    "data/kb/known_issues.md - KI-122: Bulk task move between boards can silently drop custom field values if the destination board doesn't have a matching custom field. Not a bug \u2014 expected behavior \u2014 but a common source of confusion. Recommend confirming the destination board has matching custom fields before a bulk move."
   ]
 }

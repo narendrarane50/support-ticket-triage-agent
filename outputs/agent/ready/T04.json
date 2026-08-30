@@ -4,25 +4,25 @@
     "category": "feature_request",
     "needs_human_approval": false,
     "confidence": "high",
-    "reason": "This is a simple feature request for dark mode with no refund, fraud, discount, or policy exception involved, so it can be answered with a standard 'we'll pass this to product' reply without KB coverage."
+    "reason": "This is a simple feature request for dark mode with no refund, fraud, discount, or policy-exception element, so it can be answered directly (e.g., logged as feedback) without human approval."
   },
   "classifier_effective_approval": false,
   "draft": {
-    "reply": "{\"reply\": \"Thanks for the suggestion! Dark mode isn't available in Loopwise today, but I really appreciate you flagging it -- eye strain feedback like this is exactly what helps us prioritize. I've passed your request along to our product team for consideration in a future update. We don't have a timeline to share right now, but if dark mode does get added, it'll be announced through our product updates. Thanks again for taking the time to write in!\", \"citations\": []}",
+    "reply": "Hi there,\n\nThanks for reaching out, and glad you're finding Loopwise useful enough to want to stare at it more comfortably! Dark mode isn't something we have documented details to share on right now, but I've logged your interest as feedback so it's on record.\n\nIf we have any updates on this front, we'll be sure to let you know. In the meantime, if there's anything else I can help with, just let me know.\n\nThanks,\nLoopwise Support",
     "citations": [
-      "No KB citation applicable \u2014 feature request with no documented policy/fact to reference"
+      "No KB claim made \u2014 searched data/kb/product_faq.md, data/kb/billing_faq.md, data/kb/refund_policy.md, and data/kb/known_issues.md for 'dark mode', 'theme', 'feature request', and 'roadmap'; no matches found, so no factual or policy statement is included in the reply."
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": false,
     "problems": [],
-    "notes": "No dark mode content exists in the KB, the reply makes no fabricated citations or policy claims, and it commits to nothing beyond passing along feedback, so it is a clean, professional response appropriately requiring no citations."
+    "notes": "Reply makes no unsupported factual/policy claims, cites no fabricated KB content (correctly notes no KB coverage), promises no refund/discount/action, and keeps a professional tone; no reason to override classifier's needs_human_approval=False."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": false,
-  "reply": "{\"reply\": \"Thanks for the suggestion! Dark mode isn't available in Loopwise today, but I really appreciate you flagging it -- eye strain feedback like this is exactly what helps us prioritize. I've passed your request along to our product team for consideration in a future update. We don't have a timeline to share right now, but if dark mode does get added, it'll be announced through our product updates. Thanks again for taking the time to write in!\", \"citations\": []}",
+  "reply": "Hi there,\n\nThanks for reaching out, and glad you're finding Loopwise useful enough to want to stare at it more comfortably! Dark mode isn't something we have documented details to share on right now, but I've logged your interest as feedback so it's on record.\n\nIf we have any updates on this front, we'll be sure to let you know. In the meantime, if there's anything else I can help with, just let me know.\n\nThanks,\nLoopwise Support",
   "citations": [
-    "No KB citation applicable \u2014 feature request with no documented policy/fact to reference"
+    "No KB claim made \u2014 searched data/kb/product_faq.md, data/kb/billing_faq.md, data/kb/refund_policy.md, and data/kb/known_issues.md for 'dark mode', 'theme', 'feature request', and 'roadmap'; no matches found, so no factual or policy statement is included in the reply."
   ]
 }

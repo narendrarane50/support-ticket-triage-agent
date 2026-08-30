@@ -4,25 +4,31 @@
     "category": "refund_request",
     "needs_human_approval": true,
     "confidence": "high",
-    "reason": "Customer explicitly demands a refund 40 days after charge (outside the 14-day policy window) and threatens a chargeback, both of which require mandatory human/manager escalation per refund_policy.md."
+    "reason": "The customer is explicitly requesting a full refund and threatening a chargeback, both of which require human handling regardless of KB content."
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "{\"reply\": \"Thank you for reaching out, and I'm sorry for the frustration this has caused. I want to make sure I give you accurate information: our refund policy provides full refunds only for requests made within 14 calendar days of the charge date. Since your charge was made 40 days ago, it falls outside that standard refund window, so I'm not able to process a standard refund myself. I also don't see a policy allowing refunds \\\"anytime\\\" -- I want to correct that so there's no confusion. That said, because your request involves a request made outside the 14-day window along with a mention of disputing/charging back the payment, I'm escalating this immediately to a member of our support management team, who can review your case and determine whether a goodwill exception is possible. They will follow up with you directly. I appreciate your patience while this gets reviewed.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#2\", \"refund_policy.md#5\", \"refund_policy.md#6\"]}",
+    "reply": "Hi there,\n\nThanks for reaching out, and I'm sorry for the frustration around this charge.\n\nI want to make sure you have the accurate policy: refunds are available if requested within 14 calendar days of the charge date, not \"anytime\" \u2014 I don't want to leave you with the wrong impression there. Since your charge was 40 days ago, it falls outside that standard refund window, so a refund can't be processed automatically as a routine request.\n\nThat said, because you've raised a chargeback concern, I'm escalating this ticket to a member of our team for direct human review \u2014 this isn't something I can resolve or approve myself, but someone will follow up with you shortly to look into it further.\n\nThanks for your patience.",
     "citations": [
-      "data/kb/refund_policy.md"
+      "data/kb/refund_policy.md \u2014 item 1: full refunds available within 14 calendar days of the charge date, for any reason.",
+      "data/kb/refund_policy.md \u2014 item 2: requests made after 14 calendar days are not eligible for a standard refund; only a manager can approve a goodwill exception.",
+      "data/kb/refund_policy.md \u2014 item 5: any refund request including a chargeback/legal threat must be escalated to a human immediately, regardless of the 14-day window.",
+      "data/kb/refund_policy.md \u2014 item 6: a support agent (human or automated) may confirm policy and check charge date, but must never promise or approve a refund; only a manager executes refunds."
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "All four citations (refund_policy.md #1, #2, #5, #6) exist and accurately support the reply's claims; the reply correctly declines to approve a refund itself and escalates per policy #5 due to the chargeback threat, consistent with the classifier's needs_human_approval=True."
+    "notes": "All citations are accurate and support their claims, the reply correctly states the 14-day policy without promising or approving a refund, and appropriately escalates due to the chargeback threat per item 5."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": true,
-  "reply": "{\"reply\": \"Thank you for reaching out, and I'm sorry for the frustration this has caused. I want to make sure I give you accurate information: our refund policy provides full refunds only for requests made within 14 calendar days of the charge date. Since your charge was made 40 days ago, it falls outside that standard refund window, so I'm not able to process a standard refund myself. I also don't see a policy allowing refunds \\\"anytime\\\" -- I want to correct that so there's no confusion. That said, because your request involves a request made outside the 14-day window along with a mention of disputing/charging back the payment, I'm escalating this immediately to a member of our support management team, who can review your case and determine whether a goodwill exception is possible. They will follow up with you directly. I appreciate your patience while this gets reviewed.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#2\", \"refund_policy.md#5\", \"refund_policy.md#6\"]}",
+  "reply": "Hi there,\n\nThanks for reaching out, and I'm sorry for the frustration around this charge.\n\nI want to make sure you have the accurate policy: refunds are available if requested within 14 calendar days of the charge date, not \"anytime\" \u2014 I don't want to leave you with the wrong impression there. Since your charge was 40 days ago, it falls outside that standard refund window, so a refund can't be processed automatically as a routine request.\n\nThat said, because you've raised a chargeback concern, I'm escalating this ticket to a member of our team for direct human review \u2014 this isn't something I can resolve or approve myself, but someone will follow up with you shortly to look into it further.\n\nThanks for your patience.",
   "citations": [
-    "data/kb/refund_policy.md"
+    "data/kb/refund_policy.md \u2014 item 1: full refunds available within 14 calendar days of the charge date, for any reason.",
+    "data/kb/refund_policy.md \u2014 item 2: requests made after 14 calendar days are not eligible for a standard refund; only a manager can approve a goodwill exception.",
+    "data/kb/refund_policy.md \u2014 item 5: any refund request including a chargeback/legal threat must be escalated to a human immediately, regardless of the 14-day window.",
+    "data/kb/refund_policy.md \u2014 item 6: a support agent (human or automated) may confirm policy and check charge date, but must never promise or approve a refund; only a manager executes refunds."
   ]
 }

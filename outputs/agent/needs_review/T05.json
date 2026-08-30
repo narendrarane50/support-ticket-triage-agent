@@ -4,11 +4,11 @@
     "category": "refund_request",
     "needs_human_approval": true,
     "confidence": "high",
-    "reason": "The customer is explicitly requesting a full refund, which per policy must always be handled by a human manager."
+    "reason": "This is an explicit refund request, which per policy must always be executed by a human manager rather than an agent."
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "{\"reply\": \"Hi, thanks for reaching out. Our refund policy allows full refunds for requests made within 14 calendar days of the charge date, and your Team plan upgrade was 5 days ago, so it falls within that window. I'm not able to approve or process refunds myself, though -- that has to be reviewed and completed by one of our support managers through our billing system. I've flagged your request for a manager to look into, and they'll follow up with you on the outcome.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#6\"]}",
+    "reply": "Hi, thanks for reaching out, and sorry to hear the Team plan wasn't the right fit.\n\nOur refund policy allows full refunds when requested within 14 calendar days of the charge date. Since I'm not able to approve or process refunds myself, I've escalated your request to a member of our support management team. They'll check your charge date against the policy and take care of processing the refund if it qualifies.\n\nYou should hear back from them shortly. Thanks for your patience in the meantime!\n\n**Citations:**\n- \"Our refund policy allows full refunds when requested within 14 calendar days of the charge date\" \u2014 data/kb/refund_policy.md, item 1\n- \"I'm not able to approve or process refunds myself... escalated to a member of our support management team... they'll check your charge date... and take care of processing the refund\" \u2014 data/kb/refund_policy.md, item 6 (\"A support agent... may confirm the policy and check the charge date, but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager through the billing system.\")",
     "citations": [
       "data/kb/refund_policy.md"
     ]
@@ -17,11 +17,11 @@
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "Citations #1 and #6 in refund_policy.md accurately support the eligibility statement and the agent's refusal to approve/execute the refund itself; reply correctly defers final action to a manager, so it passes and retains the classifier's needs_human_approval=true."
+    "notes": "Both citations are accurate (item 1 and item 6 of refund_policy.md) and the reply correctly explains policy without approving or promising the refund itself, deferring to a manager for eligibility and processing; classifier's needs_human_approval=True is retained as this is a refund request within the policy-sensitive category."
   },
   "redraft_attempts": 1,
   "final_needs_human_approval": true,
-  "reply": "{\"reply\": \"Hi, thanks for reaching out. Our refund policy allows full refunds for requests made within 14 calendar days of the charge date, and your Team plan upgrade was 5 days ago, so it falls within that window. I'm not able to approve or process refunds myself, though -- that has to be reviewed and completed by one of our support managers through our billing system. I've flagged your request for a manager to look into, and they'll follow up with you on the outcome.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#6\"]}",
+  "reply": "Hi, thanks for reaching out, and sorry to hear the Team plan wasn't the right fit.\n\nOur refund policy allows full refunds when requested within 14 calendar days of the charge date. Since I'm not able to approve or process refunds myself, I've escalated your request to a member of our support management team. They'll check your charge date against the policy and take care of processing the refund if it qualifies.\n\nYou should hear back from them shortly. Thanks for your patience in the meantime!\n\n**Citations:**\n- \"Our refund policy allows full refunds when requested within 14 calendar days of the charge date\" \u2014 data/kb/refund_policy.md, item 1\n- \"I'm not able to approve or process refunds myself... escalated to a member of our support management team... they'll check your charge date... and take care of processing the refund\" \u2014 data/kb/refund_policy.md, item 6 (\"A support agent... may confirm the policy and check the charge date, but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager through the billing system.\")",
   "citations": [
     "data/kb/refund_policy.md"
   ]

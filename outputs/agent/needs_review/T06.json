@@ -4,25 +4,25 @@
     "category": "refund_request",
     "needs_human_approval": true,
     "confidence": "high",
-    "reason": "Customer is explicitly requesting a refund, which per policy must always be handled by a human manager."
+    "reason": "Customer is explicitly requesting a refund for the annual plan, which per policy must always be handled by a human manager."
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "{\"reply\": \"Thanks for reaching out, and sorry to hear the annual plan hasn't been a good fit so far. I want to be upfront about our refund policy: full refunds are available if requested within 14 calendar days of the charge date. Since your charge was 20 days ago, it falls outside that standard refund window, and for annual plans this 14-day window is based on the charge date itself (not prorated for unused months). That said, requests made after the 14-day window can still be reviewed as a goodwill exception, but that decision can only be made by a support manager -- not by me. I'm escalating your request now so a manager can review it and follow up with you directly on next steps.\", \"citations\": [\"refund_policy.md#full-refunds-14-day-window\", \"refund_policy.md#after-14-days-goodwill-exception-manager-only\", \"refund_policy.md#annual-plans-charge-date-no-proration\"]}",
+    "reply": "Hi,\n\nThanks for reaching out, and sorry to hear the annual plan hasn't been getting much use.\n\nOur standard refund policy allows full refunds for requests made within 14 calendar days of the charge date. Since your annual plan was charged 20 days ago, this falls outside that standard window, so it isn't eligible for an automatic refund. Refund requests made after the 14-day window can still be approved as a goodwill exception, but that has to be reviewed and approved by a support manager \u2014 it's not something I'm able to approve directly.\n\nI'm escalating your request to a manager on our team now, and they'll follow up with you directly to review it. Thanks for your patience in the meantime.\n\n---\nSources for factual/policy claims:\n- \"Full refunds are available if requested within 14 calendar days of the charge date\" \u2014 data/kb/refund_policy.md, item 1\n- \"Requests made after 14 calendar days are not eligible for a standard refund; may only be approved as a goodwill exception by a support manager, never by a first-line agent or automated system\" \u2014 data/kb/refund_policy.md, item 2\n- \"For annual plans, the 14-day window applies to the annual charge date, not the original signup date\" \u2014 data/kb/refund_policy.md, item 3\n- \"A support agent (human or automated) may confirm the policy... but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager.\" \u2014 data/kb/refund_policy.md, item 6",
     "citations": [
-      "refund_policy.md"
+      "data/kb/refund_policy.md"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "All three citation anchors accurately reflect refund_policy.md content (14-day window, no-proration for annual plans, manager-only goodwill exception), no refund is promised or approved (properly escalated to a manager), and tone is professional; classifier's needs_human_approval=True stands."
+    "notes": "All citations are accurate and support their claims, the reply correctly declines to approve/promise a refund and escalates per policy, tone is professional, and the classifier's needs_human_approval=True is retained since nothing in the draft warrants overriding it."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": true,
-  "reply": "{\"reply\": \"Thanks for reaching out, and sorry to hear the annual plan hasn't been a good fit so far. I want to be upfront about our refund policy: full refunds are available if requested within 14 calendar days of the charge date. Since your charge was 20 days ago, it falls outside that standard refund window, and for annual plans this 14-day window is based on the charge date itself (not prorated for unused months). That said, requests made after the 14-day window can still be reviewed as a goodwill exception, but that decision can only be made by a support manager -- not by me. I'm escalating your request now so a manager can review it and follow up with you directly on next steps.\", \"citations\": [\"refund_policy.md#full-refunds-14-day-window\", \"refund_policy.md#after-14-days-goodwill-exception-manager-only\", \"refund_policy.md#annual-plans-charge-date-no-proration\"]}",
+  "reply": "Hi,\n\nThanks for reaching out, and sorry to hear the annual plan hasn't been getting much use.\n\nOur standard refund policy allows full refunds for requests made within 14 calendar days of the charge date. Since your annual plan was charged 20 days ago, this falls outside that standard window, so it isn't eligible for an automatic refund. Refund requests made after the 14-day window can still be approved as a goodwill exception, but that has to be reviewed and approved by a support manager \u2014 it's not something I'm able to approve directly.\n\nI'm escalating your request to a manager on our team now, and they'll follow up with you directly to review it. Thanks for your patience in the meantime.\n\n---\nSources for factual/policy claims:\n- \"Full refunds are available if requested within 14 calendar days of the charge date\" \u2014 data/kb/refund_policy.md, item 1\n- \"Requests made after 14 calendar days are not eligible for a standard refund; may only be approved as a goodwill exception by a support manager, never by a first-line agent or automated system\" \u2014 data/kb/refund_policy.md, item 2\n- \"For annual plans, the 14-day window applies to the annual charge date, not the original signup date\" \u2014 data/kb/refund_policy.md, item 3\n- \"A support agent (human or automated) may confirm the policy... but must never promise a refund amount or approve a refund outright. Refunds are only executed by a manager.\" \u2014 data/kb/refund_policy.md, item 6",
   "citations": [
-    "refund_policy.md"
+    "data/kb/refund_policy.md"
   ]
 }

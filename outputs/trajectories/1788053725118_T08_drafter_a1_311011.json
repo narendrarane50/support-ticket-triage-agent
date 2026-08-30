@@ -1,0 +1,44 @@
+{
+  "call_id": "1788053725118_T08_drafter_a1_311011",
+  "label": "T08_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=billing_question, needs_human_approval=False (The customer is only asking for clarification on how the annual discount works (not requesting a refund or exception), and billing_faq.md clearly confirms annual billing includes a 20% discount versus monthly.).\n\n\nWrite only the reply text itself, exactly as the customer would receive it -- no preamble, no label like \"Draft reply:\", no markdown headers or quote blocks around it. Separately list which KB file/section each factual claim is backed by.\n\nTicket subject: Question about annual discount\nTicket body: I saw I was charged the full annual amount up front. I'm not asking for a refund, I just want to understand -- is that the plan with the 20% discount, or is the discount something else?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 8.01,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":8038,\"stop_reason\":\"tool_use\",\"session_id\":\"3ce2069f-3e3f-4f01-a5e8-1143389798b1\",\"total_cost_usd\":0.046060000000000004,\"usage\":{\"input_tokens\":4,\"cache_creation_input_tokens\":8441,\"cache_read_input_tokens\":20560,\"output_tokens\":685,\"output_tokens_details\":{\"thinking_tokens\":75},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":8441,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":579,\"cache_read_input_tokens\":14149,\"cache_creation_input_tokens\":703,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":703},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1266,\"outputTokens\":12,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.001326,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":4,\"outputTokens\":685,\"cacheReadInputTokens\":20560,\"cacheCreationInputTokens\":8441,\"webSearchRequests\":0,\"costUSD\":0.044734,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":3,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"Hi there,\\\\n\\\\nThanks for checking in! Yes, that's expected \u2014 annual plans are billed as a single upfront payment for the full year, rather than in monthly installments. That upfront annual charge is exactly what includes the 20% discount compared to paying monthly. For example, on the Team plan, monthly billing is $15/user/month, while annual billing works out to $12/user/month (billed all at once for the year) \u2014 that's the 20% savings.\\\\n\\\\nSo the discount isn't a separate charge or credit \u2014 it's already built into the lower annual rate you were charged. If you'd like to see the full breakdown, you can find your invoice under Settings > Billing > Invoices.\\\\n\\\\nLet me know if you have any other questions!\\\\n\\\\nBest,\\\\nLoopwise Support\\\",\\\"citations\\\":[\\\"data/kb/billing_faq.md \u2014 \\\\\\\"Do you offer discounts?\\\\\\\" (Annual billing gives a 20% discount versus monthly)\\\",\\\"data/kb/billing_faq.md \u2014 \\\\\\\"Plans\\\\\\\" (Team: $15/user/month monthly vs $12/user/month billed annually \u2014 the source of the 20% figure)\\\",\\\"data/kb/billing_faq.md \u2014 \\\\\\\"When am I charged?\\\\\\\" (charged on upgrade day, then monthly or annually on that same calendar day \u2014 supports explanation of upfront annual charge)\\\",\\\"data/kb/billing_faq.md \u2014 \\\\\\\"How do I get an invoice/receipt?\\\\\\\" (Settings > Billing > Invoices)\\\"]}\",\"structured_output\":{\"reply\":\"Hi there,\\n\\nThanks for checking in! Yes, that's expected \u2014 annual plans are billed as a single upfront payment for the full year, rather than in monthly installments. That upfront annual charge is exactly what includes the 20% discount compared to paying monthly. For example, on the Team plan, monthly billing is $15/user/month, while annual billing works out to $12/user/month (billed all at once for the year) \u2014 that's the 20% savings.\\n\\nSo the discount isn't a separate charge or credit \u2014 it's already built into the lower annual rate you were charged. If you'd like to see the full breakdown, you can find your invoice under Settings > Billing > Invoices.\\n\\nLet me know if you have any other questions!\\n\\nBest,\\nLoopwise Support\",\"citations\":[\"data/kb/billing_faq.md \u2014 \\\"Do you offer discounts?\\\" (Annual billing gives a 20% discount versus monthly)\",\"data/kb/billing_faq.md \u2014 \\\"Plans\\\" (Team: $15/user/month monthly vs $12/user/month billed annually \u2014 the source of the 20% figure)\",\"data/kb/billing_faq.md \u2014 \\\"When am I charged?\\\" (charged on upgrade day, then monthly or annually on that same calendar day \u2014 supports explanation of upfront annual charge)\",\"data/kb/billing_faq.md \u2014 \\\"How do I get an invoice/receipt?\\\" (Settings > Billing > Invoices)\"]},\"ttft_ms\":1681,\"type\":\"result\",\"duration_ms\":7279,\"uuid\":\"93117868-a96f-46a5-a918-b2f211609810\",\"ttft_stream_ms\":882,\"time_to_request_ms\":14,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 3,
+    "total_cost_usd": 0.046060000000000004,
+    "duration_ms": 7279,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "Hi there,\n\nThanks for checking in! Yes, that's expected \u2014 annual plans are billed as a single upfront payment for the full year, rather than in monthly installments. That upfront annual charge is exactly what includes the 20% discount compared to paying monthly. For example, on the Team plan, monthly billing is $15/user/month, while annual billing works out to $12/user/month (billed all at once for the year) \u2014 that's the 20% savings.\n\nSo the discount isn't a separate charge or credit \u2014 it's already built into the lower annual rate you were charged. If you'd like to see the full breakdown, you can find your invoice under Settings > Billing > Invoices.\n\nLet me know if you have any other questions!\n\nBest,\nLoopwise Support",
+    "citations": [
+      "data/kb/billing_faq.md \u2014 \"Do you offer discounts?\" (Annual billing gives a 20% discount versus monthly)",
+      "data/kb/billing_faq.md \u2014 \"Plans\" (Team: $15/user/month monthly vs $12/user/month billed annually \u2014 the source of the 20% figure)",
+      "data/kb/billing_faq.md \u2014 \"When am I charged?\" (charged on upgrade day, then monthly or annually on that same calendar day \u2014 supports explanation of upfront annual charge)",
+      "data/kb/billing_faq.md \u2014 \"How do I get an invoice/receipt?\" (Settings > Billing > Invoices)"
+    ]
+  }
+}

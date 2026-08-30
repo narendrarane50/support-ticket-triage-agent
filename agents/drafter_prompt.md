@@ -9,11 +9,7 @@ Use Read/Glob/Grep to find the relevant KB content before writing. Every factual
 This ticket was classified as: category={{category}}, needs_human_approval={{needs_human_approval}} ({{reason}}).
 {{feedback_block}}
 
-Respond with ONLY a JSON object (no markdown fences, no commentary) with this exact shape:
-{
-  "reply": "<the reply text you would send to the customer>",
-  "citations": ["<kb_file.md#section-or-topic>", ...]
-}
+Write only the reply text itself, exactly as the customer would receive it -- no preamble, no label like "Draft reply:", no markdown headers or quote blocks around it. Separately list which KB file/section each factual claim is backed by.
 
 Ticket subject: {{subject}}
 Ticket body: {{body}}

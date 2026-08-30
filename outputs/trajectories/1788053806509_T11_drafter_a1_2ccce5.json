@@ -1,0 +1,41 @@
+{
+  "call_id": "1788053806509_T11_drafter_a1_2ccce5",
+  "label": "T11_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=bug_report, needs_human_approval=False (This matches known issue KI-120 (mobile time entries before app v4.2 show wrong timezone) with a documented workaround, so it's not a refund, fraud/dispute, or discretionary-exception request and is clearly covered by the KB.).\n\n\nWrite only the reply text itself, exactly as the customer would receive it -- no preamble, no label like \"Draft reply:\", no markdown headers or quote blocks around it. Separately list which KB file/section each factual claim is backed by.\n\nTicket subject: Wrong timezone on mobile time entries\nTicket body: Some of my time tracking entries from the mobile app show the wrong timezone, like 5 hours off.\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 7.09,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":6959,\"stop_reason\":\"tool_use\",\"session_id\":\"2c2fb994-b699-401b-be2d-74c25d8c1d93\",\"total_cost_usd\":0.0429076,\"usage\":{\"input_tokens\":4,\"cache_creation_input_tokens\":8181,\"cache_read_input_tokens\":20558,\"output_tokens\":474,\"output_tokens_details\":{\"thinking_tokens\":30},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":8181,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":371,\"cache_read_input_tokens\":14147,\"cache_creation_input_tokens\":445,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":445},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1259,\"outputTokens\":13,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.0013239999999999999,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":4,\"outputTokens\":474,\"cacheReadInputTokens\":20558,\"cacheCreationInputTokens\":8181,\"webSearchRequests\":0,\"costUSD\":0.0415836,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":3,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"Hi,\\\\n\\\\nThanks for flagging this. This matches a known issue (KI-120): time tracking entries submitted from the mobile app before app version 4.2 can show the wrong timezone.\\\\n\\\\nThe recommended workaround is to re-submit the affected entry from the web app instead of the mobile app, which will save it with the correct timezone.\\\\n\\\\nI'd also recommend updating to the latest version of the mobile app, since this issue is tied to versions prior to 4.2.\\\\n\\\\nLet us know if you run into any further issues after re-submitting the entries.\\\\n\\\\nBest,\\\\nLoopwise Support\\\",\\\"citations\\\":[\\\"data/kb/known_issues.md \u2014 KI-120: \\\\\\\"Time tracking entries submitted from the mobile app before app version 4.2 may show the wrong timezone. Workaround: re-submit the entry from the web app.\\\\\\\" (used for: description of the issue, the version threshold, and the re-submit-from-web-app workaround)\\\"]}\",\"structured_output\":{\"reply\":\"Hi,\\n\\nThanks for flagging this. This matches a known issue (KI-120): time tracking entries submitted from the mobile app before app version 4.2 can show the wrong timezone.\\n\\nThe recommended workaround is to re-submit the affected entry from the web app instead of the mobile app, which will save it with the correct timezone.\\n\\nI'd also recommend updating to the latest version of the mobile app, since this issue is tied to versions prior to 4.2.\\n\\nLet us know if you run into any further issues after re-submitting the entries.\\n\\nBest,\\nLoopwise Support\",\"citations\":[\"data/kb/known_issues.md \u2014 KI-120: \\\"Time tracking entries submitted from the mobile app before app version 4.2 may show the wrong timezone. Workaround: re-submit the entry from the web app.\\\" (used for: description of the issue, the version threshold, and the re-submit-from-web-app workaround)\"]},\"ttft_ms\":1424,\"type\":\"result\",\"duration_ms\":6159,\"uuid\":\"81627c78-033c-48de-b2ac-9415333dc0e1\",\"ttft_stream_ms\":1105,\"time_to_request_ms\":15,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 3,
+    "total_cost_usd": 0.0429076,
+    "duration_ms": 6159,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "Hi,\n\nThanks for flagging this. This matches a known issue (KI-120): time tracking entries submitted from the mobile app before app version 4.2 can show the wrong timezone.\n\nThe recommended workaround is to re-submit the affected entry from the web app instead of the mobile app, which will save it with the correct timezone.\n\nI'd also recommend updating to the latest version of the mobile app, since this issue is tied to versions prior to 4.2.\n\nLet us know if you run into any further issues after re-submitting the entries.\n\nBest,\nLoopwise Support",
+    "citations": [
+      "data/kb/known_issues.md \u2014 KI-120: \"Time tracking entries submitted from the mobile app before app version 4.2 may show the wrong timezone. Workaround: re-submit the entry from the web app.\" (used for: description of the issue, the version threshold, and the re-submit-from-web-app workaround)"
+    ]
+  }
+}

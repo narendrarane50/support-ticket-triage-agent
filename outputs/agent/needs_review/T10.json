@@ -8,21 +8,23 @@
   },
   "classifier_effective_approval": true,
   "draft": {
-    "reply": "{\"reply\": \"Thanks for flagging this, and I'm sorry for the trouble. Two charges for the exact same amount ($45.00) on the same day for your Team plan is not expected behavior \u2014 this pattern is treated as a billing error rather than a normal proration or renewal event, so I'm escalating your case to our billing team for a human to investigate and resolve directly. You don't need to take any action on your end for now. In the meantime, you can view both charges under Settings > Billing > Invoices to confirm the details, which will help speed up the review. We'll follow up with you as soon as we have an update.\", \"citations\": [\"billing_faq.md#q-i-was-charged-twice-this-month-what-happened\"]}",
+    "reply": "Hi,\n\nThanks for flagging this, and I'm sorry for the trouble. Two charges of the exact same amount on the exact same day is treated as a billing error on our end, not a normal double-charge scenario like a proration \u2014 so I've escalated this to our billing team to investigate and correct rather than handling it automatically.\n\nIn the meantime, it may help to check Settings > Billing > Invoices to confirm both charges appear there and see if they show as separate line items \u2014 but based on what you've described, this looks like the same-day/same-amount case that requires a human to review and resolve. Someone from our team will follow up with you directly on the next steps for correcting the charge.\n\nThanks for your patience.",
     "citations": [
-      "data/kb/billing_faq.md"
+      "data/kb/billing_faq.md:18",
+      "data/kb/refund_policy.md:8"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": true,
     "problems": [],
-    "notes": "Citation to billing_faq.md#q-i-was-charged-twice-this-month-what-happened is accurate and directly supports the reply's claim that identical same-day charges constitute a billing error requiring escalation; reply only explains policy and escalates without promising a refund, and tone is professional."
+    "notes": "Both citations (billing_faq.md:18 on same-day/same-amount charges as escalation-worthy, refund_policy.md:8 on never promising/approving refunds) are accurate and support the claims; the reply only explains policy and escalates without promising a refund amount, and tone is professional, so it passes with the classifier's needs_human_approval=True left unchanged."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": true,
-  "reply": "{\"reply\": \"Thanks for flagging this, and I'm sorry for the trouble. Two charges for the exact same amount ($45.00) on the same day for your Team plan is not expected behavior \u2014 this pattern is treated as a billing error rather than a normal proration or renewal event, so I'm escalating your case to our billing team for a human to investigate and resolve directly. You don't need to take any action on your end for now. In the meantime, you can view both charges under Settings > Billing > Invoices to confirm the details, which will help speed up the review. We'll follow up with you as soon as we have an update.\", \"citations\": [\"billing_faq.md#q-i-was-charged-twice-this-month-what-happened\"]}",
+  "reply": "Hi,\n\nThanks for flagging this, and I'm sorry for the trouble. Two charges of the exact same amount on the exact same day is treated as a billing error on our end, not a normal double-charge scenario like a proration \u2014 so I've escalated this to our billing team to investigate and correct rather than handling it automatically.\n\nIn the meantime, it may help to check Settings > Billing > Invoices to confirm both charges appear there and see if they show as separate line items \u2014 but based on what you've described, this looks like the same-day/same-amount case that requires a human to review and resolve. Someone from our team will follow up with you directly on the next steps for correcting the charge.\n\nThanks for your patience.",
   "citations": [
-    "data/kb/billing_faq.md"
+    "data/kb/billing_faq.md:18",
+    "data/kb/refund_policy.md:8"
   ]
 }

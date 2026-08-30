@@ -4,25 +4,25 @@
     "category": "bug_report",
     "needs_human_approval": false,
     "confidence": "high",
-    "reason": "The ticket matches known issue KI-120 (mobile timezone bug pre-4.2) which has a documented workaround, and does not involve refunds, fraud, discounts, or undocumented exceptions."
+    "reason": "This matches known issue KI-120 (mobile time entries before app v4.2 show wrong timezone) with a documented workaround, so it's not a refund, fraud/dispute, or discretionary-exception request and is clearly covered by the KB."
   },
   "classifier_effective_approval": false,
   "draft": {
-    "reply": "{\"reply\": \"Hi,\\n\\nThanks for flagging this. This matches a known issue (KI-120): time tracking entries submitted from the mobile app before version 4.2 can show the wrong timezone (often off by a few hours).\\n\\nThe current workaround is to re-submit the affected entry from the web app, which will save it with the correct timezone. We'd also recommend updating to the latest version of the mobile app (4.2 or later) to avoid this happening on new entries.\\n\\nLet us know if you keep seeing this after re-submitting or updating, and we're happy to dig in further.\\n\\nBest,\\nLoopwise Support\", \"citations\": [\"known_issues.md#KI-120\"]}",
+    "reply": "Hi,\n\nThanks for flagging this. This matches a known issue (KI-120): time tracking entries submitted from the mobile app before app version 4.2 can show the wrong timezone.\n\nThe recommended workaround is to re-submit the affected entry from the web app instead of the mobile app, which will save it with the correct timezone.\n\nI'd also recommend updating to the latest version of the mobile app, since this issue is tied to versions prior to 4.2.\n\nLet us know if you run into any further issues after re-submitting the entries.\n\nBest,\nLoopwise Support",
     "citations": [
-      "known_issues.md#KI-120"
+      "data/kb/known_issues.md \u2014 KI-120: \"Time tracking entries submitted from the mobile app before app version 4.2 may show the wrong timezone. Workaround: re-submit the entry from the web app.\" (used for: description of the issue, the version threshold, and the re-submit-from-web-app workaround)"
     ]
   },
   "verification": {
     "passed": true,
     "final_needs_human_approval": false,
     "problems": [],
-    "notes": "Citation KI-120 is accurate and fully supports the reply's claims; no unbacked commitments, no refund/discount promises, tone is professional."
+    "notes": "Citation KI-120 is accurate and fully supports the issue description, version threshold, and workaround; reply is professional, makes no refund/discount/account commitments, and stays within KB-documented facts."
   },
   "redraft_attempts": 0,
   "final_needs_human_approval": false,
-  "reply": "{\"reply\": \"Hi,\\n\\nThanks for flagging this. This matches a known issue (KI-120): time tracking entries submitted from the mobile app before version 4.2 can show the wrong timezone (often off by a few hours).\\n\\nThe current workaround is to re-submit the affected entry from the web app, which will save it with the correct timezone. We'd also recommend updating to the latest version of the mobile app (4.2 or later) to avoid this happening on new entries.\\n\\nLet us know if you keep seeing this after re-submitting or updating, and we're happy to dig in further.\\n\\nBest,\\nLoopwise Support\", \"citations\": [\"known_issues.md#KI-120\"]}",
+  "reply": "Hi,\n\nThanks for flagging this. This matches a known issue (KI-120): time tracking entries submitted from the mobile app before app version 4.2 can show the wrong timezone.\n\nThe recommended workaround is to re-submit the affected entry from the web app instead of the mobile app, which will save it with the correct timezone.\n\nI'd also recommend updating to the latest version of the mobile app, since this issue is tied to versions prior to 4.2.\n\nLet us know if you run into any further issues after re-submitting the entries.\n\nBest,\nLoopwise Support",
   "citations": [
-    "known_issues.md#KI-120"
+    "data/kb/known_issues.md \u2014 KI-120: \"Time tracking entries submitted from the mobile app before app version 4.2 may show the wrong timezone. Workaround: re-submit the entry from the web app.\" (used for: description of the issue, the version threshold, and the re-submit-from-web-app workaround)"
   ]
 }

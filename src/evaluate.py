@@ -27,6 +27,7 @@ KB_TOOLS = "Read,Grep,Glob"
 JUDGE_SCHEMA = {
     "type": "object",
     "properties": {
+        "clean_format": {"type": "boolean"},
         "grounding_accuracy": {"type": "integer"},
         "policy_compliance": {"type": "integer"},
         "tone_quality": {"type": "integer"},
@@ -34,7 +35,7 @@ JUDGE_SCHEMA = {
         "notes": {"type": "string"},
     },
     "required": [
-        "grounding_accuracy", "policy_compliance", "tone_quality",
+        "clean_format", "grounding_accuracy", "policy_compliance", "tone_quality",
         "your_independent_escalation_judgment", "notes",
     ],
 }

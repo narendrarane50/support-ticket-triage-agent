@@ -1,0 +1,41 @@
+{
+  "call_id": "1788053828800_T12_drafter_a1_3df7ee",
+  "label": "T12_drafter_a1",
+  "prompt": "You are a support-reply drafter for Loopwise, a project-tracking SaaS product.\n\nYou have read-only access to:\n- `data/kb/` (product_faq.md, billing_faq.md, refund_policy.md, known_issues.md) -- the source of truth for all facts and policy.\n- `data/macros/resolved_ticket_examples.md` -- past resolved tickets, for tone/style reference ONLY, never as a source of facts.\n\nUse Read/Glob/Grep to find the relevant KB content before writing. Every factual or policy claim in your reply must be traceable to a specific KB file. Do not invent policy details, numbers, or commitments that aren't in the KB. Do not promise or execute a refund, discount, or any account action yourself -- you may only explain what the documented policy says.\n\nThis ticket was classified as: category=bug_report, needs_human_approval=False (KI-122 in known_issues.md documents that bulk-moving tasks to a board without a matching custom field silently drops that field's values, which directly explains this ticket.).\n\n\nWrite only the reply text itself, exactly as the customer would receive it -- no preamble, no label like \"Draft reply:\", no markdown headers or quote blocks around it. Separately list which KB file/section each factual claim is backed by.\n\nTicket subject: Lost custom field data after moving tasks\nTicket body: I bulk-moved 20 tasks to a new board and now the custom 'Priority Score' field is empty on all of them. Did I lose that data?\n",
+  "tools_allowed": "Read,Grep,Glob",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "reply": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "reply",
+      "citations"
+    ]
+  },
+  "duration_sec": 11.59,
+  "returncode": 0,
+  "raw_stdout": "{\"duration_api_ms\":11355,\"stop_reason\":\"tool_use\",\"session_id\":\"498449fb-555e-4ee0-a05b-f20bf72e5223\",\"total_cost_usd\":0.0526646,\"usage\":{\"input_tokens\":6,\"cache_creation_input_tokens\":8783,\"cache_read_input_tokens\":35228,\"output_tokens\":915,\"output_tokens_details\":{\"thinking_tokens\":162},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":8783,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"not_available\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":410,\"cache_read_input_tokens\":14683,\"cache_creation_input_tokens\":511,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":511},\"type\":\"message\"}],\"speed\":\"standard\"},\"modelUsage\":{\"claude-haiku-4-5-20251001\":{\"inputTokens\":1255,\"outputTokens\":14,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0,\"webSearchRequests\":0,\"costUSD\":0.001325,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-haiku-4-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"},\"claude-sonnet-5\":{\"inputTokens\":6,\"outputTokens\":915,\"cacheReadInputTokens\":35228,\"cacheCreationInputTokens\":8783,\"webSearchRequests\":0,\"costUSD\":0.0513396,\"contextWindow\":1000000,\"maxOutputTokens\":64000,\"canonicalModel\":\"claude-sonnet-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":4,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"reply\\\":\\\"Hi,\\\\n\\\\nThanks for reaching out, and sorry for the confusion this caused.\\\\n\\\\nWhat you're seeing is expected behavior tied to how bulk moves handle custom fields: when tasks are bulk-moved to a board that doesn't have a matching custom field, the values for that field are dropped for the moved tasks. In your case, the destination board doesn't have a matching \\\\\\\"Priority Score\\\\\\\" custom field, which is why it appears empty on all 20 tasks.\\\\n\\\\nGoing forward, we'd recommend confirming that a destination board has the matching custom field set up before doing a bulk move, to avoid losing those values again.\\\\n\\\\nLet us know if you have any other questions.\\\",\\\"citations\\\":[\\\"data/kb/known_issues.md - KI-122: Bulk task move between boards can silently drop custom field values if the destination board doesn't have a matching custom field. Not a bug \u2014 expected behavior \u2014 but a common source of confusion. Recommend confirming the destination board has matching custom fields before a bulk move.\\\"]}\",\"structured_output\":{\"reply\":\"Hi,\\n\\nThanks for reaching out, and sorry for the confusion this caused.\\n\\nWhat you're seeing is expected behavior tied to how bulk moves handle custom fields: when tasks are bulk-moved to a board that doesn't have a matching custom field, the values for that field are dropped for the moved tasks. In your case, the destination board doesn't have a matching \\\"Priority Score\\\" custom field, which is why it appears empty on all 20 tasks.\\n\\nGoing forward, we'd recommend confirming that a destination board has the matching custom field set up before doing a bulk move, to avoid losing those values again.\\n\\nLet us know if you have any other questions.\",\"citations\":[\"data/kb/known_issues.md - KI-122: Bulk task move between boards can silently drop custom field values if the destination board doesn't have a matching custom field. Not a bug \u2014 expected behavior \u2014 but a common source of confusion. Recommend confirming the destination board has matching custom fields before a bulk move.\"]},\"ttft_ms\":1390,\"type\":\"result\",\"duration_ms\":10602,\"uuid\":\"5efbd06c-6120-4a4e-b047-df19c2db7108\",\"ttft_stream_ms\":755,\"time_to_request_ms\":16,\"queued_turn_count\":0}\n",
+  "raw_stderr": "",
+  "cli_metadata": {
+    "num_turns": 4,
+    "total_cost_usd": 0.0526646,
+    "duration_ms": 10602,
+    "is_error": false,
+    "permission_denials": []
+  },
+  "structured_output": {
+    "reply": "Hi,\n\nThanks for reaching out, and sorry for the confusion this caused.\n\nWhat you're seeing is expected behavior tied to how bulk moves handle custom fields: when tasks are bulk-moved to a board that doesn't have a matching custom field, the values for that field are dropped for the moved tasks. In your case, the destination board doesn't have a matching \"Priority Score\" custom field, which is why it appears empty on all 20 tasks.\n\nGoing forward, we'd recommend confirming that a destination board has the matching custom field set up before doing a bulk move, to avoid losing those values again.\n\nLet us know if you have any other questions.",
+    "citations": [
+      "data/kb/known_issues.md - KI-122: Bulk task move between boards can silently drop custom field values if the destination board doesn't have a matching custom field. Not a bug \u2014 expected behavior \u2014 but a common source of confusion. Recommend confirming the destination board has matching custom fields before a bulk move."
+    ]
+  }
+}
