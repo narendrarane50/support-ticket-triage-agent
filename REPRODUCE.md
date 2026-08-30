@@ -18,7 +18,7 @@ Running any of this live requires **some Anthropic account** — either a Claude
   ```
   export ANTHROPIC_API_KEY=sk-ant-...
   ```
-  Either is sufficient — the scripts don't care which. The scripts look for `claude` on `PATH` first. If you're running inside an environment where the CLI isn't on `PATH` but a working binary exists elsewhere (e.g. bundled with a Claude Code editor extension), set:
+  This is a plain environment variable, not a `.env` file — there's no `.env`/`python-dotenv` handling anywhere in this repo, and `src/claude_cli.py` doesn't touch auth at all; it just calls `subprocess.run(...)` with no `env=` override, so it inherits whatever's exported in your shell. **Caveat**: every call in this repo's `outputs/trajectories/` was made via OAuth (`claude login`), not `ANTHROPIC_API_KEY` — I don't have a spare API key to test the second path with, so it's asserted based on Claude Code's documented behavior, not verified end-to-end in this project. If you hit an auth error with `ANTHROPIC_API_KEY` set, that's the thing to debug first. The scripts look for `claude` on `PATH` first. If you're running inside an environment where the CLI isn't on `PATH` but a working binary exists elsewhere (e.g. bundled with a Claude Code editor extension), set:
   ```
   export CLAUDE_CODE_EXECPATH=/path/to/claude
   ```
