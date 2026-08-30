@@ -76,6 +76,13 @@ python3 src/run_reliability_check_pipeline.py T04 5
 
 Each script prints a per-trial breakdown and a final tally to the console. `outputs/reliability_check.md` is a hand-written summary of the specific trial runs documented in `CHANGELOG.md` — these scripts don't regenerate it automatically. Re-running them will print a fresh tally you can compare against that committed summary (expect a similar hit rate, not necessarily identical, since this is inherently sampling from a stochastic model). Adjust the ticket ID/trial count to probe any other ticket.
 
+## Build the reviewer dashboard (optional, no extra `claude -p` calls)
+
+```
+python3 src/build_dashboard.py
+```
+Writes `outputs/dashboard.html` from whatever is currently in `outputs/agent/` and `outputs/baseline/` — a static, self-contained ticket review queue for a human support lead. Open it directly in a browser (`open outputs/dashboard.html` on macOS); no server or dependency needed. Free to (re)run any time after the pipeline/baseline have produced output — it only reads existing files, it makes no `claude -p` calls itself.
+
 ## Run the evaluation
 
 ```

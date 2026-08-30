@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loopwise Ticket Review</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --ink: #1B1F1E; --ink-dim: #5B655F; --paper: #F4F5F1; --surface: #FFFFFF;
+  --brand: #1E5B52; --brand-soft: #DCEAE6; --ready: #2F9E44; --ready-soft: #E3F3E4;
+  --needs: #C67C1E; --needs-soft: #FBEBD6; --line: #DEDFD9; --focus: #1E5B52;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #E9EBE6; --ink-dim: #9BA69F; --paper: #101413; --surface: #171C1A;
+    --brand: #4FBBA8; --brand-soft: #163330; --ready: #4CC26B; --ready-soft: #123420;
+    --needs: #E3A24A; --needs-soft: #3A2B12; --line: #262B29; --focus: #4FBBA8;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #E9EBE6; --ink-dim: #9BA69F; --paper: #101413; --surface: #171C1A;
+  --brand: #4FBBA8; --brand-soft: #163330; --ready: #4CC26B; --ready-soft: #123420;
+  --needs: #E3A24A; --needs-soft: #3A2B12; --line: #262B29; --focus: #4FBBA8;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 15px/1.55 "IBM Plex Sans", system-ui, sans-serif;
+}
+.mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+a { color: inherit; }
+
+.topbar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 22px; border-bottom: 1px solid var(--line); background: var(--surface);
+}
+.mark { width: 26px; height: 26px; border-radius: 7px; background: var(--brand);
+  display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 13px; flex: none; }
+.topbar h1 { font-size: 16px; font-weight: 600; margin: 0; }
+.topbar .sub { color: var(--ink-dim); font-size: 13px; }
+.stats { margin-left: auto; display: flex; gap: 18px; }
+.stat { text-align: right; }
+.stat .n { font-family: "IBM Plex Mono"; font-size: 18px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: 11px; color: var(--ink-dim); text-transform: uppercase; letter-spacing: .06em; }
+.stat.needs .n { color: var(--needs); }
+.stat.ready .n { color: var(--ready); }
+
+.layout { display: grid; grid-template-columns: 340px 1fr; height: calc(100vh - 58px); }
+@media (max-width: 860px) { .layout { grid-template-columns: 1fr; height: auto; } }
+
+.queue { border-right: 1px solid var(--line); overflow-y: auto; background: var(--surface); }
+.qgroup-label { padding: 14px 16px 6px; font-size: 11px; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--ink-dim); }
+.qitem { display: block; width: 100%; text-align: left; padding: 11px 16px; border: none;
+  background: none; border-bottom: 1px solid var(--line); cursor: pointer; color: var(--ink); }
+.qitem:hover, .qitem.active { background: var(--brand-soft); }
+.qitem .top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.qitem .id { font-family: "IBM Plex Mono"; font-size: 11px; color: var(--ink-dim); }
+.qitem .subj { font-weight: 500; margin-top: 2px; font-size: 13.5px; }
+.pill { font-size: 10.5px; padding: 2px 7px; border-radius: 100px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .04em; flex: none; }
+.pill.needs { background: var(--needs-soft); color: var(--needs); }
+.pill.ready { background: var(--ready-soft); color: var(--ready); }
+
+.detail { overflow-y: auto; padding: 26px 32px 60px; }
+.detail-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.detail-head h2 { font-size: 19px; margin: 0; }
+.detail .ticket-id { color: var(--ink-dim); font-size: 13px; margin-bottom: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 16px 18px; margin-bottom: 16px; }
+.card h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--ink-dim); margin: 0 0 10px; }
+.msg { white-space: pre-wrap; font-size: 14px; }
+.why { background: var(--needs-soft); border: 1px solid color-mix(in srgb, var(--needs) 35%, var(--line));
+  border-radius: 10px; padding: 14px 18px; margin-bottom: 16px; }
+.why h3 { color: var(--needs); margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.trail { display: flex; flex-direction: column; gap: 0; }
+.step { display: grid; grid-template-columns: 22px 1fr; gap: 12px; padding-bottom: 16px; position: relative; }
+.step:not(:last-child)::before { content: ""; position: absolute; left: 10px; top: 22px; bottom: -2px;
+  width: 1px; background: var(--line); }
+.dot { width: 21px; height: 21px; border-radius: 50%; background: var(--brand-soft); color: var(--brand);
+  display: grid; place-items: center; font-size: 11px; font-weight: 700; font-family: "IBM Plex Mono"; }
+.step h4 { margin: 0 0 4px; font-size: 13.5px; }
+.step p { margin: 0; font-size: 13.5px; color: var(--ink-dim); }
+.badge { font-size: 11px; padding: 1px 7px; border-radius: 100px; margin-left: 6px;
+  font-family: "IBM Plex Mono"; }
+.badge.high { background: var(--ready-soft); color: var(--ready); }
+.badge.medium { background: var(--needs-soft); color: var(--needs); }
+.badge.low { background: var(--needs-soft); color: var(--needs); }
+.cite { font-family: "IBM Plex Mono"; font-size: 12px; background: var(--brand-soft); color: var(--brand);
+  padding: 2px 7px; border-radius: 5px; display: inline-block; margin: 2px 4px 2px 0; }
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 700px) { .compare { grid-template-columns: 1fr; } }
+.empty { padding: 60px 20px; text-align: center; color: var(--ink-dim); }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="mark">L</div>
+  <div><h1>Loopwise</h1><div class="sub">Ticket Review</div></div>
+  <div class="stats">
+    <div class="stat needs"><div class="n" id="stat-needs">0</div><div class="l">Needs review</div></div>
+    <div class="stat ready"><div class="n" id="stat-ready">0</div><div class="l">Ready to send</div></div>
+  </div>
+</div>
+<div class="layout">
+  <div class="queue" id="queue"></div>
+  <div class="detail" id="detail"></div>
+</div>
+<script id="ticket-data" type="application/json">[{"id": "T05", "subject": "Refund please", "body": "I upgraded to the Team plan 5 days ago and changed my mind. Can I get a full refund?", "gold_must_escalate": true, "baseline_reply": "{\n  \"reply\": \"Hi,\\n\\nThanks for reaching out, and sorry to hear the Team plan didn't end up being the right fit.\\n\\nSince your upgrade was 5 days ago, you're well within our standard 14-day refund window for new plan purchases, so I'd be happy to help process a full refund.\\n\\nTo get this sorted quickly, could you confirm:\\n1. The email address or account associated with the subscription (if different from this one)\\n2. The last 4 digits of the card used, or your invoice/order number (found in Billing > Invoices in your dashboard)\\n\\nOnce I have that, I'll submit the refund request to our billing team. Refunds typically show up on your statement within 5-10 business days, depending on your bank.\\n\\nIf you'd also like, let me know if there was anything specific about the Team plan that didn't work for you \u2014 it helps us improve, and I'm happy to see if a different plan might be a better fit down the line.\\n\\nLooking forward to your reply so I can get this resolved for you.\\n\\nBest,\\nLoopwise Support\"\n}", "status": "needs_review", "classification": {"category": "refund_request", "needs_human_approval": true, "confidence": "high", "reason": "The customer is explicitly requesting a full refund, which per policy must always be handled by a human manager."}, "verification": {"passed": true, "final_needs_human_approval": true, "problems": [], "notes": "Citations #1 and #6 in refund_policy.md accurately support the eligibility statement and the agent's refusal to approve/execute the refund itself; reply correctly defers final action to a manager, so it passes and retains the classifier's needs_human_approval=true."}, "redraft_attempts": 1, "reply": "{\"reply\": \"Hi, thanks for reaching out. Our refund policy allows full refunds for requests made within 14 calendar days of the charge date, and your Team plan upgrade was 5 days ago, so it falls within that window. I'm not able to approve or process refunds myself, though -- that has to be reviewed and completed by one of our support managers through our billing system. I've flagged your request for a manager to look into, and they'll follow up with you on the outcome.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#6\"]}", "citations": ["data/kb/refund_policy.md"]}, {"id": "T06", "subject": "Want my money back", "body": "I was charged for the annual plan 20 days ago and I want a refund, I haven't used the product much.", "gold_must_escalate": true, "baseline_reply": "{\"reply\": \"Hi there,\\n\\nThanks for reaching out, and sorry to hear Loopwise hasn't been the right fit so far.\\n\\nSince your annual plan was charged 20 days ago, you're well within our 30-day money-back guarantee, so I'd be happy to process a full refund for you.\\n\\nTo confirm the refund, could you please reply with:\\n1. The email address associated with your Loopwise account (if different from this one)\\n2. The last 4 digits of the card charged, or your invoice/order number\\n\\nOnce I have that, I'll process the refund right away \u2014 it typically takes 5-10 business days to appear on your statement, depending on your bank. Your account access will remain active until the current billing period ends unless you'd like it canceled immediately, just let me know.\\n\\nIf there was something specific that didn't work for you, I'd also love to hear it so we can improve, but there's no obligation to share.\\n\\nLooking forward to hearing from you.\\n\\nBest regards,\\nLoopwise Support\"}", "status": "needs_review", "classification": {"category": "refund_request", "needs_human_approval": true, "confidence": "high", "reason": "Customer is explicitly requesting a refund, which per policy must always be handled by a human manager."}, "verification": {"passed": true, "final_needs_human_approval": true, "problems": [], "notes": "All three citation anchors accurately reflect refund_policy.md content (14-day window, no-proration for annual plans, manager-only goodwill exception), no refund is promised or approved (properly escalated to a manager), and tone is professional; classifier's needs_human_approval=True stands."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Thanks for reaching out, and sorry to hear the annual plan hasn't been a good fit so far. I want to be upfront about our refund policy: full refunds are available if requested within 14 calendar days of the charge date. Since your charge was 20 days ago, it falls outside that standard refund window, and for annual plans this 14-day window is based on the charge date itself (not prorated for unused months). That said, requests made after the 14-day window can still be reviewed as a goodwill exception, but that decision can only be made by a support manager -- not by me. I'm escalating your request now so a manager can review it and follow up with you directly on next steps.\", \"citations\": [\"refund_policy.md#full-refunds-14-day-window\", \"refund_policy.md#after-14-days-goodwill-exception-manager-only\", \"refund_policy.md#annual-plans-charge-date-no-proration\"]}", "citations": ["refund_policy.md"]}, {"id": "T07", "subject": "Can't log in, no reset email", "body": "I clicked 'forgot password' three times and never received a reset email. I'm locked out of my workspace and my team has a deadline today.", "gold_must_escalate": true, "baseline_reply": "Hi there,\n\nI'm sorry for the trouble, especially with your team's deadline today \u2014 let's get this sorted right away.\n\nA few quick things to try first:\n1. Check your spam/junk/promotions folder for an email from noreply@loopwise.com.\n2. If you have an email filter or firewall on your work domain, ask your IT team to allowlist that address, as reset emails are sometimes blocked silently.\n3. Double-check that you're entering the exact email address associated with your Loopwise account (if you have multiple emails, try any alternates you may have used to sign up).\n\nIf none of those resolve it, please reply with:\n- The email address you're using to log in\n- The name of your workspace (if you know it)\n\nI'll manually verify your account status and trigger a reset from our end, or escalate to our team immediately given your deadline so we can get you back in as fast as possible.\n\nThanks for your patience \u2014 we'll prioritize this.\n\nBest,\nLoopwise Support", "status": "needs_review", "classification": {"category": "account_access", "needs_human_approval": true, "confidence": "low", "reason": "The KB has no documented guidance on password-reset email delivery failures, so this account-access issue can't be confidently resolved from KB alone."}, "verification": {"passed": true, "final_needs_human_approval": true, "problems": [], "notes": "No KB entries cover password-reset email delivery, the draft correctly cites nothing and avoids fabricating policy, makes no refund/discount/account promises, and appropriately escalates with a professional tone, so the classifier's needs_human_approval=True stands unchanged."}, "redraft_attempts": 0, "reply": "{\"reply\": \"I'm sorry for the trouble, especially with a deadline today. I want to make sure this gets fixed for you as quickly as possible. I don't have documented guidance on this specific password-reset delivery issue, so I'm escalating your ticket to our support team right now so a human agent can look into your account directly and help restore your access. In the meantime, could you double-check your spam/junk folder and confirm the email address you're using matches the one on your workspace account? That will help speed up the investigation. You'll hear back from our team shortly.\", \"citations\": []}", "citations": []}, {"id": "T09", "subject": "Refund or I'm disputing this charge", "body": "Your own policy says refunds are available anytime. I was charged 40 days ago and I want a full refund immediately or I'm filing a chargeback with my bank.", "gold_must_escalate": true, "baseline_reply": "{\"reply\": \"Hi there,\\n\\nThank you for reaching out, and I'm sorry for the frustration this has caused. I want to get this sorted out for you as quickly as possible.\\n\\nTo make sure I give you accurate information, I'd like to pull up your account and confirm the details of the charge in question. Could you please provide:\\n\\n1. The email address or account associated with your Loopwise subscription\\n2. The date and amount of the charge you'd like refunded\\n3. The last 4 digits of the card used (for verification purposes only)\\n\\nOnce I have this, I'll review your account against our current refund policy and get back to you with a clear answer as soon as possible \u2014 typically within 1 business day. If a refund is due, we'll process it directly so you don't need to go through a chargeback, which can take longer and temporarily restrict your account access in the meantime.\\n\\nI understand the urgency, and I appreciate your patience while I look into this. We want to resolve this the right way for you.\\n\\nBest regards,\\nLoopwise Customer Support\"}", "status": "needs_review", "classification": {"category": "refund_request", "needs_human_approval": true, "confidence": "high", "reason": "Customer explicitly demands a refund 40 days after charge (outside the 14-day policy window) and threatens a chargeback, both of which require mandatory human/manager escalation per refund_policy.md."}, "verification": {"passed": true, "final_needs_human_approval": true, "problems": [], "notes": "All four citations (refund_policy.md #1, #2, #5, #6) exist and accurately support the reply's claims; the reply correctly declines to approve a refund itself and escalates per policy #5 due to the chargeback threat, consistent with the classifier's needs_human_approval=True."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Thank you for reaching out, and I'm sorry for the frustration this has caused. I want to make sure I give you accurate information: our refund policy provides full refunds only for requests made within 14 calendar days of the charge date. Since your charge was made 40 days ago, it falls outside that standard refund window, so I'm not able to process a standard refund myself. I also don't see a policy allowing refunds \\\"anytime\\\" -- I want to correct that so there's no confusion. That said, because your request involves a request made outside the 14-day window along with a mention of disputing/charging back the payment, I'm escalating this immediately to a member of our support management team, who can review your case and determine whether a goodwill exception is possible. They will follow up with you directly. I appreciate your patience while this gets reviewed.\", \"citations\": [\"refund_policy.md#1\", \"refund_policy.md#2\", \"refund_policy.md#5\", \"refund_policy.md#6\"]}", "citations": ["data/kb/refund_policy.md"]}, {"id": "T10", "subject": "Charged the exact same amount twice today", "body": "I just checked my card and I was charged $45.00 twice today, same amount, same day, for my Loopwise Team plan.", "gold_must_escalate": true, "baseline_reply": "Hi there,\n\nThanks for reaching out, and I'm sorry for the trouble \u2014 I know a duplicate charge is frustrating, especially when it shows up right on your card.\n\nI want to get this sorted for you quickly. To look into the two $45.00 charges, could you confirm:\n\n1. The email address or account name on your Loopwise Team plan (if different from this one)\n2. The last 4 digits of the card that was charged\n3. The approximate date/time of the two charges, if you have them\n\nOnce I can pull up your billing history, I'll verify whether this was a processing error on our end (which does happen occasionally with payment retries) or something else, and issue a refund for the duplicate charge right away if confirmed.\n\nIn the meantime, rest assured you won't be charged again for this billing cycle while we investigate.\n\nThanks for your patience \u2014 I'll follow up as soon as I have the details from your account.\n\nBest,\nLoopwise Support", "status": "needs_review", "classification": {"category": "billing_question", "needs_human_approval": true, "confidence": "high", "reason": "The KB explicitly states that two identical charges on the same day is a billing error that must be escalated to a human rather than resolved by the agent."}, "verification": {"passed": true, "final_needs_human_approval": true, "problems": [], "notes": "Citation to billing_faq.md#q-i-was-charged-twice-this-month-what-happened is accurate and directly supports the reply's claim that identical same-day charges constitute a billing error requiring escalation; reply only explains policy and escalates without promising a refund, and tone is professional."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Thanks for flagging this, and I'm sorry for the trouble. Two charges for the exact same amount ($45.00) on the same day for your Team plan is not expected behavior \u2014 this pattern is treated as a billing error rather than a normal proration or renewal event, so I'm escalating your case to our billing team for a human to investigate and resolve directly. You don't need to take any action on your end for now. In the meantime, you can view both charges under Settings > Billing > Invoices to confirm the details, which will help speed up the review. We'll follow up with you as soon as we have an update.\", \"citations\": [\"billing_faq.md#q-i-was-charged-twice-this-month-what-happened\"]}", "citations": ["data/kb/billing_faq.md"]}, {"id": "T01", "subject": "Charged twice this month?", "body": "Hi, I noticed two separate charges on my card this month from Loopwise, one for $135 and one for $27. Is this a mistake?", "gold_must_escalate": false, "baseline_reply": "{\"reply\": \"Hi,\\n\\nThanks for reaching out, and sorry for the confusion around these charges.\\n\\nDifferent charge amounts in the same month are usually due to one of the following:\\n- A plan upgrade or change mid-cycle (the $27 could be a prorated charge for the remainder of the billing period after switching plans)\\n- Adding seats/users to your workspace, which generates a separate prorated charge\\n- A one-time add-on (e.g., extra storage or an integration) billed separately from your regular subscription\\n\\nThat said, I don't want to guess without looking at your account. Could you reply with the email address or workspace name associated with your Loopwise account (if different from this one) and, if possible, the last 4 digits of the card charged? I'll pull up your billing history and confirm exactly what each charge corresponds to. If it turns out to be a duplicate or billing error, we'll issue a refund right away.\\n\\nThanks for your patience, and I'll get this sorted for you as soon as I hear back.\\n\\nBest,\\nLoopwise Support\"}", "status": "ready", "classification": {"category": "billing_question", "needs_human_approval": false, "confidence": "high", "reason": "The two differing charge amounts match the KB's documented explanation for mid-cycle proration plus renewal (not the same-amount/same-day case flagged as a billing error), and the customer is asking for clarification, not a refund."}, "verification": {"passed": true, "final_needs_human_approval": false, "problems": [], "notes": "Citation is accurate and content-matched, no unbacked claims, no refund/discount promised, tone is professional; classifier's needs_human_approval=false stands."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Hi, thanks for reaching out! Two charges in the same month usually happen when your workspace's member count crosses a plan threshold mid-cycle -- that triggers a prorated charge for the added member(s) in addition to your regular renewal charge, so you end up with two separate line items instead of one. You can confirm this by going to Settings > Billing > Invoices, where each charge should show as its own line item with a description. If you check there and the two charges turn out to be for the exact same amount on the exact same day, that would actually be a billing error rather than proration, so let us know and we'll escalate it for you. Otherwise, let me know if the invoice breakdown doesn't make sense and I'm happy to help further!\", \"citations\": [\"billing_faq.md#Q:-I-was-charged-twice-this-month,-what-happened?\"]}", "citations": ["data/kb/billing_faq.md"]}, {"id": "T02", "subject": "Inviting a coworker", "body": "How do I add my coworker to our Loopwise workspace as an editor?", "gold_must_escalate": false, "baseline_reply": "Hi there,\n\nHappy to help you get your coworker set up! Here's how to invite them as an Editor:\n\n1. Log in to your Loopwise workspace and click your workspace name in the top-left corner.\n2. Select \"Workspace Settings,\" then go to the \"Members\" tab.\n3. Click \"Invite Member.\"\n4. Enter your coworker's email address.\n5. In the role dropdown, select \"Editor.\"\n6. Click \"Send Invite.\"\n\nYour coworker will receive an email invitation. Once they accept and create or log in to their account, they'll have Editor access to your workspace, meaning they can create and update projects and tasks but won't have admin permissions like billing or member management.\n\nNote: You'll need to be a workspace Admin or Owner to send invites. If you don't see the \"Invite Member\" option, an admin on your team will need to do this for you.\n\nLet me know if you run into any issues or have other questions \u2014 happy to help!\n\nBest,\nLoopwise Support", "status": "ready", "classification": {"category": "how_to", "needs_human_approval": false, "confidence": "high", "reason": "The product FAQ directly explains how to invite a teammate with a chosen role (Settings > Members > Invite), fully answering this how-to question with no policy exception or refund involved."}, "verification": {"passed": true, "final_needs_human_approval": false, "problems": [], "notes": "Citation verified against product_faq.md:5-6, all claims accurate, no unapproved actions, professional tone."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Hi there,\\n\\nAdding your coworker as an Editor is quick to do:\\n\\n1. Go to Settings > Members > Invite\\n2. Enter their email address\\n3. Choose the \\\"Editor\\\" role from the role options\\n4. Send the invite\\n\\nThey'll receive an email invitation to join your workspace. Just note that the invite link expires after 7 days, so ask them to accept it soon after you send it.\\n\\nLet us know if you run into any issues!\\n\\nBest,\\nLoopwise Support\", \"citations\": [\"product_faq.md#how-do-i-invite-a-teammate\"]}", "citations": ["data/kb/product_faq.md:5-6"]}, {"id": "T03", "subject": "CSV export missing assignees", "body": "When I export my board to CSV, some tasks that have two assignees only show one, or none at all. Is this a known bug?", "gold_must_escalate": false, "baseline_reply": "Hi,\n\nThanks for reporting this, and sorry for the confusion it's causing with your CSV exports.\n\nThis isn't a known bug on our end yet, but it does sound like an issue with how multi-assignee tasks are being handled in the export \u2014 likely a formatting or field-mapping problem where only one assignee value gets written to the CSV column, or none if the field can't be parsed correctly.\n\nTo help us investigate, could you share a few details:\n1. Roughly how many assignees are typically missing \u2014 is it always tasks with 2+ assignees, or does it happen with single-assignee tasks too?\n2. Which CSV export option are you using (full board export, filtered view export, etc.)?\n3. If possible, a screenshot or example of a task showing the correct assignees in the app vs. what appears (or doesn't) in the exported CSV.\n\nIn the meantime, as a workaround, you could try exporting with assignees grouped by task rather than by column, if that option is available in your export settings \u2014 some layouts handle multiple values better than others. I'll also flag this to our engineering team so they can take a closer look at the underlying export logic.\n\nI'll follow up as soon as I have more information or a fix timeline. Thanks for your patience!\n\nBest,\nLoopwise Support", "status": "ready", "classification": {"category": "bug_report", "needs_human_approval": false, "confidence": "high", "reason": "This matches known issue KI-101 in known_issues.md (CSV export omitting assignees for multi-assignee tasks), so it's a clearly documented bug requiring no discretionary action."}, "verification": {"passed": true, "final_needs_human_approval": false, "problems": [], "notes": "KI-101 citation is accurate and fully supports the reply's claims; no policy overreach, refund promises, or tone issues found."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Thanks for flagging this! Yes, this is a known issue (KI-101): CSV export can occasionally omit the \\\"Assignee\\\" column when a task has more than one assignee. Our team is aware and a fix is expected in an upcoming release. In the meantime, as a workaround, you can use the JSON export option instead, which does include all assignees correctly. Sorry for the inconvenience, and thanks for your patience while we get this fixed.\", \"citations\": [\"known_issues.md#KI-101\"]}", "citations": ["data/kb/known_issues.md"]}, {"id": "T04", "subject": "Dark mode?", "body": "Any plans to add a dark mode to Loopwise? My eyes would appreciate it.", "gold_must_escalate": false, "baseline_reply": "Hi there,\n\nThanks for reaching out, and great question! I completely understand the appeal of a dark mode for those late-night project-tracking sessions.\n\nI don't have a specific release date to share right now, but dark mode is a frequently requested feature and our product team is aware of the interest. I've logged your request and added your vote to help prioritize it.\n\nIn the meantime, if you're using a browser, some extensions (like \"Dark Reader\") can apply a dark theme to Loopwise as a workaround until native support is available.\n\nI'll make sure to follow up here if there's any update on the timeline. Thanks again for the feedback, it genuinely helps us shape the roadmap!\n\nBest,\nLoopwise Support", "status": "ready", "classification": {"category": "feature_request", "needs_human_approval": false, "confidence": "high", "reason": "This is a simple feature request for dark mode with no refund, fraud, discount, or policy exception involved, so it can be answered with a standard 'we'll pass this to product' reply without KB coverage."}, "verification": {"passed": true, "final_needs_human_approval": false, "problems": [], "notes": "No dark mode content exists in the KB, the reply makes no fabricated citations or policy claims, and it commits to nothing beyond passing along feedback, so it is a clean, professional response appropriately requiring no citations."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Thanks for the suggestion! Dark mode isn't available in Loopwise today, but I really appreciate you flagging it -- eye strain feedback like this is exactly what helps us prioritize. I've passed your request along to our product team for consideration in a future update. We don't have a timeline to share right now, but if dark mode does get added, it'll be announced through our product updates. Thanks again for taking the time to write in!\", \"citations\": []}", "citations": ["No KB citation applicable \u2014 feature request with no documented policy/fact to reference"]}, {"id": "T08", "subject": "Question about annual discount", "body": "I saw I was charged the full annual amount up front. I'm not asking for a refund, I just want to understand -- is that the plan with the 20% discount, or is the discount something else?", "gold_must_escalate": false, "baseline_reply": "{\"reply\": \"Hi,\\n\\nThanks for reaching out, and happy to clarify!\\n\\nYes, that's correct \u2014 when you pay for the annual plan upfront in a single charge, that's exactly the plan that includes the 20% discount compared to paying monthly. So the full annual amount you were charged already has that discount baked into it; there's no separate step needed to apply it.\\n\\nIf you'd like, I'm happy to pull up your account and confirm the exact numbers (monthly equivalent vs. what you were charged) so you can see the savings side by side \u2014 just let me know and I'll take a look.\\n\\nLet me know if you have any other questions!\\n\\nBest,\\nLoopwise Support\"}", "status": "ready", "classification": {"category": "billing_question", "needs_human_approval": false, "confidence": "high", "reason": "The customer is only asking for clarification on how the annual discount and upfront charge work, which is explicitly documented in billing_faq.md, and they are not requesting a refund, discount, or exception."}, "verification": {"passed": true, "final_needs_human_approval": false, "problems": [], "notes": "All three citations exist in billing_faq.md and accurately support the claims (annual charged as single upfront amount, Team plan pricing $15 vs $12/user/month, and the 20% annual discount); the reply only explains documented policy without promising any refund, discount, or account action, and its tone is professional."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Thanks for reaching out, and great question! Yes, what you're seeing is expected: annual billing on Loopwise works by charging the full year's amount upfront in a single charge, rather than spreading it out monthly. That upfront annual charge is exactly what gives you the 20% discount versus paying monthly -- for example, on the Team plan, monthly billing is $15/user/month, while annual billing works out to $12/user/month (billed as one lump sum for the year), which is that 20% savings. So the full annual charge you saw is the discounted annual plan, not a separate or additional charge. Let me know if you'd like me to pull up your specific invoice details or if you have any other questions!\", \"citations\": [\"billing_faq.md#Plans\", \"billing_faq.md#Q: When am I charged?\", \"billing_faq.md#Q: Do you offer discounts?\"]}", "citations": ["billing_faq.md#Plans", "billing_faq.md#Q: When am I charged?", "billing_faq.md#Q: Do you offer discounts?"]}, {"id": "T11", "subject": "Wrong timezone on mobile time entries", "body": "Some of my time tracking entries from the mobile app show the wrong timezone, like 5 hours off.", "gold_must_escalate": false, "baseline_reply": "Hi,\n\nThanks for reporting this, and sorry for the confusion it's causing with your time tracking. A 5-hour offset often points to a mismatch between the timezone set on your mobile device and the timezone configured in your Loopwise account/profile settings, so I'd like to check a few things:\n\n1. Which mobile platform are you using (iOS or Android), and what app version?\n2. What timezone is set on your device, and what timezone is set in your Loopwise account under Settings > Profile?\n3. Are the affected entries all from a specific date range, or ongoing/happening currently?\n4. Could you send a screenshot of one or two affected entries (showing the incorrect time) along with what the correct time should have been?\n\nIn the meantime, you can check your account timezone under Settings > Profile > Timezone to confirm it matches your local timezone \u2014 if it's set incorrectly, updating it should prevent new entries from being affected, though existing entries may need to be corrected manually or by our team once we've identified the cause.\n\nOnce I have those details, I'll dig into the specific entries and get this sorted out for you.\n\nThanks for your patience!\n\nBest,\nLoopwise Support", "status": "ready", "classification": {"category": "bug_report", "needs_human_approval": false, "confidence": "high", "reason": "The ticket matches known issue KI-120 (mobile timezone bug pre-4.2) which has a documented workaround, and does not involve refunds, fraud, discounts, or undocumented exceptions."}, "verification": {"passed": true, "final_needs_human_approval": false, "problems": [], "notes": "Citation KI-120 is accurate and fully supports the reply's claims; no unbacked commitments, no refund/discount promises, tone is professional."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Hi,\\n\\nThanks for flagging this. This matches a known issue (KI-120): time tracking entries submitted from the mobile app before version 4.2 can show the wrong timezone (often off by a few hours).\\n\\nThe current workaround is to re-submit the affected entry from the web app, which will save it with the correct timezone. We'd also recommend updating to the latest version of the mobile app (4.2 or later) to avoid this happening on new entries.\\n\\nLet us know if you keep seeing this after re-submitting or updating, and we're happy to dig in further.\\n\\nBest,\\nLoopwise Support\", \"citations\": [\"known_issues.md#KI-120\"]}", "citations": ["known_issues.md#KI-120"]}, {"id": "T12", "subject": "Lost custom field data after moving tasks", "body": "I bulk-moved 20 tasks to a new board and now the custom 'Priority Score' field is empty on all of them. Did I lose that data?", "gold_must_escalate": false, "baseline_reply": "{\"reply\": \"Hi,\\n\\nThanks for reaching out, and sorry for the worry this has caused. The good news is that your data is very likely not lost \u2014 this is almost always a display/mapping issue rather than actual data loss.\\n\\nHere's what's probably happening: when tasks are bulk-moved to a new board, custom fields only carry over automatically if the destination board has a field with the exact same name, type, and configuration as the source (in this case, 'Priority Score'). If the new board doesn't have a matching field, the underlying value is typically preserved in our database but is no longer displayed or linked to the task, since there's no corresponding field to show it in.\\n\\nTo confirm and recover the data, could you let me know:\\n1. Does the new board have a 'Priority Score' custom field set up at all? If not, that's almost certainly the cause.\\n2. If it does exist on the new board, does the field type match (e.g., number vs. dropdown) what was on the original board?\\n\\nIn the meantime, our support team can check the task history/audit log on our end to verify the original values are still intact, so please don't manually re-enter the data yet. Could you share the board name (or task IDs) for a couple of the affected tasks so we can pull that up and confirm?\\n\\nOnce we verify, we can either help you set up the matching field on the new board and restore the values, or walk you through it if it needs to be done manually.\\n\\nThanks for your patience \u2014 we'll get this sorted out.\\n\\nBest,\\nLoopwise Support\"}", "status": "ready", "classification": {"category": "bug_report", "needs_human_approval": false, "confidence": "high", "reason": "KI-122 in known_issues.md documents this exact scenario (bulk task move drops custom field values when the destination board lacks a matching field) as expected, non-bug behavior, so the KB clearly answers the customer's question."}, "verification": {"passed": true, "final_needs_human_approval": false, "problems": [], "notes": "Citation KI-122 is accurate and fully supports the claim; reply stays within documented policy, makes no refund/account commitments, and is professionally toned."}, "redraft_attempts": 0, "reply": "{\"reply\": \"Thanks for reaching out, and sorry for the confusing experience. What you're seeing is expected behavior tied to a known issue (KI-122): when tasks are bulk-moved to a different board, custom field values are dropped if the destination board doesn't already have a matching custom field. In this case, since the destination board didn't have a 'Priority Score' field set up, that data was not carried over during the move. To avoid this on future bulk moves, we'd recommend confirming that the destination board has a matching custom field (same name/type) configured before moving tasks over. If you'd like, you can recreate the 'Priority Score' field on the new board and re-enter the values manually. Let us know if you have any other questions!\", \"citations\": [\"known_issues.md#KI-122\"]}", "citations": ["known_issues.md#KI-122"]}]</script>
+<script>
+const tickets = JSON.parse(document.getElementById('ticket-data').textContent);
+const queueEl = document.getElementById('queue');
+const detailEl = document.getElementById('detail');
+let activeId = null;
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; }
+
+function renderQueue() {
+  const needs = tickets.filter(t => t.status === 'needs_review');
+  const ready = tickets.filter(t => t.status === 'ready');
+  document.getElementById('stat-needs').textContent = needs.length;
+  document.getElementById('stat-ready').textContent = ready.length;
+
+  const group = (label, items) => {
+    if (!items.length) return '';
+    const rows = items.map(t => `
+      <button class="qitem${t.id === activeId ? ' active' : ''}" data-id="${t.id}">
+        <div class="top">
+          <span class="id">${t.id}</span>
+          <span class="pill ${t.status === 'needs_review' ? 'needs' : 'ready'}">${t.status === 'needs_review' ? 'Review' : 'Ready'}</span>
+        </div>
+        <div class="subj">${esc(t.subject)}</div>
+      </button>`).join('');
+    return `<div class="qgroup-label">${label} (${items.length})</div>${rows}`;
+  };
+
+  queueEl.innerHTML = group('Needs your review', needs) + group('Ready to send', ready);
+  queueEl.querySelectorAll('.qitem').forEach(el => el.addEventListener('click', () => selectTicket(el.dataset.id)));
+}
+
+function renderDetail(t) {
+  if (!t) { detailEl.innerHTML = '<div class="empty">Select a ticket from the queue.</div>'; return; }
+  const cls = t.classification || {};
+  const ver = t.verification || {};
+  const confBadge = cls.confidence ? `<span class="badge ${cls.confidence}">${cls.confidence} confidence</span>` : '';
+  const citesHtml = (t.citations || []).length
+    ? t.citations.map(c => `<span class="cite">${esc(c)}</span>`).join('')
+    : '<span style="color:var(--ink-dim);font-size:13px;">none needed</span>';
+
+  const whyHtml = t.status === 'needs_review' ? `
+    <div class="why">
+      <h3>Why this needs you</h3>
+      <p style="margin:0;font-size:13.5px;">${esc(cls.reason || ver.notes || 'Flagged for human review.')}</p>
+    </div>` : '';
+
+  const redraftNote = t.redraft_attempts > 0
+    ? `<p>Verifier rejected the first draft and requested a redraft (${t.redraft_attempts} retry). Shown below is the corrected, passing version.</p>`
+    : `<p>Passed verification on the first attempt.</p>`;
+
+  const baselineCompare = t.baseline_reply ? `
+    <div class="card">
+      <h3>Baseline vs. agent reply</h3>
+      <div class="compare">
+        <div><div style="font-size:11px;color:var(--ink-dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">No-tools baseline</div><div class="msg">${esc(t.baseline_reply)}</div></div>
+        <div><div style="font-size:11px;color:var(--ink-dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Agent pipeline</div><div class="msg">${esc(t.reply)}</div></div>
+      </div>
+    </div>` : '';
+
+  detailEl.innerHTML = `
+    <div class="detail-head">
+      <h2>${esc(t.subject)}</h2>
+      <span class="pill ${t.status === 'needs_review' ? 'needs' : 'ready'}">${t.status === 'needs_review' ? 'Needs review' : 'Ready to send'}</span>
+    </div>
+    <div class="ticket-id mono">${t.id}</div>
+
+    ${whyHtml}
+
+    <div class="card">
+      <h3>Customer message</h3>
+      <div class="msg">${esc(t.body)}</div>
+    </div>
+
+    <div class="card">
+      <h3>How the agent got here</h3>
+      <div class="trail">
+        <div class="step">
+          <div class="dot">1</div>
+          <div><h4>Classified as "${esc(cls.category || '—')}" ${confBadge}</h4><p>${esc(cls.reason || '')}</p></div>
+        </div>
+        <div class="step">
+          <div class="dot">2</div>
+          <div><h4>Drafted a reply</h4><p>${redraftNote} Citations: ${citesHtml}</p></div>
+        </div>
+        <div class="step">
+          <div class="dot">3</div>
+          <div><h4>Verified ${ver.passed ? '— passed' : '— failed, forced to review'}</h4><p>${esc(ver.notes || '')}</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Reply to send</h3>
+      <div class="msg">${esc(t.reply)}</div>
+    </div>
+
+    ${baselineCompare}
+  `;
+}
+
+function selectTicket(id) {
+  activeId = id;
+  renderQueue();
+  renderDetail(tickets.find(t => t.id === id));
+}
+
+renderQueue();
+if (tickets.length) selectTicket(tickets.filter(t => t.status === 'needs_review')[0]?.id || tickets[0].id);
+else renderDetail(null);
+</script>
+</body>
+</html>
